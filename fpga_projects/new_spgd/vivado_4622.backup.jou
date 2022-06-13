@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Jun  8 10:33:39 2022
+# Process ID: 4622
+# Current directory: /home/taylor/Documents/new_spgd
+# Command line: vivado -source make_project.tcl
+# Log file: /home/taylor/Documents/new_spgd/vivado.log
+# Journal file: /home/taylor/Documents/new_spgd/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project.tcl
+update_compile_order -fileset sources_1

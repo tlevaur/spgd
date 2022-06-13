@@ -1,0 +1,725 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Jun  8 12:19:16 2022
+# Process ID: 13918
+# Current directory: /home/taylor/Documents/new_spgd
+# Command line: vivado -source make_project.tcl
+# Log file: /home/taylor/Documents/new_spgd/vivado.log
+# Journal file: /home/taylor/Documents/new_spgd/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project.tcl
+# set project_name new_spgd
+# set part_name xc7z020clg400-3
+# set bd_path tmp/$project_name/$project_name.srcs/sources_1/bd/system
+# file delete -force tmp/$project_name
+# create_project $project_name tmp/$project_name -part $part_name
+WARNING: [Board 49-91] Board repository path '/home/taylor/redpitaya/RedPitaya/fpga/prj/brd' does not exist, it will not be used to search board files.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+# create_bd_design system
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+# source cfg/ports.tcl
+## create_bd_port -dir I TRIG_IN
+## create_bd_port -dir I -from 5 -to 0 adc_dat_a_p_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_a_n_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_b_p_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_b_n_i
+## create_bd_port -dir I adc_clk_p
+## create_bd_port -dir I adc_clk_n
+## create_bd_port -dir O -from 13 -to 0 dac_dat_a_o
+## create_bd_port -dir O -from 13 -to 0 dac_dat_b_o
+## create_bd_port -dir O dac_spi_csb_o
+## create_bd_port -dir IO dac_spi_sdio_o
+## create_bd_port -dir O dac_spi_clk_o
+## create_bd_port -dir O dac_spi_reset_o
+## create_bd_port -dir O -from 7 -to 0 led_o
+# set_property IP_REPO_PATHS tmp/cores [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# set files [glob -nocomplain  /home/taylor/Documents/$project_name/src/*.v]
+# if {[llength $files] > 0} {
+#   add_files -norecurse $files
+# }
+# create_bd_cell -type module -reference ADC_REG ADC_REG
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk_n' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk_p' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'adc_clk_p': Added interface parameter 'FREQ_HZ' with value '125000000'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk' does not have any bus interfaces associated with it.
+CRITICAL WARNING: [IP_Flow 19-4751] Bus Interface 'adc_clk': FREQ_HZ bus parameter is missing for output clock interface.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk_n' does not have any bus interfaces associated with it.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk_p' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# create_bd_cell -type module -reference my_timer my_timer
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7 processing_system7_0
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+# set_property -dict [list CONFIG.PCW_USE_S_AXI_HP0 {1}] [get_bd_cells processing_system7_0]
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+# apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+# connect_bd_net [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+# connect_bd_net [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+# endgroup
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio axi_gpio_0
+# set_property -dict [list CONFIG.C_IS_DUAL {1} CONFIG.C_ALL_INPUTS_2 {1}] [get_bd_cells axi_gpio_0]
+# connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins axi_gpio_0/gpio_io_o]
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+# endgroup
+# apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config {Master "/processing_system7_0/M_AXI_GP0" Clk "Auto" }  [get_bd_intf_pins axi_gpio_0/S_AXI]
+Slave segment '/axi_gpio_0/S_AXI/Reg' is being assigned into address space '/processing_system7_0/Data' at <0x4120_0000 [ 64K ]>.
+# set_property offset 0x42000000 [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_gpio_0_Reg}]
+# set_property range 4K [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_gpio_0_Reg}]
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_0
+# set_property -dict [list CONFIG.C_SIZE {6}] [get_bd_cells util_ds_buf_0]
+# connect_bd_net [get_bd_ports adc_dat_a_p_i] [get_bd_pins util_ds_buf_0/IBUF_DS_P]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_0/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# connect_bd_net [get_bd_ports adc_dat_a_n_i] [get_bd_pins util_ds_buf_0/IBUF_DS_N]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_0/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_1
+# set_property -dict [list CONFIG.C_SIZE {6}] [get_bd_cells util_ds_buf_1]
+# connect_bd_net [get_bd_ports adc_dat_b_p_i] [get_bd_pins util_ds_buf_1/IBUF_DS_P]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_1/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# connect_bd_net [get_bd_ports adc_dat_b_n_i] [get_bd_pins util_ds_buf_1/IBUF_DS_N]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_1/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# endgroup
+# set_property LEFT 7 [get_bd_ports led_o]
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+# set_property -dict [list CONFIG.IN0_WIDTH {6} CONFIG.IN1_WIDTH {6}] [get_bd_cells xlconcat_0]
+# endgroup
+# connect_bd_net [get_bd_pins xlconcat_0/In0] [get_bd_pins util_ds_buf_0/IBUF_OUT]
+# connect_bd_net [get_bd_pins xlconcat_0/In1] [get_bd_pins util_ds_buf_1/IBUF_OUT]
+# connect_bd_net [get_bd_pins ADC_REG/data_in] [get_bd_pins xlconcat_0/dout]
+# connect_bd_net [get_bd_pins ADC_REG/adc_clk_p] [get_bd_ports adc_clk_p]
+# connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
+# connect_bd_net [get_bd_pins my_timer/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
+WARNING: [BD 5-235] No pins matched 'get_bd_pins my_timer/clk'
+# connect_bd_net [get_bd_pins my_timer/clk] [get_bd_pins ADC_REG/adc_clk] 
+ERROR: [BD 41-701] connect_bd_net requires at least two pins/ports, or one pin/port and a net
+ERROR: [BD 5-4] Error: running connect_bd_net.
+ERROR: [Common 17-39] 'connect_bd_net' failed due to earlier errors.
+
+    while executing
+"connect_bd_net [get_bd_pins my_timer/clk] [get_bd_pins ADC_REG/adc_clk] "
+    (file "make_project.tcl" line 95)
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins my_timer/ADC_CLK] [get_bd_pins ADC_REG/adc_clk] 
+connect_bd_net [get_bd_pins my_timer/DAC_A_OUT] [get_bd_ports dac_dat_a_o]
+connect_bd_net [get_bd_pins my_timer/DAC_B_OUT] [get_bd_ports dac_dat_b_o]
+# ====================================================================================
+# Generate output products and wrapper, add constraint 
+generate_target all [get_files  $bd_path/system.bd]
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_REG .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block my_timer .
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps7_0_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+generate_target: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 7224.199 ; gain = 0.004 ; free physical = 328 ; free virtual = 19359
+make_wrapper -files [get_files $bd_path/system.bd] -top
+/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+add_files -norecurse $bd_path/hdl/system_wrapper.v
+/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+# Load RedPitaya constraint files
+set files [glob -nocomplain cfg/*.xdc]
+cfg/ports.xdc
+if {[llength $files] > 0} {
+  add_files -norecurse -fileset constrs_1 $files
+}
+/home/taylor/Documents/new_spgd/cfg/ports.xdc
+#set_property top system_wrapper [current_fileset]
+set_property VERILOG_DEFINE {TOOL_VIVADO} [current_fileset]
+set_property STRATEGY Flow_PerfOptimized_High [get_runs synth_1]
+set_property STRATEGY Performance_NetDelay_high [get_runs impl_1]
+group_bd_cells PS7 [get_bd_cells processing_system7_0] [get_bd_cells rst_ps7_0_50M] [get_bd_cells ps7_0_axi_periph] [get_bd_cells axi_gpio_0]
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+/PS7
+group_bd_cells ADC_BLOCK [get_bd_cells util_ds_buf_0] [get_bd_cells util_ds_buf_1] [get_bd_cells xlconcat_0] [get_bd_cells ADC_REG]
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_0/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_0/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_1/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_1/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+/ADC_BLOCK
+set_property top system_wrapper [current_fileset]
+update_compile_order -fileset sources_1
+regenerate_bd_layout
+save_bd_design
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+[Wed Jun  8 12:21:01 2022] Launched system_rst_ps7_0_50M_0_synth_1, system_ADC_REG_0_synth_1, system_my_timer_0_synth_1, system_auto_pc_0_synth_1, system_axi_gpio_0_0_synth_1, system_util_ds_buf_1_0_synth_1, system_processing_system7_0_0_synth_1, system_util_ds_buf_0_0_synth_1, synth_1...
+Run output will be captured here:
+system_rst_ps7_0_50M_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_rst_ps7_0_50M_0_synth_1/runme.log
+system_ADC_REG_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_ADC_REG_0_synth_1/runme.log
+system_my_timer_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_my_timer_0_synth_1/runme.log
+system_auto_pc_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_auto_pc_0_synth_1/runme.log
+system_axi_gpio_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_axi_gpio_0_0_synth_1/runme.log
+system_util_ds_buf_1_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_util_ds_buf_1_0_synth_1/runme.log
+system_processing_system7_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_processing_system7_0_0_synth_1/runme.log
+system_util_ds_buf_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_util_ds_buf_0_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 12:21:01 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:17 ; elapsed = 00:00:08 . Memory (MB): peak = 7464.180 ; gain = 60.895 ; free physical = 285 ; free virtual = 19319
+update_module_reference system_my_timer_0
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_my_timer_0 from my_timer_v1_0 1.0 to my_timer_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block my_timer .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.895 MB.
+[Wed Jun  8 12:22:32 2022] Launched system_my_timer_0_synth_1, synth_1...
+Run output will be captured here:
+system_my_timer_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_my_timer_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 12:22:32 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 7641.090 ; gain = 0.000 ; free physical = 7211 ; free virtual = 19144
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+update_module_reference system_my_timer_0
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+INFO: [IP_Flow 19-1972] Upgraded system_my_timer_0 from my_timer_v1_0 1.0 to my_timer_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+CRITICAL WARNING: [HDL 9-806] Syntax error near ")". [/home/taylor/Documents/new_spgd/src/gen_counter.v:4]
+update_module_reference system_my_timer_0
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_my_timer_0 from my_timer_v1_0 1.0 to my_timer_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block my_timer .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.895 MB.
+[Wed Jun  8 12:24:10 2022] Launched system_my_timer_0_synth_1, synth_1...
+Run output will be captured here:
+system_my_timer_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_my_timer_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 12:24:10 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 7668.102 ; gain = 8.008 ; free physical = 6689 ; free virtual = 19082
+update_module_reference system_my_timer_0
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_my_timer_0 from my_timer_v1_0 1.0 to my_timer_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block my_timer .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.895 MB.
+[Wed Jun  8 12:25:07 2022] Launched system_my_timer_0_synth_1, synth_1...
+Run output will be captured here:
+system_my_timer_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_my_timer_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 12:25:07 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 7705.117 ; gain = 5.004 ; free physical = 6531 ; free virtual = 19256
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z020clg400-3
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 7705.117 ; gain = 0.000 ; free physical = 5946 ; free virtual = 19505
+INFO: [Netlist 29-17] Analyzing 55 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.15 . Memory (MB): peak = 7977.875 ; gain = 0.000 ; free physical = 5402 ; free virtual = 18964
+Restored from archive | CPU: 0.150000 secs | Memory: 2.435730 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.15 . Memory (MB): peak = 7977.875 ; gain = 0.000 ; free physical = 5402 ; free virtual = 18964
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7977.875 ; gain = 0.000 ; free physical = 5402 ; free virtual = 18964
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 8201.098 ; gain = 495.980 ; free physical = 5270 ; free virtual = 18843
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}
+add_files -norecurse my_timer_tb.v
+ERROR: [Vivado 12-172] File or Directory 'my_timer_tb.v' does not exist
+pwd
+/home/taylor/Documents/new_spgd
+cd src
+add_files -norecurse my_timer_tb.v
+/home/taylor/Documents/new_spgd/src/my_timer_tb.v
+cd ..
+update_compile_order -fileset sources_1
+set_property top my_timer_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/Xilinx/Vivado/2020.1/data/xsim/xsim.ini' copied to run dir:'/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'my_timer_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+xvlog --incr --relax -L axi_vip_v1_1_7 -L processing_system7_vip_v1_0_9 -L xilinx_vip -prj my_timer_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/src/gen_counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gen_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/src/my_timer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module my_timer
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/src/my_timer_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module my_timer_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+xelab -wto 35036065d4b24362bad333df88008cd1 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot my_timer_tb_behav xil_defaultlib.my_timer_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 35036065d4b24362bad333df88008cd1 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot my_timer_tb_behav xil_defaultlib.my_timer_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.gen_counter
+Compiling module xil_defaultlib.my_timer
+Compiling module xil_defaultlib.my_timer_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot my_timer_tb_behav
+
+****** Webtalk v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/xsim.dir/my_timer_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/xsim.dir/my_timer_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Wed Jun  8 12:40:12 2022. For additional details about this file, please refer to the WebTalk help file at /tools/Xilinx/Vivado/2020.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Wed Jun  8 12:40:12 2022...
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "my_timer_tb_behav -key {Behavioral:sim_1:Functional:my_timer_tb} -tclbatch {my_timer_tb.tcl} -protoinst "protoinst_files/system.protoinst" -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2020.1
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/system.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/system.protoinst for the following reason(s):
+There are no instances of module "system" in the design.
+
+Time resolution is 1 ps
+source my_timer_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'my_timer_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 8404.770 ; gain = 1.770 ; free physical = 4987 ; free virtual = 19064
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/Xilinx/Vivado/2020.1/data/xsim/xsim.ini' copied to run dir:'/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'my_timer_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+xvlog --incr --relax -L axi_vip_v1_1_7 -L processing_system7_vip_v1_0_9 -L xilinx_vip -prj my_timer_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/src/gen_counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gen_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/src/my_timer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module my_timer
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/taylor/Documents/new_spgd/src/my_timer_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module my_timer_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+xelab -wto 35036065d4b24362bad333df88008cd1 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot my_timer_tb_behav xil_defaultlib.my_timer_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 35036065d4b24362bad333df88008cd1 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot my_timer_tb_behav xil_defaultlib.my_timer_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.gen_counter
+Compiling module xil_defaultlib.my_timer
+Compiling module xil_defaultlib.my_timer_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot my_timer_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "my_timer_tb_behav -key {Behavioral:sim_1:Functional:my_timer_tb} -tclbatch {my_timer_tb.tcl} -protoinst "protoinst_files/system.protoinst" -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2020.1
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/system.protoinst
+WARNING: [Wavedata 42-558] Couldn't load one or more protocol instances from protoinst file protoinst_files/system.protoinst for the following reason(s):
+There are no instances of module "system" in the design.
+
+Time resolution is 1 ps
+source my_timer_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'my_timer_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 8538.836 ; gain = 0.000 ; free physical = 4939 ; free virtual = 19018
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+current_wave_config {Untitled 2}
+Untitled 2
+add_wave {{/my_timer_tb/my_time/timer_a/en}} 
+current_wave_config {Untitled 2}
+Untitled 2
+add_wave {{/my_timer_tb/my_time/timer_b/en}} 
+current_wave_config {Untitled 2}
+Untitled 2
+add_wave {{/my_timer_tb/my_time/timer_c/en}} 
+restart
+INFO: [Simtcl 6-17] Simulation restarted
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}
+connect_bd_net [get_bd_pins axi_gpio_1/gpio_io_i] [ADC_REG/a_data_out]
+WARNING: [BD 5-235] No pins matched 'get_bd_pins axi_gpio_1/gpio_io_i'
+invalid command name "ADC_REG/a_data_out"
+connect_bd_net [get_bd_pins PS7/axi_gpio_0/gpio2_io_i] [get_bd_pins ADC_BLOCK/ADC_REG/a_data_out]
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio2_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO2
+save_bd_design
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/PS7/axi_gpio_0/gpio2_io_i'(32) to pin '/PS7/gpio2_io_i'(12) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/PS7/axi_gpio_0/gpio2_io_i'(32) to pin '/PS7/gpio2_io_i'(12) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.895 MB.
+[Wed Jun  8 12:51:10 2022] Launched synth_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 12:51:10 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 8553.844 ; gain = 0.000 ; free physical = 4349 ; free virtual = 18778
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Wed Jun  8 12:55:30 2022] Launched synth_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 12:55:30 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins my_timer/val_0]
+WARNING: [BD 5-235] No pins matched 'get_bd_pins my_timer/val_0'
+ERROR: [BD 41-701] connect_bd_net requires at least two pins/ports, or one pin/port and a net
+ERROR: [BD 5-4] Error: running connect_bd_net.
+ERROR: [Common 17-39] 'connect_bd_net' failed due to earlier errors.
+update_module_reference system_my_timer_0
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_my_timer_0 from my_timer_v1_0 1.0 to my_timer_v1_0 1.0
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'val_0'
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'val_1'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'system_my_timer_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'system_my_timer_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins my_timer/val_0]
+connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins my_timer/val_0]
+connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins my_timer/val_0]
+connect_bd_net [get_bd_ports dac_spi_sdio_o] [get_bd_pins my_timer/val_1]
+ERROR: [BD 41-249] Net 'my_timer_val_1' already has a source port '/dac_spi_sdio_o' connected to it; Another source port cannot be connected to this net.
+ERROR: [BD 5-4] Error: running connect_bd_net.
+ERROR: [Common 17-39] 'connect_bd_net' failed due to earlier errors.
+regenerate_bd_layout
+regenerate_bd_layout
+connect_bd_net [get_bd_pins my_timer/val_1] [get_bd_ports dac_spi_sdio_o]
+regenerate_bd_layout
+delete_bd_objs [get_bd_nets gpio2_io_i_1]
+connect_bd_net [get_bd_pins PS7/axi_gpio_0/gpio2_io_i] [get_bd_pins my_timer/GP_OUT]
+WARNING: [BD 5-235] No pins matched 'get_bd_pins my_timer/GP_OUT'
+ERROR: [BD 41-701] connect_bd_net requires at least two pins/ports, or one pin/port and a net
+ERROR: [BD 5-4] Error: running connect_bd_net.
+ERROR: [Common 17-39] 'connect_bd_net' failed due to earlier errors.
+update_module_reference system_my_timer_0
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_A' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_DAC_B' has a dependency on the module local parameter or undefined parameter 'DAC_OUT_VALUE_B'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_my_timer_0 from my_timer_v1_0 1.0 to my_timer_v1_0 1.0
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'GP_OUT'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'system_my_timer_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'system_my_timer_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+connect_bd_net [get_bd_pins PS7/axi_gpio_0/gpio2_io_i] [get_bd_pins my_timer/GP_OUT]
+save_bd_design
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block my_timer .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.895 MB.
+[Wed Jun  8 13:43:54 2022] Launched system_my_timer_0_synth_1, synth_1...
+Run output will be captured here:
+system_my_timer_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_my_timer_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Wed Jun  8 13:43:54 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 8627.879 ; gain = 24.016 ; free physical = 3715 ; free virtual = 18605
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Jun  8 16:51:43 2022...
