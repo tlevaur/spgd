@@ -11,10 +11,7 @@ module DAC_offset_to_twos
     
     always @(data_in)
     begin
-        if(data_in < 12'h200 )
-            data_register1 = data_in - 14'h1FFF;
-        else 
-            data_register1 = 14'h00005FFF - data_in; 
+        data_register1 = 14'h00005FFF - data_in; 
     end
     
     assign data_out = data_register1;
