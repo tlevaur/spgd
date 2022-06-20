@@ -12,7 +12,7 @@ module LED_CONTROLLER
 );
 
     integer i;
-    reg [LED_WIDTH-1:0] LED=8'b00000000;12
+    reg [LED_WIDTH-1:0] LED=8'b00000000;
     assign led_o = LED;
     localparam
         ON = 1'b1,
