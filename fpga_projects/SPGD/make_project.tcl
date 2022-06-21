@@ -43,6 +43,7 @@ create_bd_cell -type module -reference pulse_DAC pulse_DAC
 create_bd_cell -type module -reference LED_CONTROLLER LED_CONTROLLER
 create_bd_cell -type module -reference twos_to_ADC_offset twos_to_ADC_offset
 create_bd_cell -type module -reference DAC_offset_to_twos DAC_offset_to_twos
+create_bd_cell -type module -reference ADC_AVERAGE ADC_AVERAGE
 
 # Zynq processing system with RedPitaya specific preset
 startgroup
@@ -101,6 +102,11 @@ connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
 # connect_bd_net [get_bd_pins twos_to_ADC_offset/data_out] [get_bd_pins GPIO_BOX/ADC_A]
 # connect_bd_net [get_bd_pins ADC_REG/b_data_out] [get_bd_pins twos_to_ADC_offset/data_in]
 # connect_bd_net [get_bd_pins twos_to_ADC_offset/data_out] [get_bd_pins GPIO_BOX/ADC_B]
+
+connect_bd_net [get_bd_pins ADC_REG/adc_clk] [get_bd_pins ADC_AVERAGE/clk]
+connect_bd_net [get_bd_pins ADC_REG/a_data_out] [get_bd_pins ADC_AVERAGE/DATA_IN]
+
+
 
 # connect_bd_net [get_bd_pins GPIO_BOX/ADC_A] [get_bd_pins ADC_REG/a_data_out]
 # connect_bd_net [get_bd_pins GPIO_BOX/ADC_B] [get_bd_pins ADC_REG/b_data_out]

@@ -11,8 +11,8 @@ module DAC_offset_to_twos
     
     always @(data_in)
     begin
-        data_register1 = 14'h00005FFF - data_in; 
+        data_register1 = 14'h00005FFF - data_in + 14'h0000003C ; 
     end
-    
+
     assign data_out = data_register1;
 endmodule
