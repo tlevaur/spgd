@@ -7,14 +7,14 @@ module twos_to_ADC_offset
 	output [WIRE_WIDTH - 1:0] data_out
 );
 
-    reg [WIRE_WIDTH - 1:0] data_register1 = 14'h00000000;
+    reg [WIRE_WIDTH - 1:0] data_register1 = 14'h0;
     
     always @(data_in)
     begin
         if(data_in[WIRE_WIDTH - 1])
-            data_register1 = data_in - 14'h00000800;
+            data_register1 = data_in - 14'h800;
         else 
-            data_register1 = data_in + 14'h00000800;
+            data_register1 = data_in + 14'h800;
     end
     
     assign data_out = data_register1;

@@ -1,8 +1,8 @@
 module twos_to_ADC_offset_tb;
 localparam H_period=2;
 
-reg [13:0]DATA_IN=14'h0000;
-wire [13:0]DATA_OUT;
+reg [11:0]DATA_IN=14'h0000;
+wire [11:0]DATA_OUT;
 
 twos_to_ADC_offset  #(.WIRE_WIDTH(12)) ADCO0 (.data_in(DATA_IN), .data_out(DATA_OUT));
 
