@@ -2,10 +2,19 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Wed Jun 15 10:11:04 2022
-# Process ID: 8521
+# Start of session at: Tue Jun 14 08:08:48 2022
+# Process ID: 31855
 # Current directory: /home/taylor/Documents/GH/SPGD/fpga_projects/new_spgd
 # Command line: vivado -source make_project.tcl
 # Log file: /home/taylor/Documents/GH/SPGD/fpga_projects/new_spgd/vivado.log
 # Journal file: /home/taylor/Documents/GH/SPGD/fpga_projects/new_spgd/vivado.jou
 #-----------------------------------------------------------
+start_gui
+source make_project.tcl
+regenerate_bd_layout
+update_compile_order -fileset sources_1
+save_bd_design
+startgroup
+set_property -dict [list CONFIG.C_ALL_INPUTS_2 {0} CONFIG.C_ALL_OUTPUTS_2 {1}] [get_bd_cells PS7/axi_gpio_0]
+delete_bd_objs [get_bd_nets PS7/GPIO_BOX_GP_OUT]
+endgroup

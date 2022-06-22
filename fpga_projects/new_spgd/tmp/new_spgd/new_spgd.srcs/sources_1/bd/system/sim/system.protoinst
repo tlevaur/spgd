@@ -3,7 +3,7 @@
 	"modules": {
 		"system": {
 			"proto_instances": {
-				"/PS7/axi_gpio_0/S_AXI": {
+				"/axi_gpio_0/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -27,7 +27,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/PS7/processing_system7_0/M_AXI_GP0": {
+				"/processing_system7_0/M_AXI_GP0": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_AXI_GP0_ACLK"},
@@ -71,7 +71,7 @@
 						"WVALID": { "actual": "M_AXI_GP0_WVALID"}
 					}
 				},
-				"/PS7/ps7_0_axi_periph/M00_AXI": {
+				"/ps7_0_axi_periph/M00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M00_ACLK"},
@@ -95,7 +95,7 @@
 						"WVALID": { "actual": "M00_AXI_wvalid"}
 					}
 				},
-				"/PS7/ps7_0_axi_periph/S00_AXI": {
+				"/ps7_0_axi_periph/S00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S00_ACLK"},
@@ -140,7 +140,7 @@
 						"WVALID": { "actual": "S00_AXI_wvalid"}
 					}
 				},
-				"/PS7/ps7_0_axi_periph/s00_couplers/M_AXI": {
+				"/ps7_0_axi_periph/s00_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
@@ -164,7 +164,7 @@
 						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/PS7/ps7_0_axi_periph/s00_couplers/S_AXI": {
+				"/ps7_0_axi_periph/s00_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
@@ -209,7 +209,7 @@
 						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/PS7/ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI": {
+				"/ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -235,7 +235,7 @@
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
 				},
-				"/PS7/ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI": {
+				"/ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
