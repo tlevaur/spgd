@@ -4,7 +4,7 @@
 
 module LED_CONTROLLER
 #(
-    parameter LED_WIDTH = 8
+    parameter LED_WIDTH = 1
 )
 (
     input [LED_WIDTH - 1:0] val,

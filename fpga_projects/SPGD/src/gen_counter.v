@@ -4,7 +4,6 @@ module gen_counter
 )
 (
 	input clk,
-	input rst,
 	input en,
 	input [DATA_WIDTH - 1:0] wait_val,
 	output f

@@ -31,6 +31,6 @@ end else begin
 end
 
 assign DONE = internal_done;
-assign DATA_OUT = SUM[15+10:10];
+assign DATA_OUT = SUM[13+10:10];
 
 endmodule

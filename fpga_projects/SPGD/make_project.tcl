@@ -36,14 +36,16 @@ if {[llength $files] > 0} {
 }
 
 create_bd_cell -type module -reference ADC_REG ADC_REG
-create_bd_cell -type module -reference my_timer my_timer
-create_bd_cell -type module -reference GPIO_BOX GPIO_BOX
-create_bd_cell -type module -reference pulse_FSM pulse_FSM
-create_bd_cell -type module -reference pulse_DAC pulse_DAC
+# create_bd_cell -type module -reference my_timer my_timer
+# create_bd_cell -type module -reference GPIO_BOX GPIO_BOX
+# create_bd_cell -type module -reference pulse_FSM pulse_FSM
+# create_bd_cell -type module -reference pulse_DAC pulse_DAC
 create_bd_cell -type module -reference LED_CONTROLLER LED_CONTROLLER
-create_bd_cell -type module -reference twos_to_ADC_offset twos_to_ADC_offset
-create_bd_cell -type module -reference DAC_offset_to_twos DAC_offset_to_twos
-create_bd_cell -type module -reference ADC_AVERAGE ADC_AVERAGE
+# create_bd_cell -type module -reference twos_to_ADC_offset twos_to_ADC_offset
+create_bd_cell -type module -reference DAC_offset_to_twos DAC_offset_to_twosA
+create_bd_cell -type module -reference DAC_offset_to_twos DAC_offset_to_twosB
+# create_bd_cell -type module -reference ADC_AVERAGE ADC_AVERAGE
+create_bd_cell -type module -reference ADC_DAC_LOOP ADC_DAC_LOOP
 
 # Zynq processing system with RedPitaya specific preset
 startgroup
@@ -103,27 +105,32 @@ connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
 # connect_bd_net [get_bd_pins ADC_REG/b_data_out] [get_bd_pins twos_to_ADC_offset/data_in]
 # connect_bd_net [get_bd_pins twos_to_ADC_offset/data_out] [get_bd_pins GPIO_BOX/ADC_B]
 
-connect_bd_net [get_bd_pins ADC_REG/adc_clk] [get_bd_pins ADC_AVERAGE/clk]
-connect_bd_net [get_bd_pins ADC_REG/a_data_out] [get_bd_pins ADC_AVERAGE/DATA_IN]
+connect_bd_net [get_bd_pins ADC_REG/adc_clk] [get_bd_pins ADC_DAC_LOOP/ADC_CLK]
+connect_bd_net [get_bd_pins ADC_REG/a_data_out] [get_bd_pins ADC_DAC_LOOP/ADC_DATA_IN]
+connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins ADC_DAC_LOOP/GP_IN]
+connect_bd_net [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins ADC_DAC_LOOP/GP_OUT]
+connect_bd_net [get_bd_pins LED_CONTROLLER/val] [get_bd_pins ADC_DAC_LOOP/DONE]
+connect_bd_net [get_bd_pins DAC_offset_to_twosA/data_in] [get_bd_pins ADC_DAC_LOOP/DACA_CODE_OUT]
+connect_bd_net [get_bd_pins DAC_offset_to_twosB/data_in] [get_bd_pins ADC_DAC_LOOP/DACB_CODE_OUT]
+connect_bd_net [get_bd_pins DAC_offset_to_twosA/data_out] [get_bd_ports dac_dat_a_o]
+connect_bd_net [get_bd_pins DAC_offset_to_twosB/data_out] [get_bd_ports dac_dat_b_o]
 
 
 
 # connect_bd_net [get_bd_pins GPIO_BOX/ADC_A] [get_bd_pins ADC_REG/a_data_out]
 # connect_bd_net [get_bd_pins GPIO_BOX/ADC_B] [get_bd_pins ADC_REG/b_data_out]
-connect_bd_net [get_bd_pins GPIO_BOX/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
+# connect_bd_net [get_bd_pins GPIO_BOX/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
 # connect_bd_net [get_bd_pins GPIO_BOX/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]   ---------------------
-connect_bd_net [get_bd_pins GPIO_BOX/LED_OUT]  [get_bd_pins LED_CONTROLLER/val]
+# connect_bd_net [get_bd_pins GPIO_BOX/LED_OUT]  [get_bd_pins LED_CONTROLLER/val]
 #connect_bd_net [get_bd_pins GPIO_BOX/DAC_A] [get_bd_ports dac_dat_a_o]
 #connect_bd_net [get_bd_pins GPIO_BOX/DAC_B] [get_bd_ports dac_dat_b_o]
 
-connect_bd_net [get_bd_pins DAC_offset_to_twos/data_in] [get_bd_pins axi_gpio_0/gpio_io_o]
-connect_bd_net [get_bd_pins DAC_offset_to_twos/data_out] [get_bd_ports dac_dat_a_o]
 
 
-connect_bd_net [get_bd_pins pulse_FSM/s] [get_bd_ports TRIG_IN]
-connect_bd_net [get_bd_pins pulse_FSM/clk] [get_bd_pins ADC_REG/adc_clk]
-connect_bd_net [get_bd_pins pulse_FSM/rst] [get_bd_pins GPIO_BOX/pulse_RST]
-connect_bd_net [get_bd_pins pulse_FSM/P] [get_bd_pins pulse_DAC/P]
+# connect_bd_net [get_bd_pins pulse_FSM/s] [get_bd_ports TRIG_IN]
+# connect_bd_net [get_bd_pins pulse_FSM/clk] [get_bd_pins ADC_REG/adc_clk]
+# connect_bd_net [get_bd_pins pulse_FSM/rst] [get_bd_pins GPIO_BOX/pulse_RST]
+# connect_bd_net [get_bd_pins pulse_FSM/P] [get_bd_pins pulse_DAC/P]
 # connect_bd_net [get_bd_pins pulse_DAC/DAC_A] [get_bd_ports dac_dat_a_o]
 # connect_bd_net [get_bd_pins pulse_DAC/DAC_B] [get_bd_ports dac_dat_b_o]
 
@@ -144,10 +151,10 @@ connect_bd_net [get_bd_pins my_timer/ADC_CLK] [get_bd_pins ADC_REG/adc_clk]
 #connect_bd_net [get_bd_pins my_timer/DAC_A_OUT] [get_bd_ports dac_dat_a_o]
 #connect_bd_net [get_bd_pins my_timer/DAC_B_OUT] [get_bd_ports dac_dat_b_o]
 
-connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins my_timer/val_0]
-connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins my_timer/val_0]
-connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins my_timer/val_0]
-connect_bd_net [get_bd_pins my_timer/val_1] [get_bd_ports dac_spi_sdio_o] 
+connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins ADC_DAC_LOOP/val_0]
+connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins ADC_DAC_LOOP/val_0]
+connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins ADC_DAC_LOOP/val_0]
+
 
 # ====================================================================================
 # Generate output products and wrapper, add constraint 
