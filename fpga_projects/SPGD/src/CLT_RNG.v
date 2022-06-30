@@ -5,7 +5,7 @@ module CLT_RNG
 	parameter SEED3 = 1505946904,
 	parameter SEED4 = 2693445,
 	parameter SEED_WIDTH = 32,
-	parameter OUT_WIDTH = 7
+	parameter OUT_WIDTH = 14
 )
 (
 	input wire clk,
@@ -28,14 +28,42 @@ wire [OUT_WIDTH - 1:0] add1_b = {uniform4[OUT_WIDTH-3], uniform4[OUT_WIDTH-3], u
 
 //gen_l_padder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(RAND_WIDTH), .L_PAD_WIDTH(RAND_WIDTH - OUT_WIDTH)) pad0(.in(adder3_o[OUT_WIDTH-1:0]), .out(out));
 
-gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add1 (.a(add0_a), .b(add0_b), .s(adder1_o));
-gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add2 (.a(add1_a), .b(add1_b), .s(adder2_o));
-gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add3 (.a(adder1_o), .b(adder2_o), .s(out));
+gen_adder #(
+	.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)
+) add1 (
+	.a(add0_a), .b(add0_b), .s(adder1_o)
+);
+gen_adder #(
+	.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)
+) add2 (
+	.a(add1_a), .b(add1_b), .s(adder2_o)
+);
+gen_adder #(
+	.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)
+) add3 (
+	.a(adder1_o), .b(adder2_o), .s(out))
+;
 
-LFSR #(.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED1)) reg1(.clk(clk), .rst(rst), .random(uniform1));
-LFSR #(.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED2)) reg2(.clk(clk), .rst(rst), .random(uniform2));
-LFSR #(.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED3)) reg3(.clk(clk), .rst(rst), .random(uniform3));
-LFSR #(.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED4)) reg4(.clk(clk), .rst(rst), .random(uniform4));
+LFSR #(
+	.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED1)
+) reg1 (
+	.clk(clk), .rst(rst), .random(uniform1)
+);
+LFSR #(
+	.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED2)
+) reg2 (
+	.clk(clk), .rst(rst), .random(uniform2)
+);
+LFSR #(
+	.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED3)
+) reg3 (
+	.clk(clk), .rst(rst), .random(uniform3)
+);
+LFSR #(
+	.REG_WIDTH(SEED_WIDTH - 1), .OUT_WIDTH(OUT_WIDTH), .SEED(SEED4)
+) reg4 (
+	.clk(clk), .rst(rst), .random(uniform4)
+);
 
 //assign out = adder3_o;
 

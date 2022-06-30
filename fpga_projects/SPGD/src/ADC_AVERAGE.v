@@ -6,16 +6,18 @@ module ADC_AVERAGE
 (
     input CLK,
     input RST,
-    input [ADC_WIDTH - 1 : 0] DATA_IN,
+    input  [ADC_WIDTH - 1 : 0] DATA_IN,
     output DONE,
-    output [ADC_WIDTH : 0] DATA_OUT
+    output [ADC_WIDTH - 1 : 0] DATA_OUT
 );
 
 reg [ 24-1 : 0] SUM = 24'h000000;
 // reg [ 13-1 : 0] internal_DATA_OUT = 13'h0;
 wire internal_done;
+wire internal_done_monitor;
 wire [24-2 : 0] ADDER_IN;
 gen_counter COUNT0 (.wait_val(NUM_SAMPS), .clk(CLK), .en(!RST), .f(internal_done));
+gen_counter COUNT1 (.wait_val(NUM_SAMPS+1), .clk(CLK), .en(!RST), .f(internal_done_monitor));
 
 reg  [ ADC_WIDTH : 0] VALID_SUM = {ADC_WIDTH{1'b0}};
 
@@ -36,6 +38,6 @@ begin
     end
 end
 
-assign DONE = internal_done;
-assign DATA_OUT = VALID_SUM;
+assign DONE = internal_done_monitor;
+assign DATA_OUT = VALID_SUM[ADC_WIDTH - 1:0];
 endmodule

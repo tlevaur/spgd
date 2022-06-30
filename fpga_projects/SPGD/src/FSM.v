@@ -8,11 +8,11 @@
 // );
 
 // localparam [1:0]
-// 	notDONE = 2'b10,
-// 	DONE = 2'b01;
+// 	waiting = 2'b10,
+// 	ADC_RST = 2'b01;
 
-// reg [1:0] current_state = notDONE;
-// reg [1:0] next_state = notDONE;
+// reg [1:0] current_state = waiting;
+// reg [1:0] next_state = waiting;
 
 // assign FSM_STATE = current_state;
 // assign RST = FSM_RST;
@@ -23,7 +23,7 @@
 // begin
 // 	if(~start)
 // 	begin
-// 		current_state = notDONE;
+// 		current_state = waiting;
 // 	end	
 // 	else
 // 	begin
@@ -34,29 +34,29 @@
 // always @(posedge adc_clk)
 // begin
 // 	case (current_state)
-// 		notDONE: 
+// 		waiting: 
 // 		begin
 // 			FSM_RST = 1'b0;
 //             valid = 1'b0;
 // 			if(done)
 // 			begin
-// 				next_state = DONE;
+// 				next_state = ADC_RST;
 // 			end			
 // 			else
 // 			begin
-// 				next_state = notDONE;
+// 				next_state = waiting;
 // 			end		
 // 		end
-// 		DONE:
+// 		ADC_RST:
 // 		begin
 //             valid = 1'b1;
 // 			if(~done && valid)
 // 			begin
-// 				next_state = notDONE;
+// 				next_state = waiting;
 // 			end
 // 			else
 // 			begin
-// 				next_state = DONE;
+// 				next_state = ADC_RST;
 // 			end
 // 		end
 // 		default:
@@ -72,82 +72,72 @@
 module FSM
 (
     input adc_clk, 
-    output RST, 
+    output REG_RST, 
+    output REG_WRITE, 
+    output ADC_RST, 
     input done, 
-    input enable,
-    output valid,
-    output [1:0] FSM_STATE
+    input enable
 );
-
-localparam [1:0]
-	notDONE = 2'b00,
-	WRITTEN = 2'b01,
-	DONE = 2'b10;
+//  REG_WRITE is MSB, REG_RST is first/midddle bit and ADC_RST is LSB bit
+localparam [2:0]
+	stopped = 3'b011,
+	waiting = 3'b000,
+	reg_write = 3'b100,
+	sADC_RST = 3'b001;
 
 localparam
     ON = 1'b1,
     OFF = 1'b0;
 
-   reg state = notDONE;
-   reg internal_valid = OFF;
-   reg internal_RST = OFF;
 
-    assign valid = internal_valid;
-    assign RST = internal_RST;
-    assign FSM_STATE = state;
+     reg [2:0] state = stopped;
 
-   always @( posedge adc_clk, posedge done )
+     assign REG_WRITE = state[2];
+     assign REG_RST = state[1];
+     assign ADC_RST = state[0];
+
+   always @(posedge adc_clk, posedge done )
    begin
-//    if( RST ) begin
-//         state = notDONE;
-//         internal_valid = OFF;
-//    end
    if (~enable) begin
-        state = state;
+        state = stopped;
    end
    else
    begin
        case( state )
-       notDONE:
+       stopped:
        begin
-            internal_RST = OFF;
-            if( done && ~RST) begin
-                internal_valid = ON;
-                state = WRITTEN;
+          if(enable) begin
+                state = waiting;
+          end
+       end
+       waiting:
+       begin
+            if( done ) begin
+                state = reg_write;
             end
             else begin
-                internal_valid = OFF;
-                state = notDONE;
+                state = waiting;
             end
        end
-       WRITTEN:
+       reg_write:
        begin
-            internal_valid = OFF;
-            internal_RST = ON;
-            state = DONE;
+            state = sADC_RST;
        end
-       DONE:
+       sADC_RST:
        begin
-            internal_valid = OFF;
-            internal_RST = OFF;
-            state = notDONE;
+            state = waiting;
        end
 
        default:
        begin
-            internal_valid = OFF;
-            internal_RST = OFF;
-            state = notDONE;
+            state = stopped;
        end
        endcase
    end
 end
+
+
 endmodule
-
-
-
-
-
 
 // module FSM
 // (
@@ -161,8 +151,8 @@ endmodule
 
 // localparam [1:0]
 // 	stopped = 2'b00,
-// 	notDONE = 2'b01,
-// 	DONE = 2'b10,
+// 	waiting = 2'b01,
+// 	ADC_RST = 2'b10,
 //     RSTADC = 2'b11;
 
 
@@ -197,24 +187,24 @@ endmodule
 //             internal_valid = OFF;
 //             internal_RST = OFF;
 //             if (enable) begin
-//                 next_state = notDONE;
+//                 next_state = waiting;
 //             end
 //             else begin
 //                 next_state = stopped;
 //             end
 //        end
-//        notDONE:
+//        waiting:
 //        begin
 //             internal_valid = OFF;
 //             internal_RST = OFF;
 //             if( done ) begin
-//                 next_state = DONE;
+//                 next_state = ADC_RST;
 //             end
 //             else begin
-//                 next_state = notDONE;
+//                 next_state = waiting;
 //             end
 //        end
-//        DONE:
+//        ADC_RST:
 //        begin
 //             internal_valid = ON;
 //             internal_RST = OFF;
@@ -223,7 +213,7 @@ endmodule
 //        RSTADC:
 //        begin
 //             internal_RST = ON;
-//             next_state = notDONE;
+//             next_state = waiting;
 //        end
 
 //        default:

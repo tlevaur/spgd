@@ -13,7 +13,7 @@ module gen_reg
 
 reg [DATA_WIDTH - 1:0] int_data_reg;
 
-always @(posedge clk)
+always @(negedge clk)
 begin
     if (rst)
         int_data_reg = 0;

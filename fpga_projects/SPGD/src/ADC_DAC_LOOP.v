@@ -1,3 +1,10 @@
+// reg [FLOAT_WIDTH    - 1 : 0] GAIN_MUL_IN    = 64'h0000_0280_2802_8_028;
+// reg [FLOAT_WIDTH    - 1 : 0] ADC_OFFSET = 64'hFFEC_0000_0000_0000;
+// reg [FLOAT_WIDTH    - 1 : 0] DAC_OFFSET = 64'h0014_0000_0000_0000;
+// reg [FLOAT_WIDTH    - 1 : 0] DAC_MUL_OFFSET = 64'h0000_0CCC_CCCC_CCCC;
+// reg [FLOAT_WIDTH    - 1 : 0] DAC_GAIN_OFFSET = 64'h0066_6000_0000_0000;
+// reg [FLOAT_WIDTH    - 1 : 0] SIXTEEN_K_OVER_TWENTY = 64'h0333_2666_6666_6666;
+// reg [FLOAT_WIDTH    - 1 : 0] TEN = 64'h000A_0000_0000_0000;
 module ADC_DAC_LOOP
 #(
     parameter FLOAT_WIDTH = 64,
@@ -15,63 +22,54 @@ module ADC_DAC_LOOP
 	output  val_1,
     output  [DAC_WIDTH  - 1 : 0] DACA_CODE_OUT,
     output  [DAC_WIDTH  - 1 : 0] DACB_CODE_OUT,
-    output  [ADC_WIDTH  - 1 : 0] ADC_CODE_OUT
+    input   [1024       - 1 : 0] CFG_IN
 );
 
-    reg [FLOAT_WIDTH    - 1 : 0] GAIN_MUL_IN    = 64'h0000_0280_2802_8_028;
-    reg [FLOAT_WIDTH    - 1 : 0] ADC_OFFSET = 64'hFFEC_0000_0000_0000;
-    reg [FLOAT_WIDTH    - 1 : 0] DAC_OFFSET = 64'h0014_0000_0000_0000;
-    reg [FLOAT_WIDTH    - 1 : 0] DAC_MUL_OFFSET = 64'h0000_0CCC_CCCC_CCCC;
-    reg [FLOAT_WIDTH    - 1 : 0] DAC_GAIN_OFFSET = 64'h0066_6000_0000_0000;
-    reg [FLOAT_WIDTH    - 1 : 0] SIXTEEN_K_OVER_TWENTY = 64'h0333_2666_6666_6666;
-    reg [FLOAT_WIDTH    - 1 : 0] TEN = 64'h000A_0000_0000_0000;
-    reg [DAC_WIDTH      - 1 : 0] output_DAC_A = 14'h0000;
-    reg [DAC_WIDTH      - 1 : 0] output_DAC_B = 14'h0000;
-
-    wire RST;
-    wire VALID;
     wire enable;
-    wire FSM_STATE;
-    wire [FLOAT_WIDTH   - 1 : 0] ADC_AVERAGE_OUT;
-    wire [FLOAT_WIDTH   - 1 : 0] ADC_OFFSET_WIRE;
-    wire [FLOAT_WIDTH   - 1 : 0] ADC_MUL_INPUT;
-    wire [FLOAT_WIDTH*2 - 1 : 0] ADC_MUL_DATA_OUT;
-    wire [FLOAT_WIDTH*2 - 1 : 0] DAC_MUL_CODE_OUT;
-    wire [FLOAT_WIDTH   - 1 : 0] ADC_MUL_SPLIT;
-    wire [FLOAT_WIDTH       : 0] ADC_ADD_WIRE_OUT;
-    wire [FLOAT_WIDTH   - 1 : 0] DAC_ADD_WIRE_OUT;
-    wire [FLOAT_WIDTH   - 1 : 0] DAC_ADJUST_WIRE_OUT;
-    wire [FLOAT_WIDTH   - 1 : 0] DAC_CODE_WIRE_OUT;
+    wire REG_RST;
+    wire REG_WRITE;
+    wire [FLOAT_WIDTH   - 1 : 0] REG_DATA;
+    wire [FLOAT_WIDTH   - 1 : 0] ADC_16Q48_OUT;
+    wire [FLOAT_WIDTH   - 1 : 0] ADC_16Q48_IN;
     wire [DAC_WIDTH     - 1 : 0] DAC_CODE_OUT;
 
-    // assign RST = GP_IN[1];
-    assign enable = GP_IN[0];
-    assign GP_OUT = {16'h0000, FSM_STATE, DACA_CODE_OUT};
+    assign GP_OUT = {2'b00, DAC_CODE_OUT, REG_DATA[63:48]};
     assign val_0 = 1'b0;
 	assign val_1 = 1'b1;
-    
-    assign ADC_MUL_SPLIT = ADC_MUL_DATA_OUT[112:48];
-    assign DAC_CODE_WIRE_OUT = DAC_MUL_CODE_OUT[112:48];
 
-    assign DACA_CODE_OUT = output_DAC_A;
-    assign DACB_CODE_OUT = output_DAC_B;
-    
+    assign ADC_16Q48_IN = CFG_IN[FLOAT_WIDTH - 1: 0];
+    assign enable = GP_IN[GPIO_WIDTH-1];
+    assign DACA_CODE_OUT = GP_IN[DAC_WIDTH - 1: 0];
+    assign DACB_CODE_OUT = DAC_CODE_OUT;
 
-    twos_to_ADC_offset #(.WIRE_WIDTH(ADC_WIDTH)) ADCO0 (.data_in(ADC_DATA_IN), .data_out(ADC_OFFSET_WIRE));
+    ADC_IN  #(
+        .FLOAT_WIDTH(FLOAT_WIDTH),
+        .ADC_WIDTH(ADC_WIDTH)
+    ) ADC0 (
+        .ADC_CLK(ADC_CLK),
+        .ADC_DATA_IN(ADC_DATA_IN), 
+        .enable(enable),
+        .DONE(DONE),
+        .ADC_16Q48_OUT(ADC_16Q48_OUT),
+        .REG_WRITE(REG_WRITE),
+        .REG_RST(REG_RST)
+    );
 
-    ADC_AVERAGE  #(.ADC_WIDTH(ADC_WIDTH), .NUM_SAMPS(1024)) ADC_AVERAGE0 (.DATA_IN(ADC_OFFSET_WIRE), .DATA_OUT(ADC_AVERAGE_OUT), .CLK(ADC_CLK), .DONE(DONE), .RST(RST));
+    gen_reg #(
+        .DATA_WIDTH(FLOAT_WIDTH)
+    ) REG0 (
+        .data_in(ADC_16Q48_OUT),
+        .clk(ADC_CLK),
+        .wrt(REG_WRITE),
+        .rst(REG_RST),
+        .data_out(REG_DATA)
+    );
 
-    gen_padder #(.IN_WIDTH(ADC_WIDTH), .OUT_WIDTH(FLOAT_WIDTH), .L_PAD_WIDTH(4), .R_PAD_WIDTH(FLOAT_WIDTH-16)) PAD0 (.in(ADC_AVERAGE_OUT), .out(ADC_MUL_INPUT));
-
-    gen_mult #(.DATA_WIDTH(FLOAT_WIDTH)) MULT0 (.a(ADC_MUL_INPUT), .b(GAIN_MUL_IN), .p(ADC_MUL_DATA_OUT));
-
-    gen_adder #(.IN_WIDTH(FLOAT_WIDTH)) ADD0 (.a(ADC_MUL_SPLIT), .b(ADC_OFFSET), .s(ADC_ADD_WIRE_OUT));
-
-    gen_adder #(.IN_WIDTH(FLOAT_WIDTH)) ADD2 (.a(ADC_ADD_WIRE_OUT), .b(TEN), .s(DAC_ADJUST_WIRE_OUT));
-
-    gen_mult #(.DATA_WIDTH(FLOAT_WIDTH)) MULT2 (.a(DAC_ADJUST_WIRE_OUT), .b(SIXTEEN_K_OVER_TWENTY), .p(DAC_MUL_CODE_OUT));
-
-    DAC_offset_to_twos #(.WIRE_WIDTH(DAC_WIDTH)) DAC0 (.data_in(DAC_CODE_WIRE_OUT[61 : 47]), .data_out(DAC_CODE_OUT));
-
-    FSM FSM0 (.done(DONE), .enable(enable), .adc_clk(ADC_CLK), .RST(RST), .FSM_STATE(FSM_STATE), .valid(VALID));
+    DAC_OUT #(
+        .FLOAT_WIDTH(FLOAT_WIDTH),
+        .DAC_WIDTH(DAC_WIDTH)
+    ) DAC0 (
+        .ADC_VOLTAGE(ADC_16Q48_IN),
+        .DAC_CODE_OUT(DAC_CODE_OUT)
+    );
 endmodule

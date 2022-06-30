@@ -18,12 +18,23 @@ module CLT_RNG_HIST_tb;
 	wire [out_width - 1:0] rng_out;
 
 	integer write_data;
-	integer i;
 
-	//CLT_RNG #(.SEED1(seed1), .SEED2(seed2), .SEED3(seed3), .SEED4(seed4), .SEED_WIDTH(seed_width), .OUT_WIDTH(out_width)) rng_0(.clk(rng_clk), .rst(rng_rst), .out(rng_out));
+	/*
+	CLT_RNG #(
+		.SEED1(seed1), .SEED2(seed2), .SEED3(seed3), .SEED4(seed4),
+		.SEED_WIDTH(seed_width), .OUT_WIDTH(out_width)
+	) rng_0 (
+		.clk(rng_clk), .rst(rng_rst), .out(rng_out)
+	);
+	*/
 
-	TOP_RNG #(.OUT_WIDTH(out_width), .SEED_WIDTH(seed_width), .A_SEED1(seed1), .A_SEED2(seed2), .A_SEED3(seed3), .A_SEED4(seed4), 
-	.B_SEED1(seed1), .B_SEED2(seed2), .B_SEED3(seed3), .B_SEED4(seed4)) DELTA_U(.clk(rng_clk), .rst(rng_rst), .out_0(rng_out), .out_1());
+	TOP_RNG #(
+		.OUT_WIDTH(out_width), .SEED_WIDTH(seed_width),
+		.A_SEED1(seed1), .A_SEED2(seed2), .A_SEED3(seed3), .A_SEED4(seed4), 
+		.B_SEED1(seed1), .B_SEED2(seed2), .B_SEED3(seed3), .B_SEED4(seed4)
+	) DELTA_U (
+		.clk(rng_clk), .rst(rng_rst), .out_0(rng_out), .out_1()
+	);
 
 	always
 	begin

@@ -15,10 +15,10 @@ module gen_padder
 	wire [OUT_WIDTH - 1:0] PADDER_OUT;
 	wire [OUT_WIDTH : 0] adder_out;
 
-	reg [OUT_WIDTH - 1:0] step_correction = 64'hFFFF_8000_0000_0000;
-	// reg [OUT_WIDTH - 1:0] step_correction = 64'h0000_0000_0000_0000;
+	// reg [OUT_WIDTH - 1:0] step_correction = 64'hFFFF_8000_0000_0000;
+	reg [OUT_WIDTH - 1:0] step_correction = 64'h0000_0000_0000_0000;
 
-	assign PADDER_OUT = {{4{1'b0}}, in, {R_PAD_WIDTH{1'b0}}};
+	assign PADDER_OUT = {{4{in [IN_WIDTH - 1]}}, in, {R_PAD_WIDTH{1'b0}}};
 	
 	gen_adder #(.IN_WIDTH(OUT_WIDTH)) ADD0 (.a(PADDER_OUT) , .b(step_correction), .s(adder_out));
 

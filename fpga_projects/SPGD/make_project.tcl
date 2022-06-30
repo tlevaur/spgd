@@ -46,6 +46,7 @@ create_bd_cell -type module -reference LED_CONTROLLER LED_CONTROLLER
 # create_bd_cell -type module -reference DAC_offset_to_twos DAC_offset_to_twosB
 # create_bd_cell -type module -reference ADC_AVERAGE ADC_AVERAGE
 create_bd_cell -type module -reference ADC_DAC_LOOP ADC_DAC_LOOP
+create_bd_cell -type module -reference axi_cfg_register axi_cfg_register
 
 # Zynq processing system with RedPitaya specific preset
 startgroup
@@ -105,8 +106,9 @@ connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
 # connect_bd_net [get_bd_pins ADC_REG/b_data_out] [get_bd_pins twos_to_ADC_offset/data_in]
 # connect_bd_net [get_bd_pins twos_to_ADC_offset/data_out] [get_bd_pins GPIO_BOX/ADC_B]
 
+connect_bd_net [get_bd_pins ADC_DAC_LOOP/ADC_DATA_IN] [get_bd_pins ADC_REG/a_data_out]
 connect_bd_net [get_bd_pins ADC_REG/adc_clk] [get_bd_pins ADC_DAC_LOOP/ADC_CLK]
-connect_bd_net [get_bd_pins ADC_REG/a_data_out] [get_bd_pins ADC_DAC_LOOP/ADC_DATA_IN]
+connect_bd_net [get_bd_pins ADC_DAC_LOOP/CFG_IN] [get_bd_pins axi_cfg_register/cfg_data]
 connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins ADC_DAC_LOOP/GP_IN]
 connect_bd_net [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins ADC_DAC_LOOP/GP_OUT]
 connect_bd_net [get_bd_pins LED_CONTROLLER/val] [get_bd_pins ADC_DAC_LOOP/DONE]
@@ -135,9 +137,9 @@ connect_bd_net [get_bd_pins ADC_DAC_LOOP/DACB_CODE_OUT] [get_bd_ports dac_dat_b_
 # connect_bd_net [get_bd_pins pulse_DAC/DAC_B] [get_bd_ports dac_dat_b_o]
 
 connect_bd_net [get_bd_pins LED_CONTROLLER/led_o] [get_bd_ports led_o]
-startgroup
-create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_2
-endgroup
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_2
+# endgroup
 # set_property -dict [list CONFIG.NUM_PORTS {4}] [get_bd_cells xlconcat_2]
 # connect_bd_net [get_bd_pins xlconcat_2/dout] [get_bd_pins LED_CONTROLLER/val]
 # connect_bd_net [get_bd_pins xlconcat_2/In3] [get_bd_pins my_timer/val_0]
@@ -155,6 +157,7 @@ connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins ADC_DAC_LOOP/val_0]
 connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins ADC_DAC_LOOP/val_0]
 connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins ADC_DAC_LOOP/val_0]
 connect_bd_net [get_bd_pins ADC_DAC_LOOP/val_1] [get_bd_ports dac_spi_sdio_o]
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/processing_system7_0/FCLK_CLK0 (50 MHz)} Clk_slave {/processing_system7_0/FCLK_CLK0 (50 MHz)} Clk_xbar {/processing_system7_0/FCLK_CLK0 (50 MHz)} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_cfg_register/s_axi} ddr_seg {Auto} intc_ip {/ps7_0_axi_periph} master_apm {0}}  [get_bd_intf_pins axi_cfg_register/s_axi]
 
 # ====================================================================================
 # Generate output products and wrapper, add constraint 
