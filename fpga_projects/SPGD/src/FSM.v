@@ -5,8 +5,7 @@ module FSM
     output REG_WRITE, 
     output ADC_RST, 
     input done, 
-    input enable,
-    input RST
+    input enable
 );
 //  REG_WRITE is MSB, REG_RST is first/midddle bit and ADC_RST is LSB bit
 localparam [2:0]
@@ -28,7 +27,7 @@ localparam
 
    always @(posedge adc_clk, posedge done )
    begin
-   if (~enable || RST) begin
+   if (~enable) begin
         state = stopped;
    end
    else

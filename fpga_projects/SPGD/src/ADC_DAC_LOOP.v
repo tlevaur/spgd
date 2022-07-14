@@ -14,7 +14,6 @@ module ADC_DAC_LOOP
 )
 (
     input   ADC_CLK,
-    input   RST,
     input   [ADC_WIDTH  - 1 : 0] ADC_DATA_IN,
     input   [GPIO_WIDTH - 1 : 0] GP_IN,
     output  [GPIO_WIDTH - 1 : 0] GP_OUT,
@@ -40,7 +39,7 @@ module ADC_DAC_LOOP
     wire [FLOAT_WIDTH       : 0] ADC_CAL_ADD_DATA_OUT;
     wire [DAC_WIDTH     - 1 : 0] DAC_CODE_OUT;
 
-    assign GP_OUT = {2'b00, DAC_CODE_OUT, REG_DATA[63:48]};
+    assign GP_OUT = {2'b00, DAC_CODE_OUT, REG_DATA[FLOAT_WIDTH-1:FLOAT_WIDTH-16]};
     assign val_0 = 1'b0;
 	assign val_1 = 1'b1;
 
@@ -64,8 +63,7 @@ module ADC_DAC_LOOP
         .DONE(DONE),
         .ADC_16Q48_OUT(ADC_16Q48_OUT),
         .REG_WRITE(REG_WRITE),
-        .REG_RST(REG_RST),
-        .RST(RST)
+        .REG_RST(REG_RST)
     );
 
     my_mult #(

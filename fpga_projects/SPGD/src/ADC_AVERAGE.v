@@ -1,14 +1,14 @@
 module ADC_AVERAGE
 #(
     parameter ADC_WIDTH = 12,
-    parameter NUM_SAMPS = 128,
+    parameter NUM_SAMPS = 1024,
     parameter FLOAT_WIDTH = 64
 )
 (
     input CLK,
     input RST,
-    input [FLOAT_WIDTH/2  - 1 : 0] TIMER_OFFSET,
-    input [FLOAT_WIDTH/2  - 1 : 0] TIME_VALUE,
+    // input [FLOAT_WIDTH/2  - 1 : 0] TIMER_OFFSET,
+    // input [FLOAT_WIDTH/2  - 1 : 0] TIME_VALUE,
     input  [ADC_WIDTH - 1 : 0] DATA_IN,
     output DONE,
     output [ADC_WIDTH - 1 : 0] DATA_OUT
@@ -19,8 +19,8 @@ reg [ 64-1 : 0] SUM = 64'h000000;
 wire internal_done;
 wire internal_done_monitor;
 wire [64-2 : 0] ADDER_IN;
-gen_counter COUNT0 (.wait_val(TIME_VALUE), .clk(CLK), .en(!RST), .f(internal_done));
-gen_counter COUNT1 (.wait_val(TIME_VALUE+TIMER_OFFSET), .clk(CLK), .en(!RST), .f(internal_done_monitor));
+gen_counter COUNT0 (.wait_val(NUM_SAMPS), .clk(CLK), .en(!RST), .f(internal_done));
+gen_counter COUNT1 (.wait_val(NUM_SAMPS+2), .clk(CLK), .en(!RST), .f(internal_done_monitor));
 
 reg  [ ADC_WIDTH : 0] VALID_SUM = {ADC_WIDTH{1'b0}};
 
