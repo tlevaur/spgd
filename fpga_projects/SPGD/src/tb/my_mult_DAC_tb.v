@@ -3,6 +3,7 @@ localparam NUM_SAMPS = 3;
 localparam F_period=4;
 localparam H_period=F_period/2;
 localparam DATA_WIDTH = 32;
+localparam DAC_WIDTH = 14;
 localparam INT_WIDTH = 16;
 localparam BIT_SHIFT = 0;
 localparam DEC_FORMAT = 16;
@@ -18,6 +19,7 @@ wire [DATA_WIDTH - 1    : 0] PRODUCT;
 
 my_mult #(
 	.DATA_WIDTH(DATA_WIDTH),
+    .OUT_WIDTH(DAC_WIDTH),
 	.INT_WIDTH(INT_WIDTH),
 	.BIT_SHIFT(BIT_SHIFT),
 	.INT_FORMAT(INT_FORMAT),
