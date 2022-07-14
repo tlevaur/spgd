@@ -2,7 +2,8 @@ module ADC_IN
 #(
     parameter FLOAT_WIDTH = 64,
     parameter ADC_WIDTH = 12,
-    parameter NUM_SAMPS = 1024
+    parameter NUM_SAMPS = 1024,
+    parameter INT_WIDTH = 16
 )
 (
     input   ADC_CLK,
@@ -15,7 +16,7 @@ module ADC_IN
     output REG_WRITE,
     output REG_RST
 );
-    reg [FLOAT_WIDTH    - 1 : 0] GAIN_MUL_IN    = 64'h0014_0000_0000_0000;
+    reg [FLOAT_WIDTH    - 1 : 0] GAIN_MUL_IN = {{16'h0014}, {FLOAT_WIDTH-INT_WIDTH{1'b0}}};
 
     wire RST;
     wire VALID;

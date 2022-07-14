@@ -8,6 +8,7 @@
 module ADC_DAC_LOOP
 #(
     parameter FLOAT_WIDTH = 64,
+    parameter CFG_BLOCK_WIDTH = 64,
     parameter GPIO_WIDTH = 32,
     parameter ADC_WIDTH = 12,
     parameter DAC_WIDTH = 14
@@ -43,10 +44,10 @@ module ADC_DAC_LOOP
     assign val_0 = 1'b0;
 	assign val_1 = 1'b1;
 
-    assign TIMER_OFFSET = CFG_IN[FLOAT_WIDTH/2 - 1: 0];
-    assign TIME_VALUE = CFG_IN[FLOAT_WIDTH - 1: FLOAT_WIDTH/2];
-    assign ADC_CAL_GAIN = CFG_IN[FLOAT_WIDTH*2 - 1: FLOAT_WIDTH];
-    assign ADC_CAL_OFFSET = CFG_IN[FLOAT_WIDTH*3 - 1: FLOAT_WIDTH*2];
+    assign TIMER_OFFSET = CFG_IN[CFG_BLOCK_WIDTH/2 - 1: 0];
+    assign TIME_VALUE = CFG_IN[CFG_BLOCK_WIDTH - 1: CFG_BLOCK_WIDTH/2];
+    assign ADC_CAL_GAIN = CFG_IN[CFG_BLOCK_WIDTH*2 - 1: CFG_BLOCK_WIDTH+(CFG_BLOCK_WIDTH-FLOAT_WIDTH)];
+    assign ADC_CAL_OFFSET = CFG_IN[CFG_BLOCK_WIDTH*3 - 1: CFG_BLOCK_WIDTH*2+(CFG_BLOCK_WIDTH-FLOAT_WIDTH)];
     assign enable = GP_IN[GPIO_WIDTH-1];
     assign DACA_CODE_OUT = GP_IN[DAC_WIDTH - 1: 0];
     assign DACB_CODE_OUT = DAC_CODE_OUT;
@@ -57,8 +58,8 @@ module ADC_DAC_LOOP
     ) ADC0 (
         .ADC_CLK(ADC_CLK),
         .ADC_DATA_IN(ADC_DATA_IN),
-        .TIMER_OFFSET(TIMER_OFFSET),
-        .TIME_VALUE(TIME_VALUE),
+        // .TIMER_OFFSET(TIMER_OFFSET),
+        // .TIME_VALUE(TIME_VALUE),
         .enable(enable),
         .DONE(DONE),
         .ADC_16Q48_OUT(ADC_16Q48_OUT),
