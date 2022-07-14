@@ -9,7 +9,6 @@ localparam ADC_WIDTH = 12;
 localparam DAC_WIDTH = 14;
 
 reg ADC_CLK = 1'b0;
-reg RST = 1'b1;
 reg [11:0] DATA_IN=12'h000;
 // reg [1023:0] CFG_IN=1024'h0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0005_0000_0000_0000_0000_1000_0000_0000_000A_1000_0000_0000;
 wire DONE;
@@ -49,14 +48,14 @@ always begin
 end
 initial
 begin
+    #F_period;
     // write_data = $fopen("filter_output_a.txt","w");
-    GPIO_REG = 32'h8000_0000;
-
     repeat(NUM_SAMPS) begin
         #AVE_period;
         //$fdisplay(write_data, "%x", DACA_CODE_WIRE_OUT);
-        DATA_IN = DATA_IN + 1;
         #F_period;
+        #F_period;
+        DATA_IN = DATA_IN + 1;
     end
     //$fclose(write_data);
     $finish;

@@ -7,14 +7,14 @@ module gen_mult
 	input [DATA_WIDTH - 1:0] b,
 	output [DATA_WIDTH + DATA_WIDTH - 1:0] p
 );
-	// reg signed [DATA_WIDTH + DATA_WIDTH - 1:0] int_p;
+	reg signed [DATA_WIDTH + DATA_WIDTH - 1:0] int_p;
 
-	// reg signed [DATA_WIDTH - 1:0] A_in;
-	// reg signed [DATA_WIDTH - 1:0] B_in;
-	reg [DATA_WIDTH + DATA_WIDTH - 1:0] int_p;
+	reg signed [DATA_WIDTH - 1:0] A_in;
+	reg signed [DATA_WIDTH - 1:0] B_in;
+	// reg [DATA_WIDTH + DATA_WIDTH - 1:0] int_p;
 
-	reg [DATA_WIDTH - 1:0] A_in;
-	reg [DATA_WIDTH - 1:0] B_in;
+	// reg [DATA_WIDTH - 1:0] A_in;
+	// reg [DATA_WIDTH - 1:0] B_in;
 	assign p = int_p;
 	always @(a or b)
 	begin

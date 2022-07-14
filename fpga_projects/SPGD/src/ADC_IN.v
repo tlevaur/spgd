@@ -2,7 +2,7 @@ module ADC_IN
 #(
     parameter FLOAT_WIDTH = 64,
     parameter ADC_WIDTH = 12,
-    parameter NUM_SAMPS = 1024,
+    parameter NUM_SAMPS = 1023,
     parameter INT_WIDTH = 16
 )
 (
@@ -35,14 +35,15 @@ module ADC_IN
         .DATA_OUT(ADC_AVERAGE_OUT),
         .CLK(ADC_CLK),
         .DONE(DONE),
-        .RST(RST)
+        .EN(!RST)
         // .TIME_VALUE(TIME_VALUE),
         // .TIMER_OFFSET(TIMER_OFFSET)
     );
 
     FSM FSM0 (
         .done(DONE),
-        .enable(enable), .adc_clk(ADC_CLK),
+        .enable(enable),
+		.adc_clk(ADC_CLK),
         .REG_RST(in_REG_RST),
         .REG_WRITE(VALID),
         .ADC_RST(RST)

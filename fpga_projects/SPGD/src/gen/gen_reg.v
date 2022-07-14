@@ -11,7 +11,7 @@ module gen_reg
 	output wire [DATA_WIDTH - 1:0] data_out
 );
 
-reg [DATA_WIDTH - 1:0] int_data_reg;
+reg [DATA_WIDTH - 1:0] int_data_reg = {DATA_WIDTH{1'b0}};
 
 always @(negedge clk)
 begin

@@ -54,7 +54,8 @@ module ADC_DAC_LOOP
 
     ADC_IN  #(
         .FLOAT_WIDTH(FLOAT_WIDTH),
-        .ADC_WIDTH(ADC_WIDTH)
+        .ADC_WIDTH(ADC_WIDTH),
+        .NUM_SAMPS(1023)
     ) ADC0 (
         .ADC_CLK(ADC_CLK),
         .ADC_DATA_IN(ADC_DATA_IN),
