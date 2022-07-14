@@ -1,0 +1,82 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Jun 16 11:17:38 2022
+# Process ID: 16967
+# Current directory: /home/taylor/Documents/new_spgd
+# Command line: vivado -source make_project.tcl
+# Log file: /home/taylor/Documents/new_spgd/vivado.log
+# Journal file: /home/taylor/Documents/new_spgd/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project.tcl
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins offset_ADC_to_AXIS/offset_adc_a] [get_bd_pins ADC_REG/a_data_out]
+connect_bd_net [get_bd_pins offset_ADC_to_AXIS/offset_adc_b] [get_bd_pins ADC_REG/b_data_out]
+connect_bd_intf_net [get_bd_intf_pins offset_ADC_to_AXIS/m_axis_a] [get_bd_intf_pins ADC_offset_to_fp_0/S_AXIS_A]
+connect_bd_intf_net [get_bd_intf_pins offset_ADC_to_AXIS/m_axis_b] [get_bd_intf_pins ADC_offset_to_fp_1/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_a] [get_bd_intf_pins cal_gain_mult_0/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_c] [get_bd_intf_pins cal_gain_mult_1/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins cal_gain_mult_0/S_AXIS_A] [get_bd_intf_pins ADC_offset_to_fp_0/M_AXIS_RESULT]
+#connect_bd_intf_net [get_bd_intf_pins cal_gain_mult_1/S_AXIS_A] [get_bd_intf_pins ADC_offset_to_fp_1/M_AXIS_RESULT]
+#connect_bd_intf_net [get_bd_intf_pins cal_gain_mult_0/M_AXIS_RESULT] [get_bd_intf_pins cal_offset_sub_0/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins cal_gain_mult_1/M_AXIS_RESULT] [get_bd_intf_pins cal_offset_sub_1/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_b] [get_bd_intf_pins cal_offset_sub_0/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_d] [get_bd_intf_pins cal_offset_sub_1/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins cal_offset_sub_0/M_AXIS_RESULT] [get_bd_intf_pins ideal_gain_mult_0/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins cal_offset_sub_1/M_AXIS_RESULT] [get_bd_intf_pins ideal_gain_mult_1/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_e] [get_bd_intf_pins ideal_gain_mult_0/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_g] [get_bd_intf_pins ideal_gain_mult_1/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins ideal_gain_mult_0/M_AXIS_RESULT] [get_bd_intf_pins ideal_offset_sub_0/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins ideal_gain_mult_1/M_AXIS_RESULT] [get_bd_intf_pins ideal_offset_sub_1/S_AXIS_A]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_f] [get_bd_intf_pins ideal_offset_sub_0/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins ADC_cal_fp_constants/m_axis_h] [get_bd_intf_pins ideal_offset_sub_1/S_AXIS_B]
+#connect_bd_intf_net [get_bd_intf_pins ideal_offset_sub_0/M_AXIS_RESULT] [get_bd_intf_pins AXIS_to_GPIO/s_axis]
+connect_bd_intf_net [get_bd_intf_pins ADC_offset_to_fp_0/M_AXIS_RESULT] [get_bd_intf_pins AXIS_to_GPIO/s_axis]
+connect_bd_net [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins AXIS_to_GPIO/GP_OUT]
+#connect_bd_net [get_bd_pins ideal_offset_sub_0/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+#connect_bd_net [get_bd_pins ideal_offset_sub_1/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+#connect_bd_net [get_bd_pins ideal_gain_mult_0/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+#connect_bd_net [get_bd_pins ideal_gain_mult_1/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+#connect_bd_net [get_bd_pins cal_offset_sub_0/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+#connect_bd_net [get_bd_pins cal_offset_sub_1/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+connect_bd_net [get_bd_pins ADC_offset_to_fp_0/aclk] [get_bd_pins ADC_BLOCK/adc_clk]
+connect_bd_net [get_bd_pins ADC_offset_to_fp_0/aclk] [get_bd_pins ADC_REG/adc_clk]
+connect_bd_net [get_bd_pins ADC_offset_to_fp_1/aclk] [get_bd_pins ADC_REG/adc_clk]
+#connect_bd_net [get_bd_pins cal_gain_mult_0/aclk] [get_bd_pins ADC_REG/adc_clk]
+#connect_bd_net [get_bd_pins cal_gain_mult_1/aclk] [get_bd_pins ADC_REG/adc_clk]
+#connect_bd_net [get_bd_pins PS7/axi_gpio_0/gpio2_io_i] [get_bd_pins my_timer/GP_OUT]
+#connect_bd_net [get_bd_pins my_timer/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
+connect_bd_net [get_bd_pins my_timer/ADC_CLK] [get_bd_pins ADC_REG/adc_clk] 
+#connect_bd_net [get_bd_pins my_timer/DAC_A_OUT] [get_bd_ports dac_dat_a_o]
+#connect_bd_net [get_bd_pins my_timer/DAC_B_OUT] [get_bd_ports dac_dat_b_o]
+connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins my_timer/val_0]
+connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins my_timer/val_0]
+connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins my_timer/val_0]
+connect_bd_net [get_bd_pins my_timer/val_1] [get_bd_ports dac_spi_sdio_o] 
+# ====================================================================================
+# Generate output products and wrapper, add constraint 
+generate_target all [get_files  $bd_path/system.bd]
+make_wrapper -files [get_files $bd_path/system.bd] -top
+add_files -norecurse $bd_path/hdl/system_wrapper.v
+# Load RedPitaya constraint files
+set files [glob -nocomplain cfg/*.xdc]
+if {[llength $files] > 0} {
+  add_files -norecurse -fileset constrs_1 $files
+}
+#set_property top system_wrapper [current_fileset]
+set_property VERILOG_DEFINE {TOOL_VIVADO} [current_fileset]
+set_property STRATEGY Flow_PerfOptimized_High [get_runs synth_1]
+set_property STRATEGY Performance_NetDelay_high [get_runs impl_1]
+group_bd_cells PS7 [get_bd_cells processing_system7_0] [get_bd_cells rst_ps7_0_50M] [get_bd_cells ps7_0_axi_periph] [get_bd_cells axi_gpio_0]
+group_bd_cells ADC_BLOCK [get_bd_cells util_ds_buf_0] [get_bd_cells util_ds_buf_1] [get_bd_cells xlconcat_0] [get_bd_cells ADC_REG]
+set_property top system_wrapper [current_fileset]
+regenerate_bd_layout
+update_compile_order -fileset sources_1
+save_bd_design
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_run impl_1
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}

@@ -1,0 +1,1336 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Fri Jul  1 16:40:53 2022
+# Process ID: 30397
+# Current directory: /home/taylor/Documents/new_spgd
+# Command line: vivado -source make_project.tcl
+# Log file: /home/taylor/Documents/new_spgd/vivado.log
+# Journal file: /home/taylor/Documents/new_spgd/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project.tcl
+# set project_name new_spgd
+# set part_name xc7z020clg400-3
+# set bd_path tmp/$project_name/$project_name.srcs/sources_1/bd/system
+# file delete -force tmp/$project_name
+# create_project $project_name tmp/$project_name -part $part_name
+WARNING: [Board 49-91] Board repository path '/home/taylor/redpitaya/RedPitaya/fpga/prj/brd' does not exist, it will not be used to search board files.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+# create_bd_design system
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+# source cfg/ports.tcl
+## create_bd_port -dir I TRIG_IN
+## create_bd_port -dir I -from 5 -to 0 adc_dat_a_p_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_a_n_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_b_p_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_b_n_i
+## create_bd_port -dir I adc_clk_p
+## create_bd_port -dir I adc_clk_n
+## create_bd_port -dir O -from 13 -to 0 dac_dat_a_o
+## create_bd_port -dir O -from 13 -to 0 dac_dat_b_o
+## create_bd_port -dir O dac_spi_csb_o
+## create_bd_port -dir IO dac_spi_sdio_o
+## create_bd_port -dir O dac_spi_clk_o
+## create_bd_port -dir O dac_spi_reset_o
+## create_bd_port -dir O -from 7 -to 0 led_o
+# set_property IP_REPO_PATHS tmp/cores [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# set files [glob -nocomplain  /home/taylor/Documents/$project_name/src/*.v]
+# if {[llength $files] > 0} {
+#   add_files -norecurse $files
+# }
+# create_bd_cell -type module -reference ADC_REG ADC_REG
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk_n' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk_p' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'adc_clk_p': Added interface parameter 'FREQ_HZ' with value '125000000'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk' does not have any bus interfaces associated with it.
+CRITICAL WARNING: [IP_Flow 19-4751] Bus Interface 'adc_clk': FREQ_HZ bus parameter is missing for output clock interface.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk_n' does not have any bus interfaces associated with it.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk_p' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# create_bd_cell -type module -reference SPGD_SYS SPGD_SYS
+ERROR: [filemgmt 56-189] Failed to resolve reference. Nothing was found in the project to match the name 'SPGD_SYS'.
+ERROR: [BD 41-1690] Unable to resolve module-source based on inputs: SPGD_SYS
+ERROR: [BD 5-7] Error: running create_bd_cell  -type module -reference SPGD_SYS -name SPGD_SYS .
+ERROR: [Common 17-39] 'create_bd_cell' failed due to earlier errors.
+
+    while executing
+"create_bd_cell -type module -reference SPGD_SYS SPGD_SYS"
+    (file "make_project.tcl" line 39)
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference SPGD_SYS SPGD_SYS
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+/SPGD_SYS
+create_bd_cell -type module -reference ADC_fp ADC_fp
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+/ADC_fp
+create_bd_cell -type module -reference fp_DAC fp_DAC_0
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+/fp_DAC_0
+create_bd_cell -type module -reference fp_DAC fp_DAC_1
+/fp_DAC_1
+#create_bd_cell -type module -reference GPIO_BOX GPIO_BOX
+#create_bd_cell -type module -reference configer configer
+#create_bd_cell -type module -reference offset_ADC_to_AXIS offset_ADC_to_AXIS
+#create_bd_cell -type module -reference ADC_cal_fp_constants ADC_cal_fp_constants
+#create_bd_cell -type module -reference AXIS_to_GPIO AXIS_to_GPIO
+# Zynq processing system with RedPitaya specific preset
+startgroup
+1
+create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7 processing_system7_0
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+/processing_system7_0
+set_property -dict [list CONFIG.PCW_USE_S_AXI_HP0 {1}] [get_bd_cells processing_system7_0]
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+#set_property -dict [list CONFIG.PCW_IMPORT_BOARD_PRESET {cfg/red_pitaya.xml}] [get_bd_cells processing_system7_0]
+apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+connect_bd_net [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+endgroup
+# AXI GPIO IP core
+startgroup
+1
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio axi_gpio_0
+/axi_gpio_0
+set_property -dict [list CONFIG.C_IS_DUAL {1} CONFIG.C_ALL_INPUTS_2 {1} CONFIG.C_ALL_OUTPUTS_2 {0}] [get_bd_cells axi_gpio_0]
+#set_property -dict [list CONFIG.C_ALL_INPUTS_2 {0} CONFIG.C_ALL_OUTPUTS_2 {1}] [get_bd_cells axi_gpio_0]
+#set_property -dict [list ] [get_bd_cells axi_gpio_0]
+connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins axi_gpio_0/gpio_io_o]
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config {Master "/processing_system7_0/M_AXI_GP0" Clk "Auto" }  [get_bd_intf_pins axi_gpio_0/S_AXI]
+Slave segment '/axi_gpio_0/S_AXI/Reg' is being assigned into address space '/processing_system7_0/Data' at <0x4120_0000 [ 64K ]>.
+set_property offset 0x42000000 [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_gpio_0_Reg}]
+set_property range 4K [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_gpio_0_Reg}]
+# Buffers for differential IOs
+startgroup
+1
+create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_0
+/util_ds_buf_0
+set_property -dict [list CONFIG.C_SIZE {6}] [get_bd_cells util_ds_buf_0]
+connect_bd_net [get_bd_ports adc_dat_a_p_i] [get_bd_pins util_ds_buf_0/IBUF_DS_P]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_0/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+connect_bd_net [get_bd_ports adc_dat_a_n_i] [get_bd_pins util_ds_buf_0/IBUF_DS_N]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_0/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_1
+/util_ds_buf_1
+set_property -dict [list CONFIG.C_SIZE {6}] [get_bd_cells util_ds_buf_1]
+connect_bd_net [get_bd_ports adc_dat_b_p_i] [get_bd_pins util_ds_buf_1/IBUF_DS_P]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_1/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+connect_bd_net [get_bd_ports adc_dat_b_n_i] [get_bd_pins util_ds_buf_1/IBUF_DS_N]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_1/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+endgroup
+# Define all 8 LEDs
+set_property LEFT 7 [get_bd_ports led_o]
+startgroup
+1
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+/xlconcat_0
+set_property -dict [list CONFIG.IN0_WIDTH {6} CONFIG.IN1_WIDTH {6}] [get_bd_cells xlconcat_0]
+endgroup
+connect_bd_net [get_bd_pins xlconcat_0/In0] [get_bd_pins util_ds_buf_0/IBUF_OUT]
+connect_bd_net [get_bd_pins xlconcat_0/In1] [get_bd_pins util_ds_buf_1/IBUF_OUT]
+connect_bd_net [get_bd_pins ADC_REG/data_in] [get_bd_pins xlconcat_0/dout]
+connect_bd_net [get_bd_pins ADC_REG/adc_clk_p] [get_bd_ports adc_clk_p]
+connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
+connect_bd_net [get_bd_pins ADC_fp/ADC_CLK] [get_bd_pins ADC_REG/adc_clk]
+connect_bd_net [get_bd_pins ADC_fp/ADC_SEL] [get_bd_pins SPGD_SYS/ADC_SEL]
+connect_bd_net [get_bd_pins ADC_fp/ADC_EN] [get_bd_pins SPGD_SYS/ADC_EN]
+connect_bd_net [get_bd_pins ADC_fp/ADC_A] [get_bd_pins ADC_REG/a_data_out]
+connect_bd_net [get_bd_pins ADC_fp/ADC_B] [get_bd_pins ADC_REG/b_data_out]
+connect_bd_net [get_bd_pins ADC_fp/ADC_DONE] [get_bd_pins SPGD_SYS/ADC_DONE]
+connect_bd_net [get_bd_pins ADC_fp/ADC_16Q48_OUT] [get_bd_pins SPGD_SYS/ADC_IN]
+connect_bd_net [get_bd_pins SPGD_SYS/ADC_CLK] [get_bd_pins ADC_REG/adc_clk]
+connect_bd_net [get_bd_pins SPGD_SYS/DAC_A_OUT] [get_bd_pins fp_DAC_0/fp_in]
+connect_bd_net [get_bd_pins SPGD_SYS/DAC_B_OUT] [get_bd_pins fp_DAC_1/fp_in]
+connect_bd_net [get_bd_pins SPGD_SYS/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
+connect_bd_net [get_bd_pins SPGD_SYS/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio2_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO2
+connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins SPGD_SYS/val_0]
+connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins SPGD_SYS/val_0]
+connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins SPGD_SYS/val_0]
+connect_bd_net [get_bd_pins SPGD_SYS/val_1] [get_bd_ports dac_spi_sdio_o] 
+connect_bd_net [get_bd_pins fp_DAC_0/DAC_out] [get_bd_ports dac_dat_a_o]
+connect_bd_net [get_bd_pins fp_DAC_1/DAC_out] [get_bd_ports dac_dat_b_o]
+# ====================================================================================
+# Generate output products and wrapper, add constraint 
+generate_target all [get_files  $bd_path/system.bd]
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_REG .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_fp .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_1 .
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps7_0_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+generate_target: Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 7309.867 ; gain = 0.000 ; free physical = 150 ; free virtual = 16733
+make_wrapper -files [get_files $bd_path/system.bd] -top
+/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+add_files -norecurse $bd_path/hdl/system_wrapper.v
+/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+# Load RedPitaya constraint files
+set files [glob -nocomplain cfg/*.xdc]
+cfg/ports.xdc
+if {[llength $files] > 0} {
+  add_files -norecurse -fileset constrs_1 $files
+}
+/home/taylor/Documents/new_spgd/cfg/ports.xdc
+#set_property top system_wrapper [current_fileset]
+set_property VERILOG_DEFINE {TOOL_VIVADO} [current_fileset]
+set_property STRATEGY Flow_PerfOptimized_High [get_runs synth_1]
+set_property STRATEGY Performance_NetDelay_high [get_runs impl_1]
+group_bd_cells PS7 [get_bd_cells processing_system7_0] [get_bd_cells rst_ps7_0_50M] [get_bd_cells ps7_0_axi_periph] [get_bd_cells axi_gpio_0]
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio2_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO2
+/PS7
+group_bd_cells ADC_BLOCK [get_bd_cells util_ds_buf_0] [get_bd_cells util_ds_buf_1] [get_bd_cells xlconcat_0] [get_bd_cells ADC_REG]
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_0/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_0/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_1/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_1/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+/ADC_BLOCK
+set_property top system_wrapper [current_fileset]
+update_compile_order -fileset sources_1
+regenerate_bd_layout
+regenerate_bd_layout
+save_bd_design
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+[Fri Jul  1 16:45:27 2022] Launched system_auto_pc_0_synth_1, system_axi_gpio_0_0_synth_1, system_processing_system7_0_0_synth_1, system_util_ds_buf_1_0_synth_1, system_util_ds_buf_0_0_synth_1, system_rst_ps7_0_50M_0_synth_1, system_ADC_REG_0_synth_1, system_SPGD_SYS_0_synth_1, system_ADC_fp_0_synth_1, system_fp_DAC_0_0_synth_1, system_fp_DAC_1_0_synth_1, synth_1...
+Run output will be captured here:
+system_auto_pc_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_auto_pc_0_synth_1/runme.log
+system_axi_gpio_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_axi_gpio_0_0_synth_1/runme.log
+system_processing_system7_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_processing_system7_0_0_synth_1/runme.log
+system_util_ds_buf_1_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_util_ds_buf_1_0_synth_1/runme.log
+system_util_ds_buf_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_util_ds_buf_0_0_synth_1/runme.log
+system_rst_ps7_0_50M_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_rst_ps7_0_50M_0_synth_1/runme.log
+system_ADC_REG_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_ADC_REG_0_synth_1/runme.log
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+system_ADC_fp_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_ADC_fp_0_synth_1/runme.log
+system_fp_DAC_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_0_0_synth_1/runme.log
+system_fp_DAC_1_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_1_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 16:45:28 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:38 ; elapsed = 00:00:18 . Memory (MB): peak = 7565.852 ; gain = 114.047 ; free physical = 249 ; free virtual = 16670
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 16:49:51 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 16:49:51 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:37 ; elapsed = 00:00:12 . Memory (MB): peak = 7727.754 ; gain = 0.000 ; free physical = 7107 ; free virtual = 16728
+reset_run synth_1
+reset_run system_SPGD_SYS_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Jul  1 16:51:28 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 16:51:28 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+reset_run synth_1
+reset_run system_SPGD_SYS_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Jul  1 16:52:32 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 16:52:32 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+reset_run synth_1
+reset_run system_SPGD_SYS_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Jul  1 16:55:47 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 16:55:47 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+add_files gen_reg.v
+ERROR: [Vivado 12-172] File or Directory 'gen_reg.v' does not exist
+cd src
+add_files gen_reg.v
+/home/taylor/Documents/new_spgd/src/gen_reg.v
+cd ..
+reset_run synth_1
+reset_run system_SPGD_SYS_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Jul  1 16:56:59 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 16:56:59 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'LED_O'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'system_SPGD_SYS_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'system_SPGD_SYS_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+connect_bd_net [get_bd_ports led_o] [get_bd_pins SPGD_SYS/LED_O]
+regenerate_bd_layout
+save_bd_design
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 17:18:19 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:18:19 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:39 ; elapsed = 00:00:12 . Memory (MB): peak = 7932.855 ; gain = 40.012 ; free physical = 4692 ; free virtual = 15994
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z020clg400-3
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 7948.863 ; gain = 0.000 ; free physical = 4423 ; free virtual = 15788
+INFO: [Netlist 29-17] Analyzing 185 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.20 . Memory (MB): peak = 8227.598 ; gain = 5.004 ; free physical = 3874 ; free virtual = 15248
+Restored from archive | CPU: 0.190000 secs | Memory: 4.186844 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.20 . Memory (MB): peak = 8227.598 ; gain = 5.004 ; free physical = 3874 ; free virtual = 15248
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 8227.598 ; gain = 0.000 ; free physical = 3874 ; free virtual = 15249
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 12 instances were transformed.
+  (Flop,Flop) => IDDR: 12 instances
+
+open_run: Time (s): cpu = 00:00:20 ; elapsed = 00:00:14 . Memory (MB): peak = 8503.582 ; gain = 554.719 ; free physical = 3684 ; free virtual = 15082
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Jul  1 17:25:57 2022] Launched synth_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:25:57 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+close_design
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 17:31:03 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:31:03 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:10 . Memory (MB): peak = 8684.664 ; gain = 0.000 ; free physical = 3826 ; free virtual = 15361
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 17:35:14 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:35:14 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:25 ; elapsed = 00:00:10 . Memory (MB): peak = 8691.676 ; gain = 7.012 ; free physical = 3629 ; free virtual = 15214
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 17:44:24 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:44:24 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:09 . Memory (MB): peak = 8747.695 ; gain = 0.000 ; free physical = 3627 ; free virtual = 15213
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Jul  1 17:47:09 2022] Launched synth_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:47:09 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:19 ; elapsed = 00:00:05 . Memory (MB): peak = 8747.695 ; gain = 0.000 ; free physical = 3610 ; free virtual = 15220
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 17:51:21 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 17:51:21 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:08 . Memory (MB): peak = 8808.738 ; gain = 40.031 ; free physical = 3383 ; free virtual = 14991
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 8808.738 ; gain = 0.000 ; free physical = 3273 ; free virtual = 14921
+INFO: [Netlist 29-17] Analyzing 295 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:00.32 . Memory (MB): peak = 8808.738 ; gain = 0.000 ; free physical = 3108 ; free virtual = 14756
+Restored from archive | CPU: 0.310000 secs | Memory: 5.782173 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:00.32 . Memory (MB): peak = 8808.738 ; gain = 0.000 ; free physical = 3108 ; free virtual = 14756
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 8808.738 ; gain = 0.000 ; free physical = 3109 ; free virtual = 14756
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 12 instances were transformed.
+  (Flop,Flop) => IDDR: 12 instances
+
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Common 17-344] 'launch_runs' was cancelled
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Fri Jul  1 18:04:01 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Fri Jul  1 18:04:01 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:20 ; elapsed = 00:00:10 . Memory (MB): peak = 8853.754 ; gain = 0.000 ; free physical = 3087 ; free virtual = 14754
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}
+create_ip_run [get_files -of_objects [get_fileset sources_1] /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd]
+synth_design -rtl -name rtl_1
+Command: synth_design -rtl -name rtl_1
+Starting synth_design
+Using part: xc7z020clg400-3
+Top: system_wrapper
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 8853.754 ; gain = 0.000 ; free physical = 2845 ; free virtual = 14536
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_wrapper' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v:12]
+INFO: [Synth 8-6157] synthesizing module 'system' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:690]
+INFO: [Synth 8-6157] synthesizing module 'ADC_BLOCK_imp_10AGXL2' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:12]
+INFO: [Synth 8-6157] synthesizing module 'system_ADC_REG_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_ADC_REG_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_ADC_REG_0' (1#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_ADC_REG_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_util_ds_buf_0_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_util_ds_buf_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_util_ds_buf_0_0' (2#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_util_ds_buf_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_util_ds_buf_1_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_util_ds_buf_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_util_ds_buf_1_0' (3#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_util_ds_buf_1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_xlconcat_0_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_xlconcat_0_0/synth/system_xlconcat_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_3_xlconcat' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
+	Parameter IN0_WIDTH bound to: 6 - type: integer 
+	Parameter IN1_WIDTH bound to: 6 - type: integer 
+	Parameter IN2_WIDTH bound to: 1 - type: integer 
+	Parameter IN3_WIDTH bound to: 1 - type: integer 
+	Parameter IN4_WIDTH bound to: 1 - type: integer 
+	Parameter IN5_WIDTH bound to: 1 - type: integer 
+	Parameter IN6_WIDTH bound to: 1 - type: integer 
+	Parameter IN7_WIDTH bound to: 1 - type: integer 
+	Parameter IN8_WIDTH bound to: 1 - type: integer 
+	Parameter IN9_WIDTH bound to: 1 - type: integer 
+	Parameter IN10_WIDTH bound to: 1 - type: integer 
+	Parameter IN11_WIDTH bound to: 1 - type: integer 
+	Parameter IN12_WIDTH bound to: 1 - type: integer 
+	Parameter IN13_WIDTH bound to: 1 - type: integer 
+	Parameter IN14_WIDTH bound to: 1 - type: integer 
+	Parameter IN15_WIDTH bound to: 1 - type: integer 
+	Parameter IN16_WIDTH bound to: 1 - type: integer 
+	Parameter IN17_WIDTH bound to: 1 - type: integer 
+	Parameter IN18_WIDTH bound to: 1 - type: integer 
+	Parameter IN19_WIDTH bound to: 1 - type: integer 
+	Parameter IN20_WIDTH bound to: 1 - type: integer 
+	Parameter IN21_WIDTH bound to: 1 - type: integer 
+	Parameter IN22_WIDTH bound to: 1 - type: integer 
+	Parameter IN23_WIDTH bound to: 1 - type: integer 
+	Parameter IN24_WIDTH bound to: 1 - type: integer 
+	Parameter IN25_WIDTH bound to: 1 - type: integer 
+	Parameter IN26_WIDTH bound to: 1 - type: integer 
+	Parameter IN27_WIDTH bound to: 1 - type: integer 
+	Parameter IN28_WIDTH bound to: 1 - type: integer 
+	Parameter IN29_WIDTH bound to: 1 - type: integer 
+	Parameter IN30_WIDTH bound to: 1 - type: integer 
+	Parameter IN31_WIDTH bound to: 1 - type: integer 
+	Parameter dout_width bound to: 12 - type: integer 
+	Parameter NUM_PORTS bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_3_xlconcat' (4#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'system_xlconcat_0_0' (5#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_xlconcat_0_0/synth/system_xlconcat_0_0.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'ADC_BLOCK_imp_10AGXL2' (6#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:12]
+INFO: [Synth 8-6157] synthesizing module 'system_ADC_fp_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_ADC_fp_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_ADC_fp_0' (7#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_ADC_fp_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'PS7_imp_1QJPAX8' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:75]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_gpio_0_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_axi_gpio_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_gpio_0_0' (8#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_axi_gpio_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'gpio_io_t' of module 'system_axi_gpio_0_0' is unconnected for instance 'axi_gpio_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:207]
+WARNING: [Synth 8-7023] instance 'axi_gpio_0' of module 'system_axi_gpio_0_0' has 23 connections declared, but only 22 given [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:207]
+INFO: [Synth 8-6157] synthesizing module 'system_processing_system7_0_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_processing_system7_0_0' (9#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_processing_system7_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_ARREADY' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_AWREADY' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_BVALID' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RLAST' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RVALID' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WREADY' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_BRESP' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RRESP' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_BID' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RID' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RDATA' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RCOUNT' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'system_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'system_processing_system7_0_0' has 107 connections declared, but only 92 given [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:230]
+INFO: [Synth 8-6157] synthesizing module 'system_ps7_0_axi_periph_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:881]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_15HE6GA' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:394]
+INFO: [Synth 8-6157] synthesizing module 'system_auto_pc_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_auto_pc_0' (10#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_auto_pc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'system_auto_pc_0' is unconnected for instance 'auto_pc' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:629]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'system_auto_pc_0' is unconnected for instance 'auto_pc' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:629]
+WARNING: [Synth 8-7023] instance 'auto_pc' of module 'system_auto_pc_0' has 59 connections declared, but only 57 given [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:629]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_15HE6GA' (11#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:394]
+INFO: [Synth 8-6155] done synthesizing module 'system_ps7_0_axi_periph_0' (12#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:881]
+INFO: [Synth 8-6157] synthesizing module 'system_rst_ps7_0_50M_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_rst_ps7_0_50M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_rst_ps7_0_50M_0' (13#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_rst_ps7_0_50M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'system_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:385]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'system_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:385]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'system_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:385]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'system_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:385]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_50M' of module 'system_rst_ps7_0_50M_0' has 10 connections declared, but only 6 given [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:385]
+INFO: [Synth 8-6155] done synthesizing module 'PS7_imp_1QJPAX8' (14#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:75]
+INFO: [Synth 8-6157] synthesizing module 'system_SPGD_SYS_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_SPGD_SYS_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_SPGD_SYS_0' (15#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_SPGD_SYS_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_fp_DAC_0_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_fp_DAC_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_fp_DAC_0_0' (16#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_fp_DAC_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_fp_DAC_1_0' [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_fp_DAC_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_fp_DAC_1_0' (17#1) [/home/taylor/Documents/new_spgd/.Xil/Vivado-30397-turing/realtime/system_fp_DAC_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system' (18#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v:690]
+INFO: [Synth 8-6155] done synthesizing module 'system_wrapper' (19#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v:12]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 8878.281 ; gain = 24.527 ; free physical = 2885 ; free virtual = 14578
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 8893.125 ; gain = 39.371 ; free physical = 2881 ; free virtual = 14573
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 8893.125 ; gain = 39.371 ; free physical = 2881 ; free virtual = 14573
+---------------------------------------------------------------------------------
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_ADC_fp_0/system_ADC_fp_0.dcp' for cell 'system_i/ADC_fp'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_SPGD_SYS_0/system_SPGD_SYS_0.dcp' for cell 'system_i/SPGD_SYS'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_fp_DAC_0_0/system_fp_DAC_0_0.dcp' for cell 'system_i/fp_DAC_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_fp_DAC_1_0/system_fp_DAC_1_0.dcp' for cell 'system_i/fp_DAC_1'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_ADC_REG_0/system_ADC_REG_0.dcp' for cell 'system_i/ADC_BLOCK/ADC_REG'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0.dcp' for cell 'system_i/ADC_BLOCK/util_ds_buf_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0.dcp' for cell 'system_i/ADC_BLOCK/util_ds_buf_1'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.dcp' for cell 'system_i/PS7/axi_gpio_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.dcp' for cell 'system_i/PS7/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0.dcp' for cell 'system_i/PS7/rst_ps7_0_50M'
+INFO: [Project 1-454] Reading design checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0.dcp' for cell 'system_i/PS7/ps7_0_axi_periph/s00_couplers/auto_pc'
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 8893.125 ; gain = 0.000 ; free physical = 2860 ; free virtual = 14556
+INFO: [Netlist 29-17] Analyzing 283 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-141] Inserted 40 OBUFs to IO ports without IO buffers.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_1/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc] for cell 'system_i/PS7/processing_system7_0/inst'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc] for cell 'system_i/PS7/processing_system7_0/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/system_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/system_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc] for cell 'system_i/PS7/axi_gpio_0/U0'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc] for cell 'system_i/PS7/axi_gpio_0/U0'
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc] for cell 'system_i/PS7/axi_gpio_0/U0'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc] for cell 'system_i/PS7/axi_gpio_0/U0'
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0_board.xdc] for cell 'system_i/PS7/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0_board.xdc] for cell 'system_i/PS7/rst_ps7_0_50M/U0'
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0.xdc] for cell 'system_i/PS7/rst_ps7_0_50M/U0'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_rst_ps7_0_50M_0/system_rst_ps7_0_50M_0.xdc] for cell 'system_i/PS7/rst_ps7_0_50M/U0'
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0_board.xdc] for cell 'system_i/ADC_BLOCK/util_ds_buf_0/U0'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_util_ds_buf_0_0/system_util_ds_buf_0_0_board.xdc] for cell 'system_i/ADC_BLOCK/util_ds_buf_0/U0'
+Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0_board.xdc] for cell 'system_i/ADC_BLOCK/util_ds_buf_1/U0'
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0_board.xdc] for cell 'system_i/ADC_BLOCK/util_ds_buf_1/U0'
+Parsing XDC File [/home/taylor/Documents/new_spgd/cfg/ports.xdc]
+Finished Parsing XDC File [/home/taylor/Documents/new_spgd/cfg/ports.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/taylor/Documents/new_spgd/cfg/ports.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/system_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/system_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9100.828 ; gain = 0.000 ; free physical = 2775 ; free virtual = 14471
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 9228.891 ; gain = 375.137 ; free physical = 2712 ; free virtual = 14411
+58 Infos, 50 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 9228.891 ; gain = 375.137 ; free physical = 2712 ; free virtual = 14411
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_ADC_fp_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RST' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_ADC_fp_0 from ADC_fp_v1_0 1.0 to ADC_fp_v1_0 1.0
+WARNING: [IP_Flow 19-4697] Upgrade has added interface 'REG_RST' (xilinx.com:signal:reset:1.0)
+WARNING: [IP_Flow 19-3670] Detected external interface differences while upgrading 'system_ADC_fp_0'.
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'REG_RST'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'system_ADC_fp_0'. These changes may impact your design.
+WARNING: [IP_Flow 19-5891] Detected address segment differences while upgrading 'system_ADC_fp_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'system_ADC_fp_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+WARNING: [IP_Flow 19-4697] Upgrade has added interface 'REG_RESET' (xilinx.com:signal:reset:1.0)
+WARNING: [IP_Flow 19-3670] Detected external interface differences while upgrading 'system_SPGD_SYS_0'.
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'REG_RESET'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'system_SPGD_SYS_0'. These changes may impact your design.
+WARNING: [IP_Flow 19-5891] Detected address segment differences while upgrading 'system_SPGD_SYS_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'system_SPGD_SYS_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+connect_bd_net [get_bd_pins SPGD_SYS/REG_RESET] [get_bd_pins ADC_fp/REG_RST]
+regenerate_bd_layout
+save_bd_design
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_fp .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 11:26:21 2022] Launched system_SPGD_SYS_0_synth_1, system_ADC_fp_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+system_ADC_fp_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_ADC_fp_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 11:26:21 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:11 . Memory (MB): peak = 9418.980 ; gain = 0.000 ; free physical = 657 ; free virtual = 13723
+reset_run synth_1
+reset_run system_ADC_fp_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Tue Jul  5 11:33:34 2022] Launched system_ADC_fp_0_synth_1, synth_1...
+Run output will be captured here:
+system_ADC_fp_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_ADC_fp_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 11:33:34 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+open_bd_design {/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd}
+ls
+WARNING: [Common 17-259] Unknown Tcl command 'ls' sending command to the OS shell for execution. It is recommended to use 'exec' to send the command to the OS shell.
+cfg
+make_project.tcl
+src
+tmp
+vivado_13860.backup.jou
+vivado_13860.backup.log
+vivado_16587.backup.jou
+vivado_16587.backup.log
+vivado_16967.backup.jou
+vivado_16967.backup.log
+vivado_18349.backup.jou
+vivado_18349.backup.log
+vivado_23406.backup.jou
+vivado_23406.backup.log
+vivado.jou
+vivado.log
+vivado_pid30397.str
+pwd
+/home/taylor/Documents/new_spgd
+cd src
+add_files gen_reg.v
+WARNING: [filemgmt 56-12] File '/home/taylor/Documents/new_spgd/src/gen_reg.v' cannot be added to the project because it already exists in the project, skipping this file
+update_module_reference system_ADC_fp_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RST' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_ADC_fp_0 from ADC_fp_v1_0 1.0 to ADC_fp_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_fp .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 11:36:39 2022] Launched system_ADC_fp_0_synth_1, synth_1...
+Run output will be captured here:
+system_ADC_fp_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_ADC_fp_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 11:36:39 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:10 . Memory (MB): peak = 9475.008 ; gain = 0.000 ; free physical = 2450 ; free virtual = 14437
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 11:50:08 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 11:50:09 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:09 . Memory (MB): peak = 9531.035 ; gain = 0.000 ; free physical = 1939 ; free virtual = 14062
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 11:58:26 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 11:58:26 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:27 ; elapsed = 00:00:11 . Memory (MB): peak = 9568.055 ; gain = 37.020 ; free physical = 1910 ; free virtual = 14028
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 12:06:47 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 12:06:47 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:08 . Memory (MB): peak = 9603.074 ; gain = 6.004 ; free physical = 1897 ; free virtual = 14048
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 12:12:51 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 12:12:51 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:30 ; elapsed = 00:00:12 . Memory (MB): peak = 9635.086 ; gain = 32.012 ; free physical = 1868 ; free virtual = 14044
+64+16
+[64+16]
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 12:29:20 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 12:29:20 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:20 ; elapsed = 00:00:10 . Memory (MB): peak = 9671.465 ; gain = 7.777 ; free physical = 1526 ; free virtual = 13740
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 12:38:53 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 12:38:53 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:09 . Memory (MB): peak = 9759.500 ; gain = 0.000 ; free physical = 1749 ; free virtual = 14000
+update_module_reference {system_fp_DAC_0_0 system_fp_DAC_1_0}
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_0_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_1_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+pwd
+/home/taylor/Documents/new_spgd/src
+add_files DAC_OR_CHECK.v
+/home/taylor/Documents/new_spgd/src/DAC_OR_CHECK.v
+update_compile_order -fileset sources_1
+update_module_reference {system_fp_DAC_0_0 system_fp_DAC_1_0}
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_0_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_1_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 13:07:31 2022] Launched system_fp_DAC_0_0_synth_1, system_fp_DAC_1_0_synth_1, synth_1...
+Run output will be captured here:
+system_fp_DAC_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_0_0_synth_1/runme.log
+system_fp_DAC_1_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_1_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 13:07:31 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:11 . Memory (MB): peak = 9833.477 ; gain = 72.043 ; free physical = 1522 ; free virtual = 13763
+update_module_reference {system_fp_DAC_0_0 system_fp_DAC_1_0}
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_0_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_1_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+update_module_reference: Time (s): cpu = 00:00:21 ; elapsed = 00:00:07 . Memory (MB): peak = 9872.586 ; gain = 5.098 ; free physical = 2492 ; free virtual = 14856
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 13:26:47 2022] Launched system_fp_DAC_0_0_synth_1, system_fp_DAC_1_0_synth_1, synth_1...
+Run output will be captured here:
+system_fp_DAC_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_0_0_synth_1/runme.log
+system_fp_DAC_1_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_1_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 13:26:47 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:33 ; elapsed = 00:00:12 . Memory (MB): peak = 9910.508 ; gain = 37.922 ; free physical = 2473 ; free virtual = 14860
+update_module_reference {system_fp_DAC_0_0 system_fp_DAC_1_0}
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_0_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+INFO: [IP_Flow 19-1972] Upgraded system_fp_DAC_1_0 from fp_DAC_v1_0 1.0 to fp_DAC_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fp_DAC_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 13:30:51 2022] Launched system_fp_DAC_0_0_synth_1, system_fp_DAC_1_0_synth_1, synth_1...
+Run output will be captured here:
+system_fp_DAC_0_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_0_0_synth_1/runme.log
+system_fp_DAC_1_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_fp_DAC_1_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 13:30:51 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:22 ; elapsed = 00:00:11 . Memory (MB): peak = 9948.469 ; gain = 32.957 ; free physical = 2753 ; free virtual = 14919
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 14:14:54 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 14:14:54 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:21 ; elapsed = 00:00:10 . Memory (MB): peak = 10004.488 ; gain = 0.000 ; free physical = 1140 ; free virtual = 14061
+update_module_reference system_SPGD_SYS_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'REG_RESET' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_SPGD_SYS_0 from SPGD_SYS_v1_0 1.0 to SPGD_SYS_v1_0 1.0
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+Wrote  : </home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SPGD_SYS .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 2.894 MB.
+[Tue Jul  5 14:27:47 2022] Launched system_SPGD_SYS_0_synth_1, synth_1...
+Run output will be captured here:
+system_SPGD_SYS_0_synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/synth_1/runme.log
+[Tue Jul  5 14:27:47 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:23 ; elapsed = 00:00:10 . Memory (MB): peak = 10042.406 ; gain = 0.000 ; free physical = 2293 ; free virtual = 15274

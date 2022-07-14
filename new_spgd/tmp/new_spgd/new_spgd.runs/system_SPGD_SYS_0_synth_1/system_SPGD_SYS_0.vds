@@ -1,0 +1,628 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Tue Jul  5 14:27:49 2022
+# Process ID: 9334
+# Current directory: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1
+# Command line: vivado -log system_SPGD_SYS_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_SPGD_SYS_0.tcl
+# Log file: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/system_SPGD_SYS_0.vds
+# Journal file: /home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source system_SPGD_SYS_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/new_spgd/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+Command: synth_design -top system_SPGD_SYS_0 -part xc7z020clg400-3 -mode out_of_context
+Starting synth_design
+WARNING: [IP_Flow 19-3571] IP 'system_SPGD_SYS_0' is restricted:
+* Module reference is stale and needs refreshing.
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-3
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 9441
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2120.523 ; gain = 0.000 ; free physical = 830 ; free virtual = 14383
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_SPGD_SYS_0' [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_SPGD_SYS_0/synth/system_SPGD_SYS_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'SPGD_SYS' [/home/taylor/Documents/new_spgd/src/SPGD_SYS.v:3]
+	Parameter FP_WIDTH bound to: 64 - type: integer 
+	Parameter GPIO_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'SPGD_FSM' [/home/taylor/Documents/new_spgd/src/SPGD_FSM.v:3]
+	Parameter GPIO_WIDTH bound to: 32 - type: integer 
+	Parameter COUNT_WIDTH bound to: 15 - type: integer 
+	Parameter DAC_WIDTH bound to: 14 - type: integer 
+	Parameter stopped bound to: 4'b0000 
+	Parameter timer_a_wait bound to: 4'b0001 
+	Parameter ADC_a_wait bound to: 4'b0010 
+	Parameter MATH_a_wait bound to: 4'b0011 
+	Parameter J_P_wrt bound to: 4'b0100 
+	Parameter timer_b_wait bound to: 4'b0101 
+	Parameter ADC_b_wait bound to: 4'b0110 
+	Parameter MATH_b_wait bound to: 4'b0111 
+	Parameter J_M_wrt bound to: 4'b1000 
+	Parameter MATH_c_wait bound to: 4'b1001 
+	Parameter U_wrt bound to: 4'b1010 
+	Parameter RNG_wait bound to: 4'b1011 
+	Parameter DELTA_U_wrt bound to: 4'b1100 
+	Parameter timer_c_wait bound to: 4'b1101 
+INFO: [Synth 8-6157] synthesizing module 'gen_counter' [/home/taylor/Documents/new_spgd/src/gen_counter.v:1]
+	Parameter DATA_WIDTH bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gen_counter' (1#1) [/home/taylor/Documents/new_spgd/src/gen_counter.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'SPGD_FSM' (2#1) [/home/taylor/Documents/new_spgd/src/SPGD_FSM.v:3]
+INFO: [Synth 8-6157] synthesizing module 'DAC_MUX' [/home/taylor/Documents/new_spgd/src/DAC_MUX.v:3]
+	Parameter DATA_WIDTH bound to: 64 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'DAC_MUX' (3#1) [/home/taylor/Documents/new_spgd/src/DAC_MUX.v:3]
+INFO: [Synth 8-6157] synthesizing module 'PRNG' [/home/taylor/Documents/new_spgd/src/PRNG.v:1]
+	Parameter FP_WIDTH bound to: 64 - type: integer 
+	Parameter RNG_WIDTH bound to: 14 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'CLT_RNG' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:5]
+	Parameter SEED1 bound to: 697757461 - type: integer 
+	Parameter SEED2 bound to: 1885540239 - type: integer 
+	Parameter SEED3 bound to: 1505946904 - type: integer 
+	Parameter SEED4 bound to: 2693445 - type: integer 
+	Parameter SEED_WIDTH bound to: 32 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'gen_adder' [/home/taylor/Documents/new_spgd/src/gen_adder.v:5]
+	Parameter IN_WIDTH bound to: 14 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gen_adder' (4#1) [/home/taylor/Documents/new_spgd/src/gen_adder.v:5]
+INFO: [Synth 8-6157] synthesizing module 'LFSR' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 697757461 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR' (5#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:39]
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized0' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 1885540239 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized0' (5#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized0' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:40]
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized1' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 1505946904 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized1' (5#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized1' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:41]
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized2' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 2693445 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized2' (5#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized2' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'CLT_RNG' (6#1) [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:5]
+INFO: [Synth 8-6157] synthesizing module 'CLT_RNG__parameterized0' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:5]
+	Parameter SEED1 bound to: 222033391 - type: integer 
+	Parameter SEED2 bound to: 50239 - type: integer 
+	Parameter SEED3 bound to: 1323031904 - type: integer 
+	Parameter SEED4 bound to: 2111122345 - type: integer 
+	Parameter SEED_WIDTH bound to: 32 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized3' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 222033391 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized3' (6#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized3' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:39]
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized4' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 50239 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized4' (6#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized4' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:40]
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized5' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 1323031904 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized5' (6#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized5' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:41]
+INFO: [Synth 8-6157] synthesizing module 'LFSR__parameterized6' [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+	Parameter REG_WIDTH bound to: 31 - type: integer 
+	Parameter OUT_WIDTH bound to: 14 - type: integer 
+	Parameter SEED bound to: 2111122345 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR__parameterized6' (6#1) [/home/taylor/Documents/new_spgd/src/LFSR.v:1]
+WARNING: [Synth 8-689] width (12) of port connection 'random' does not match port width (14) of module 'LFSR__parameterized6' [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'CLT_RNG__parameterized0' (6#1) [/home/taylor/Documents/new_spgd/src/CLT_RNG.v:5]
+INFO: [Synth 8-6157] synthesizing module 'gen_mult' [/home/taylor/Documents/new_spgd/src/gen_mult.v:6]
+	Parameter DATA_WIDTH bound to: 64 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gen_mult' (7#1) [/home/taylor/Documents/new_spgd/src/gen_mult.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'PRNG' (8#1) [/home/taylor/Documents/new_spgd/src/PRNG.v:1]
+INFO: [Synth 8-6157] synthesizing module 'gen_reg' [/home/taylor/Documents/new_spgd/src/gen_reg.v:1]
+	Parameter DATA_WIDTH bound to: 64 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gen_reg' (9#1) [/home/taylor/Documents/new_spgd/src/gen_reg.v:1]
+INFO: [Synth 8-6157] synthesizing module 'gen_subber' [/home/taylor/Documents/new_spgd/src/gen_subber.v:1]
+	Parameter IN_WIDTH bound to: 64 - type: integer 
+	Parameter OUT_WIDTH bound to: 65 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gen_subber' (10#1) [/home/taylor/Documents/new_spgd/src/gen_subber.v:1]
+INFO: [Synth 8-6157] synthesizing module 'gen_adder__parameterized0' [/home/taylor/Documents/new_spgd/src/gen_adder.v:5]
+	Parameter IN_WIDTH bound to: 64 - type: integer 
+	Parameter OUT_WIDTH bound to: 65 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gen_adder__parameterized0' (10#1) [/home/taylor/Documents/new_spgd/src/gen_adder.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'SPGD_SYS' (11#1) [/home/taylor/Documents/new_spgd/src/SPGD_SYS.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'system_SPGD_SYS_0' (12#1) [/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.srcs/sources_1/bd/system/ip/system_SPGD_SYS_0/synth/system_SPGD_SYS_0.v:58]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2120.523 ; gain = 0.000 ; free physical = 937 ; free virtual = 14488
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2120.523 ; gain = 0.000 ; free physical = 928 ; free virtual = 14479
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2120.523 ; gain = 0.000 ; free physical = 928 ; free virtual = 14479
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2120.523 ; gain = 0.000 ; free physical = 921 ; free virtual = 14472
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2184.449 ; gain = 0.000 ; free physical = 772 ; free virtual = 14350
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2184.449 ; gain = 0.000 ; free physical = 771 ; free virtual = 14349
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 869 ; free virtual = 14449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-3
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 869 ; free virtual = 14449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 869 ; free virtual = 14449
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'SPGD_FSM'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 stopped |                   00000000000001 |                             0000
+            timer_a_wait |                   00000000000010 |                             0001
+              ADC_a_wait |                   00000000000100 |                             0010
+             MATH_a_wait |                   00000000001000 |                             0011
+                 J_P_wrt |                   00000000010000 |                             0100
+            timer_b_wait |                   00000000100000 |                             0101
+              ADC_b_wait |                   00000001000000 |                             0110
+             MATH_b_wait |                   00000010000000 |                             0111
+                 J_M_wrt |                   00000100000000 |                             1000
+             MATH_c_wait |                   00001000000000 |                             1001
+                   U_wrt |                   00010000000000 |                             1010
+                RNG_wait |                   00100000000000 |                             1011
+             DELTA_U_wrt |                   01000000000000 |                             1100
+            timer_c_wait |                   10000000000000 |                             1101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'one-hot' in module 'SPGD_FSM'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 861 ; free virtual = 14442
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   65 Bit       Adders := 3     
+	   2 Input   65 Bit       Adders := 4     
+	   2 Input   14 Bit       Adders := 6     
++---XORs : 
+	   2 Input      1 Bit         XORs := 8     
++---Registers : 
+	               64 Bit    Registers := 6     
+	               31 Bit    Registers := 8     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 24    
++---Multipliers : 
+	              64x64  Multipliers := 5     
++---Muxes : 
+	   4 Input   64 Bit        Muxes := 2     
+	  14 Input   14 Bit        Muxes := 1     
+	   2 Input   14 Bit        Muxes := 10    
+	  14 Input    4 Bit        Muxes := 1     
+	  14 Input    2 Bit        Muxes := 1     
+	  14 Input    1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: (A:0x1eb85)*B.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: A*B.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: PCIN+A*(B:0x1eb85).
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: A*(B:0x1eb85).
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_0_MULT/p0, operation Mode is: PCIN+A*(B:0x1eb85).
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_0_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: A2*B.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: PCIN+A2*B.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: PCIN+A2*B.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/U_0_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: operator inst/U_0_MULT/p0 is absorbed into DSP inst/U_0_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: (A:0x1eb85)*B.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: A*B.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: PCIN+A*(B:0x1eb85).
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: A*(B:0x1eb85).
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/PRNG_0/RNG_1_MULT/p0, operation Mode is: PCIN+A*(B:0x1eb85).
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: operator inst/PRNG_0/RNG_1_MULT/p0 is absorbed into DSP inst/PRNG_0/RNG_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: A2*B.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: PCIN+A2*B.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: PCIN+A2*B.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: PCIN+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: Generating DSP inst/U_1_MULT/p0, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+DSP Report: operator inst/U_1_MULT/p0 is absorbed into DSP inst/U_1_MULT/p0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 819 ; free virtual = 14405
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping	Report (see note below)
++------------------+--------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name       | DSP Mapping        | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------------+--------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|system_SPGD_SYS_0 | (A:0x1eb85)*B      | 18     | 11     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B     | 16     | 11     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B                | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*(B:0x1eb85) | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B     | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*(B:0x1eb85)      | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B     | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*(B:0x1eb85) | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A2*B               | 18     | 13     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A2*B          | 18     | 13     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 13     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B2               | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A2*B          | 18     | 13     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B2               | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B2               | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (A:0x1eb85)*B      | 18     | 11     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B     | 16     | 11     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B                | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*(B:0x1eb85) | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B     | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*(B:0x1eb85)      | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B     | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*(B:0x1eb85) | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A2*B               | 18     | 13     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A2*B          | 18     | 13     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 13     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B2               | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A2*B          | 18     | 13     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B2               | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 13     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | A*B2               | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | PCIN+A*B2          | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|system_SPGD_SYS_0 | (PCIN>>17)+A*B2    | 18     | 18     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
++------------------+--------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 599 ; free virtual = 14204
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 2184.449 ; gain = 63.926 ; free physical = 598 ; free virtual = 14203
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 2185.480 ; gain = 64.957 ; free physical = 603 ; free virtual = 14208
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:25 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------------+-------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name       | RTL Name                            | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------------+-------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_0/reg4/rand_reg[22] | 9      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_0/reg3/rand_reg[18] | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_0/reg2/rand_reg[23] | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_0/reg2/rand_reg[12] | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_1/reg2/rand_reg[16] | 15     | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_1/reg4/rand_reg[26] | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_1/reg3/rand_reg[14] | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_SPGD_SYS_0 | inst/PRNG_0/RNG_1/reg1/rand_reg[12] | 6      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++------------------+-------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |CARRY4  |   236|
+|2     |DSP48E1 |    48|
+|5     |LUT1    |    22|
+|6     |LUT2    |   649|
+|7     |LUT3    |   108|
+|8     |LUT4    |   154|
+|9     |LUT5    |   225|
+|10    |LUT6    |   169|
+|11    |SRL16E  |     8|
+|12    |FDRE    |   616|
+|13    |FDSE    |   118|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:25 . Memory (MB): peak = 2188.449 ; gain = 67.926 ; free physical = 565 ; free virtual = 14218
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2188.449 ; gain = 4.000 ; free physical = 631 ; free virtual = 14284
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2188.457 ; gain = 67.926 ; free physical = 631 ; free virtual = 14284
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2188.457 ; gain = 0.000 ; free physical = 706 ; free virtual = 14358
+INFO: [Netlist 29-17] Analyzing 284 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2220.465 ; gain = 0.000 ; free physical = 645 ; free virtual = 14298
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+60 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2220.465 ; gain = 100.047 ; free physical = 797 ; free virtual = 14450
+INFO: [Common 17-1381] The checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/system_SPGD_SYS_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1174] Renamed 37 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/taylor/Documents/new_spgd/tmp/new_spgd/new_spgd.runs/system_SPGD_SYS_0_synth_1/system_SPGD_SYS_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_SPGD_SYS_0_utilization_synth.rpt -pb system_SPGD_SYS_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Jul  5 14:28:28 2022...

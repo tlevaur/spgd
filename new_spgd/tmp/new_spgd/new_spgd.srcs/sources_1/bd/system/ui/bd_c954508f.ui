@@ -1,0 +1,62 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.620176",
+   "Default View_TopLeft":"-147,-177",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 5 -x 1560 -y 60 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 5 -x 1560 -y 80 -defaultsOSRD
+preplace port TRIG_IN -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port adc_clk_p -pg 1 -lvl 0 -x 0 -y 380 -defaultsOSRD
+preplace port adc_clk_n -pg 1 -lvl 0 -x 0 -y 400 -defaultsOSRD
+preplace port dac_spi_csb_o -pg 1 -lvl 5 -x 1560 -y 380 -defaultsOSRD
+preplace port dac_spi_sdio_o -pg 1 -lvl 5 -x 1560 -y 420 -defaultsOSRD
+preplace port dac_spi_clk_o -pg 1 -lvl 5 -x 1560 -y 360 -defaultsOSRD
+preplace port dac_spi_reset_o -pg 1 -lvl 5 -x 1560 -y 400 -defaultsOSRD
+preplace portBus adc_dat_a_p_i -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
+preplace portBus adc_dat_a_n_i -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace portBus adc_dat_b_p_i -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace portBus adc_dat_b_n_i -pg 1 -lvl 0 -x 0 -y 360 -defaultsOSRD
+preplace portBus dac_dat_a_o -pg 1 -lvl 5 -x 1560 -y 220 -defaultsOSRD
+preplace portBus dac_dat_b_o -pg 1 -lvl 5 -x 1560 -y 320 -defaultsOSRD
+preplace portBus led_o -pg 1 -lvl 5 -x 1560 -y 340 -defaultsOSRD
+preplace inst PS7 -pg 1 -lvl 4 -x 1380 -y 80 -defaultsOSRD
+preplace inst ADC_BLOCK -pg 1 -lvl 1 -x 180 -y 350 -defaultsOSRD
+preplace inst ADC_fp -pg 1 -lvl 2 -x 550 -y 300 -defaultsOSRD
+preplace inst fp_DAC_0 -pg 1 -lvl 4 -x 1380 -y 220 -defaultsOSRD
+preplace inst fp_DAC_1 -pg 1 -lvl 4 -x 1380 -y 320 -defaultsOSRD
+preplace inst SPGD_SYS -pg 1 -lvl 3 -x 910 -y 340 -defaultsOSRD
+preplace netloc axi_gpio_0_gpio_io_o 1 2 3 740 150 NJ 150 1530
+preplace netloc adc_dat_a_p_i_1 1 0 1 NJ 300
+preplace netloc adc_dat_a_n_i_1 1 0 1 NJ 320
+preplace netloc adc_dat_b_p_i_1 1 0 1 NJ 340
+preplace netloc adc_dat_b_n_i_1 1 0 1 NJ 360
+preplace netloc adc_clk_p_1 1 0 1 NJ 380
+preplace netloc adc_clk_n_1 1 0 1 NJ 400
+preplace netloc ADC_REG_adc_clk 1 1 2 340 410 740J
+preplace netloc SPGD_SYS_ADC_SEL 1 1 3 360 170 NJ 170 1090
+preplace netloc SPGD_SYS_ADC_EN 1 1 3 370 190 NJ 190 1070
+preplace netloc ADC_REG_a_data_out 1 1 1 N 330
+preplace netloc ADC_REG_b_data_out 1 1 1 N 350
+preplace netloc ADC_fp_ADC_DONE 1 2 1 730 290n
+preplace netloc ADC_fp_ADC_16Q48_OUT 1 2 1 N 310
+preplace netloc SPGD_SYS_DAC_A_OUT 1 3 1 1100J 220n
+preplace netloc SPGD_SYS_DAC_B_OUT 1 3 1 1120J 320n
+preplace netloc SPGD_SYS_GP_OUT 1 3 1 1110 80n
+preplace netloc SPGD_SYS_val_0 1 3 2 NJ 400 1540J
+preplace netloc SPGD_SYS_val_1 1 3 2 NJ 420 NJ
+preplace netloc fp_DAC_0_DAC_out 1 4 1 NJ 220
+preplace netloc fp_DAC_1_DAC_out 1 4 1 NJ 320
+preplace netloc SPGD_SYS_LED_O 1 3 2 NJ 380 1530J
+preplace netloc SPGD_SYS_REG_RESET 1 1 3 350 180 NJ 180 1080
+preplace netloc processing_system7_0_DDR 1 4 1 NJ 60
+preplace netloc processing_system7_0_FIXED_IO 1 4 1 NJ 80
+levelinfo -pg 1 0 180 550 910 1380 1560
+pagesize -pg 1 -db -bbox -sgen -190 0 1750 850
+"
+}
+{
+   "da_axi4_cnt":"1",
+   "da_ps7_cnt":"1"
+}
