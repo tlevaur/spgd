@@ -26,6 +26,7 @@ module ADC_DAC_LOOP
     input   [1024       - 1 : 0] CFG_IN
 );
 
+    localparam NUM_SAMPS = 1024;
     wire enable;
     wire REG_RST;
     wire REG_WRITE;
@@ -55,7 +56,7 @@ module ADC_DAC_LOOP
     ADC_IN  #(
         .FLOAT_WIDTH(FLOAT_WIDTH),
         .ADC_WIDTH(ADC_WIDTH),
-        .NUM_SAMPS(1023)
+        .NUM_SAMPS(NUM_SAMPS-1)
     ) ADC0 (
         .ADC_CLK(ADC_CLK),
         .ADC_DATA_IN(ADC_DATA_IN),

@@ -52,10 +52,10 @@ begin
     // write_data = $fopen("filter_output_a.txt","w");
     repeat(NUM_SAMPS) begin
         #AVE_period;
-        //$fdisplay(write_data, "%x", DACA_CODE_WIRE_OUT);
+        // $fdisplay(write_data, "%x", DACA_CODE_WIRE_OUT);
         #F_period;
         #F_period;
-        DATA_IN = DATA_IN + 1;
+        DATA_IN = DATA_IN;
     end
     //$fclose(write_data);
     $finish;

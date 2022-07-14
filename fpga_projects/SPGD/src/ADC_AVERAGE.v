@@ -77,7 +77,7 @@ end
 else
 begin
     if (!internal_done) begin // start
-        SUM   = $signed(SUM) + $signed(ADDER_IN);
+        SUM   = $signed(SUM) + $signed(ADDER_IN)+1;
     end
     else
     begin
