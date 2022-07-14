@@ -14,6 +14,7 @@ module ADC_DAC_LOOP
 )
 (
     input   ADC_CLK,
+    input   RST,
     input   [ADC_WIDTH  - 1 : 0] ADC_DATA_IN,
     input   [GPIO_WIDTH - 1 : 0] GP_IN,
     output  [GPIO_WIDTH - 1 : 0] GP_OUT,
@@ -29,15 +30,24 @@ module ADC_DAC_LOOP
     wire REG_RST;
     wire REG_WRITE;
     wire [FLOAT_WIDTH   - 1 : 0] REG_DATA;
+    wire [FLOAT_WIDTH/2 - 1 : 0] TIMER_OFFSET;
+    wire [FLOAT_WIDTH/2 - 1 : 0] TIME_VALUE;
     wire [FLOAT_WIDTH   - 1 : 0] ADC_16Q48_OUT;
     wire [FLOAT_WIDTH   - 1 : 0] ADC_16Q48_IN;
+    wire [FLOAT_WIDTH   - 1 : 0] ADC_CAL_GAIN;
+    wire [FLOAT_WIDTH   - 1 : 0] ADC_CAL_OFFSET;
+    wire [FLOAT_WIDTH   - 1 : 0] ADC_CAL_MUL_DATA_OUT;
+    wire [FLOAT_WIDTH       : 0] ADC_CAL_ADD_DATA_OUT;
     wire [DAC_WIDTH     - 1 : 0] DAC_CODE_OUT;
 
     assign GP_OUT = {2'b00, DAC_CODE_OUT, REG_DATA[63:48]};
     assign val_0 = 1'b0;
 	assign val_1 = 1'b1;
 
-    assign ADC_16Q48_IN = CFG_IN[FLOAT_WIDTH - 1: 0];
+    assign TIMER_OFFSET = CFG_IN[FLOAT_WIDTH/2 - 1: 0];
+    assign TIME_VALUE = CFG_IN[FLOAT_WIDTH - 1: FLOAT_WIDTH/2];
+    assign ADC_CAL_GAIN = CFG_IN[FLOAT_WIDTH*2 - 1: FLOAT_WIDTH];
+    assign ADC_CAL_OFFSET = CFG_IN[FLOAT_WIDTH*3 - 1: FLOAT_WIDTH*2];
     assign enable = GP_IN[GPIO_WIDTH-1];
     assign DACA_CODE_OUT = GP_IN[DAC_WIDTH - 1: 0];
     assign DACB_CODE_OUT = DAC_CODE_OUT;
@@ -47,18 +57,35 @@ module ADC_DAC_LOOP
         .ADC_WIDTH(ADC_WIDTH)
     ) ADC0 (
         .ADC_CLK(ADC_CLK),
-        .ADC_DATA_IN(ADC_DATA_IN), 
+        .ADC_DATA_IN(ADC_DATA_IN),
+        .TIMER_OFFSET(TIMER_OFFSET),
+        .TIME_VALUE(TIME_VALUE),
         .enable(enable),
         .DONE(DONE),
         .ADC_16Q48_OUT(ADC_16Q48_OUT),
         .REG_WRITE(REG_WRITE),
-        .REG_RST(REG_RST)
+        .REG_RST(REG_RST),
+        .RST(RST)
+    );
+
+    my_mult #(
+        .DATA_WIDTH(FLOAT_WIDTH)
+    ) MULT1 (
+        .a(ADC_16Q48_OUT), .b(ADC_CAL_GAIN), .p(ADC_CAL_MUL_DATA_OUT)
+    );
+
+    gen_adder #(
+	    .IN_WIDTH(FLOAT_WIDTH)
+    ) ADD0 (
+	    .a(ADC_CAL_MUL_DATA_OUT),
+	    .b(ADC_CAL_OFFSET),
+	    .s(ADC_CAL_ADD_DATA_OUT)
     );
 
     gen_reg #(
         .DATA_WIDTH(FLOAT_WIDTH)
     ) REG0 (
-        .data_in(ADC_16Q48_OUT),
+        .data_in(ADC_CAL_ADD_DATA_OUT[FLOAT_WIDTH - 1 : 0]),
         .clk(ADC_CLK),
         .wrt(REG_WRITE),
         .rst(REG_RST),
@@ -69,7 +96,7 @@ module ADC_DAC_LOOP
         .FLOAT_WIDTH(FLOAT_WIDTH),
         .DAC_WIDTH(DAC_WIDTH)
     ) DAC0 (
-        .ADC_VOLTAGE(ADC_16Q48_IN),
+        .ADC_VOLTAGE(REG_DATA),
         .DAC_CODE_OUT(DAC_CODE_OUT)
     );
 endmodule

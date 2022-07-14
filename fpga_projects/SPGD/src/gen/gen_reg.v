@@ -1,6 +1,6 @@
 module gen_reg
 #(
-	parameter DATA_WIDTH = 12
+	parameter DATA_WIDTH = 64
 )
 (
 	(* X_INTERFACE_PARAMETER = "FREQ_HZ 125000000" *)
