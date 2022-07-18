@@ -19,15 +19,14 @@ module TOP_RNG
 	output [OUT_WIDTH - 1:0] out_1
 );
 
-wire [OUT_WIDTH - 1:0] out_add_0;
-wire [OUT_WIDTH - 1:0] out_add_1;
+	wire [OUT_WIDTH - 1:0] out_add_0;
+	wire [OUT_WIDTH - 1:0] out_add_1;
 
-reg [OUT_WIDTH - 1:0] add_const = ADD_VALUE;
+	reg [OUT_WIDTH - 1:0] add_const = ADD_VALUE;
 
-CLT_RNG #(.SEED1(A_SEED1), .SEED2(A_SEED2), .SEED3(A_SEED3), .SEED4(A_SEED4), .SEED_WIDTH(SEED_WIDTH), .OUT_WIDTH(OUT_WIDTH)) rng0(.clk(clk), .rst(rst), .out(out_add_0));
-CLT_RNG #(.SEED1(B_SEED1), .SEED2(B_SEED2), .SEED3(B_SEED3), .SEED4(B_SEED4), .SEED_WIDTH(SEED_WIDTH), .OUT_WIDTH(OUT_WIDTH)) rng1(.clk(clk), .rst(rst), .out(out_add_1));
+	CLT_RNG #(.SEED1(A_SEED1), .SEED2(A_SEED2), .SEED3(A_SEED3), .SEED4(A_SEED4), .SEED_WIDTH(SEED_WIDTH), .OUT_WIDTH(OUT_WIDTH)) rng0(.clk(clk), .rst(rst), .out(out_add_0));
+	CLT_RNG #(.SEED1(B_SEED1), .SEED2(B_SEED2), .SEED3(B_SEED3), .SEED4(B_SEED4), .SEED_WIDTH(SEED_WIDTH), .OUT_WIDTH(OUT_WIDTH)) rng1(.clk(clk), .rst(rst), .out(out_add_1));
 
-gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add_0(.a(out_add_0), .b(add_const), .s(out_0));
-gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add_1(.a(out_add_1), .b(add_const), .s(out_1));
-
+	gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add_0(.a(out_add_0), .b(add_const), .s(out_0));
+	gen_adder #(.IN_WIDTH(OUT_WIDTH), .OUT_WIDTH(OUT_WIDTH)) add_1(.a(out_add_1), .b(add_const), .s(out_1));
 endmodule

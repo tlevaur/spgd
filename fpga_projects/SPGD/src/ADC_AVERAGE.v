@@ -12,38 +12,38 @@ module ADC_AVERAGE
     output [ADC_WIDTH       - 1 : 0] DATA_OUT
 );
 
-reg [ 24-1 : 0] SUM = 24'h000000;
-wire internal_done;
-wire [24-2 : 0] ADDER_IN;
+    reg [ 24-1 : 0] SUM = 24'h000000;
+    wire internal_done;
+    wire [24-2 : 0] ADDER_IN;
 
-gen_counter #(
-    .DATA_WIDTH(TIME_DATA_WIDTH)
-) COUNT0 (
-    .wait_val(TIME_VALUE),
-    .clk(CLK),
-    .en(EN),
-    .f(internal_done),
-);
+    gen_counter #(
+        .DATA_WIDTH(TIME_DATA_WIDTH)
+    ) COUNT0 (
+        .wait_val(TIME_VALUE),
+        .clk(CLK),
+        .en(EN),
+        .f(internal_done),
+    );
 
-reg  [ ADC_WIDTH : 0] VALID_SUM = {ADC_WIDTH{1'b0}};
+    reg  [ ADC_WIDTH : 0] VALID_SUM = {ADC_WIDTH{1'b0}};
 
-assign ADDER_IN = {{12{DATA_IN[ADC_WIDTH-1]}}, DATA_IN} ;
+    assign ADDER_IN = {{12{DATA_IN[ADC_WIDTH-1]}}, DATA_IN} ;
 
-always @(posedge CLK)
-if (EN == 1'b0) begin
-    SUM   = 24'h000000;
-end 
-else
-begin
-    if (!internal_done) begin // start
-        SUM   = $signed(SUM) + $signed(ADDER_IN)+1;
-    end
+    always @(posedge CLK)
+    if (EN == 1'b0) begin
+        SUM   = 24'h000000;
+    end 
     else
     begin
-        VALID_SUM = SUM[13+10:10];
+        if (!internal_done) begin // start
+            SUM   = $signed(SUM) + $signed(ADDER_IN)+1;
+        end
+        else
+        begin
+            VALID_SUM = SUM[13+10:10];
+        end
     end
-end
 
-assign DONE = internal_done;
-assign DATA_OUT = VALID_SUM[ADC_WIDTH - 1:0];
+    assign DONE = internal_done;
+    assign DATA_OUT = VALID_SUM[ADC_WIDTH - 1:0];
 endmodule
