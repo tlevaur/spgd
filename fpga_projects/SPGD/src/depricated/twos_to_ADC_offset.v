@@ -25,4 +25,3 @@ endmodule
 // 12 bit input and 12 or 14 make it run so it is pipe line combinational code only no
 // The greatest neg val is x800 unsigned bin is -2048
 // the least neg val gives greates unsigned bin val -1 = all Fs
-// 

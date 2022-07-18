@@ -9,10 +9,14 @@ localparam  ON = 1'b1;
 localparam  OFF = 1'b0;
 
 reg  ADC_CLK = OFF;
-reg  [DATA_WIDTH - 1	: 0] NUM_SAMPS_COUNT = {DATA_WIDTH{1'b0}};
 reg	 [DATA_WIDTH - 1	: 0] A = {DATA_WIDTH{1'b0}};
 reg  [DATA_WIDTH - 1	: 0] B = {DATA_WIDTH{1'b0}};
 wire [DATA_WIDTH - 1    : 0] PRODUCT;
+
+
+reg	 [DATA_WIDTH - 1	: 0] DAC_A = {DATA_WIDTH{1'b0}};
+reg  [DATA_WIDTH - 1	: 0] DAC_B = {DATA_WIDTH{1'b0}};
+wire [DATA_WIDTH - 1    : 0] DAC_PRODUCT;
 
 my_mult #(
 	.DATA_WIDTH(DATA_WIDTH),
@@ -24,6 +28,17 @@ my_mult #(
 	.p(PRODUCT)
 );
 
+my_mult #(
+	.DATA_WIDTH(DATA_WIDTH),
+    .OUT_WIDTH(DAC_WIDTH),
+    .INT_FORMAT(INT_WIDTH-DAC_WIDTH),
+    .DEC_FORMAT(DATA_WIDTH-INT_WIDTH)
+) MUL_DAC (
+	.a(DAC_A),
+	.b(DAC_B),
+	.p(DAC_PRODUCT)
+);
+
 always begin
     ADC_CLK = OFF;
     #H_period;
@@ -33,11 +48,12 @@ end
 initial
 begin
     repeat(NUM_SAMPS) begin
-        NUM_SAMPS_COUNT = NUM_SAMPS_COUNT + 1;
         #F_period;
         A = {{16'h0001}, {DATA_WIDTH-INT_WIDTH{1'b0}}};
+        DAC_A = {{16'h0001}, {DATA_WIDTH-INT_WIDTH{1'b0}}};
         #F_period;
         B = {{16'h8000}, {DATA_WIDTH-INT_WIDTH{1'b0}}};
+        DAC_B = {{16'h800A}, {DATA_WIDTH-INT_WIDTH{1'b0}}};
     end
     $finish;
 end

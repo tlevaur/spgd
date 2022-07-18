@@ -107,7 +107,7 @@ connect_bd_net [get_bd_pins ADC_REG/adc_clk] [get_bd_pins ADC_DAC_LOOP/ADC_CLK]
 connect_bd_net [get_bd_pins ADC_DAC_LOOP/CFG_IN] [get_bd_pins axi_cfg_register/cfg_data]
 connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins ADC_DAC_LOOP/GP_IN]
 connect_bd_net [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins ADC_DAC_LOOP/GP_OUT]
-connect_bd_net [get_bd_pins LED_CONTROLLER/val] [get_bd_pins ADC_DAC_LOOP/DONE]
+connect_bd_net [get_bd_pins LED_CONTROLLER/val] [get_bd_pins ADC_DAC_LOOP/LEDs]
 connect_bd_net [get_bd_pins ADC_DAC_LOOP/DACA_CODE_OUT] [get_bd_ports dac_dat_a_o]
 connect_bd_net [get_bd_pins ADC_DAC_LOOP/DACB_CODE_OUT] [get_bd_ports dac_dat_b_o]
 
