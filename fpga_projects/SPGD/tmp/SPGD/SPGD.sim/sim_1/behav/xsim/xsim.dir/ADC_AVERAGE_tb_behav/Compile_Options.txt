@@ -1,1 +1,0 @@
--wto "6e71d1509e0e4207ae3dfb78e4d0e008" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "xilinx_vip" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "ADC_AVERAGE_tb_behav" "xil_defaultlib.ADC_AVERAGE_tb" "xil_defaultlib.glbl" -log "elaborate.log" 

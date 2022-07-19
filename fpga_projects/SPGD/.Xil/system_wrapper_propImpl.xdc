@@ -1,0 +1,22 @@
+set_property SRC_FILE_INFO {cfile:/home/taylor/Documents/code/spgd/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc rfile:../tmp/SPGD/SPGD.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc id:1 order:EARLY scoped_inst:system_i/PS7/processing_system7_0/inst} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/taylor/Documents/code/spgd/fpga_projects/SPGD/cfg/ports.xdc rfile:../cfg/ports.xdc id:2} [current_design]
+current_instance system_i/PS7/processing_system7_0/inst
+set_property src_info {type:SCOPED_XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]
+set_input_jitter clk_fpga_0 0.6
+current_instance
+set_property src_info {type:XDC file:2 line:38 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOB TRUE [get_ports TRIG_IN]
+set_property src_info {type:XDC file:2 line:227 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN J15 [get_ports {led_o[1]}]
+set_property src_info {type:XDC file:2 line:228 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN J14 [get_ports {led_o[2]}]
+set_property src_info {type:XDC file:2 line:229 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN H15 [get_ports {led_o[3]}]
+set_property src_info {type:XDC file:2 line:230 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN L14 [get_ports {led_o[4]}]
+set_property src_info {type:XDC file:2 line:231 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN M14 [get_ports {led_o[5]}]
+set_property src_info {type:XDC file:2 line:232 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN M15 [get_ports {led_o[6]}]
+set_property src_info {type:XDC file:2 line:233 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN N15 [get_ports {led_o[7]}]
