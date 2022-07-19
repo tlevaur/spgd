@@ -1,0 +1,23 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Jul 14 13:28:09 2022
+# Process ID: 25757
+# Current directory: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD
+# Command line: vivado -source make_project_clean.tcl
+# Log file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.log
+# Journal file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project_clean.tcl
+save_bd_design
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+update_compile_order -fileset sources_1
+open_run impl_1
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1

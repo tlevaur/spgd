@@ -1,0 +1,4 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+$finish called at time : 16809988 ns : File "/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/src/tb/ADC_AVERAGE_tb.v" Line 61
+$finish called at time : 16809988 ns : File "/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/src/tb/ADC_AVERAGE_tb.v" Line 61

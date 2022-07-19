@@ -1,0 +1,112 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Jul 14 14:18:55 2022
+# Process ID: 28154
+# Current directory: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD
+# Command line: vivado -source make_project_clean.tcl
+# Log file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.log
+# Journal file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project_clean.tcl
+update_compile_order -fileset sources_1
+save_bd_design
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_run impl_1
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+update_module_reference system_ADC_DAC_LOOP_0
+pwd
+cd src
+ls
+cd gen
+add_files gen_subber.v
+cd ..
+cd ..
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+update_module_reference system_ADC_DAC_LOOP_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top ADC_AVERAGE_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+launch_simulation
+source ADC_AVERAGE_tb.tcl
+run all
+close_sim
+launch_simulation
+source ADC_AVERAGE_tb.tcl
+run all
+save_wave_config {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/ADC_AVERAGE_tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/ADC_AVERAGE_tb_behav.wcfg
+set_property xsim.view /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/ADC_AVERAGE_tb_behav.wcfg [get_filesets sim_1]
+close_sim
+launch_simulation
+open_wave_config /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/ADC_AVERAGE_tb_behav.wcfg
+source ADC_AVERAGE_tb.tcl
+run all
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_ADC_DAC_LOOP_0
+restart
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+restart
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+run 4096 ns
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+run 4096 ns
+close_sim
+launch_simulation
+open_wave_config /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/ADC_AVERAGE_tb_behav.wcfg
+source ADC_AVERAGE_tb.tcl
+run all
+restart
+run all
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+regenerate_bd_layout
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+close_sim

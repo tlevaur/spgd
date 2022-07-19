@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Jul 14 13:24:58 2022
+# Process ID: 25154
+# Current directory: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD
+# Command line: vivado -source make_project_clean.tcl
+# Log file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.log
+# Journal file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project_clean.tcl
+update_compile_order -fileset sources_1

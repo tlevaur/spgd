@@ -1,0 +1,321 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Jul 14 13:28:09 2022
+# Process ID: 25757
+# Current directory: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD
+# Command line: vivado -source make_project_clean.tcl
+# Log file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.log
+# Journal file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source make_project_clean.tcl
+# set project_name SPGD
+# set project_path home/taylor/Documents/GH/SPGD/fpga_projects/
+# set part_name xc7z020clg400-3
+# set bd_path tmp/$project_name/$project_name.srcs/sources_1/bd/system
+# file delete -force tmp/$project_name
+# create_project $project_name tmp/$project_name -part $part_name
+WARNING: [Board 49-91] Board repository path '/home/taylor/redpitaya/RedPitaya/fpga/prj/brd' does not exist, it will not be used to search board files.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+# create_bd_design system
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd> 
+# source cfg/ports.tcl
+## create_bd_port -dir I TRIG_IN
+## create_bd_port -dir I -from 5 -to 0 adc_dat_a_p_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_a_n_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_b_p_i
+## create_bd_port -dir I -from 5 -to 0 adc_dat_b_n_i
+## create_bd_port -dir I adc_clk_p
+## create_bd_port -dir I adc_clk_n
+## create_bd_port -dir O -from 13 -to 0 dac_dat_a_o
+## create_bd_port -dir O -from 13 -to 0 dac_dat_b_o
+## create_bd_port -dir O dac_spi_csb_o
+## create_bd_port -dir IO dac_spi_sdio_o
+## create_bd_port -dir O dac_spi_clk_o
+## create_bd_port -dir O dac_spi_reset_o
+## create_bd_port -dir O -from 7 -to 0 led_o
+# set_property IP_REPO_PATHS tmp/cores [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# set files [glob -nocomplain  /$project_path/$project_name/src/*.v]
+# if {[llength $files] > 0} {
+#   add_files -norecurse $files
+# }
+# set folder_files [glob -nocomplain  /$project_path/$project_name/src/*/*.v]
+# if {[llength $folder_files] > 0} {
+#   add_files -norecurse $folder_files
+# }
+# set subfolder_files [glob -nocomplain  /$project_path/$project_name/src/*/*/*.v]
+# if {[llength $subfolder_files] > 0} {
+#   add_files -norecurse $subfolder_files
+# }
+# create_bd_cell -type module -reference ADC_REG ADC_REG
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk_n' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk_p' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'adc_clk_p': Added interface parameter 'FREQ_HZ' with value '125000000'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk' does not have any bus interfaces associated with it.
+CRITICAL WARNING: [IP_Flow 19-4751] Bus Interface 'adc_clk': FREQ_HZ bus parameter is missing for output clock interface.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk_n' does not have any bus interfaces associated with it.
+WARNING: [IP_Flow 19-5661] Bus Interface 'adc_clk_p' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# create_bd_cell -type module -reference LED_CONTROLLER LED_CONTROLLER
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# create_bd_cell -type module -reference ADC_DAC_LOOP ADC_DAC_LOOP
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# create_bd_cell -type module -reference axi_cfg_register axi_cfg_register
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_data_mux' has a dependency on the module local parameter or undefined parameter 'CFG_SIZE'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'int_ce_wire' has a dependency on the module local parameter or undefined parameter 'CFG_SIZE'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'aresetn' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'aclk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'aresetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'aclk': Added interface parameter 'ASSOCIATED_BUSIF' with value 's_axi'.
+INFO: [IP_Flow 19-4728] Bus Interface 'aclk': Added interface parameter 'ASSOCIATED_RESET' with value 'aresetn'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7 processing_system7_0
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+# set_property -dict [list CONFIG.PCW_USE_S_AXI_HP0 {1}] [get_bd_cells processing_system7_0]
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+# apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+# connect_bd_net [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+# connect_bd_net [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+# endgroup
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio axi_gpio_0
+# set_property -dict [list CONFIG.C_IS_DUAL {1} CONFIG.C_ALL_INPUTS_2 {1}] [get_bd_cells axi_gpio_0]
+# connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins axi_gpio_0/gpio_io_o]
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+# endgroup
+# apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config {Master "/processing_system7_0/M_AXI_GP0" Clk "Auto" }  [get_bd_intf_pins axi_gpio_0/S_AXI]
+Slave segment '/axi_gpio_0/S_AXI/Reg' is being assigned into address space '/processing_system7_0/Data' at <0x4120_0000 [ 64K ]>.
+# set_property offset 0x42000000 [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_gpio_0_Reg}]
+# set_property range 4K [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_gpio_0_Reg}]
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_0
+# set_property -dict [list CONFIG.C_SIZE {6}] [get_bd_cells util_ds_buf_0]
+# connect_bd_net [get_bd_ports adc_dat_a_p_i] [get_bd_pins util_ds_buf_0/IBUF_DS_P]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_0/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# connect_bd_net [get_bd_ports adc_dat_a_n_i] [get_bd_pins util_ds_buf_0/IBUF_DS_N]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_0/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_1
+# set_property -dict [list CONFIG.C_SIZE {6}] [get_bd_cells util_ds_buf_1]
+# connect_bd_net [get_bd_ports adc_dat_b_p_i] [get_bd_pins util_ds_buf_1/IBUF_DS_P]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_1/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# connect_bd_net [get_bd_ports adc_dat_b_n_i] [get_bd_pins util_ds_buf_1/IBUF_DS_N]
+WARNING: [BD 41-1306] The connection to interface pin /util_ds_buf_1/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# endgroup
+# set_property LEFT 7 [get_bd_ports led_o]
+# startgroup
+# create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+# set_property -dict [list CONFIG.IN0_WIDTH {6} CONFIG.IN1_WIDTH {6}] [get_bd_cells xlconcat_0]
+# endgroup
+# connect_bd_net [get_bd_pins xlconcat_0/In0] [get_bd_pins util_ds_buf_0/IBUF_OUT]
+# connect_bd_net [get_bd_pins xlconcat_0/In1] [get_bd_pins util_ds_buf_1/IBUF_OUT]
+# connect_bd_net [get_bd_pins ADC_REG/data_in] [get_bd_pins xlconcat_0/dout]
+# connect_bd_net [get_bd_pins ADC_REG/adc_clk_p] [get_bd_ports adc_clk_p]
+# connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
+# connect_bd_net [get_bd_pins ADC_DAC_LOOP/ADC_DATA_IN] [get_bd_pins ADC_REG/a_data_out]
+# connect_bd_net [get_bd_pins ADC_REG/adc_clk] [get_bd_pins ADC_DAC_LOOP/ADC_CLK]
+# connect_bd_net [get_bd_pins ADC_DAC_LOOP/CFG_IN] [get_bd_pins axi_cfg_register/cfg_data]
+# connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins ADC_DAC_LOOP/GP_IN]
+# connect_bd_net [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins ADC_DAC_LOOP/GP_OUT]
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_0/gpio2_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO2
+# connect_bd_net [get_bd_pins LED_CONTROLLER/val] [get_bd_pins ADC_DAC_LOOP/DONE]
+# connect_bd_net [get_bd_pins ADC_DAC_LOOP/DACA_CODE_OUT] [get_bd_ports dac_dat_a_o]
+# connect_bd_net [get_bd_pins ADC_DAC_LOOP/DACB_CODE_OUT] [get_bd_ports dac_dat_b_o]
+# connect_bd_net [get_bd_pins LED_CONTROLLER/led_o] [get_bd_ports led_o]
+# connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins ADC_DAC_LOOP/val_0]
+# connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins ADC_DAC_LOOP/val_0]
+# connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins ADC_DAC_LOOP/val_0]
+# connect_bd_net [get_bd_pins ADC_DAC_LOOP/val_1] [get_bd_ports dac_spi_sdio_o]
+# apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/processing_system7_0/FCLK_CLK0 (50 MHz)} Clk_slave {/processing_system7_0/FCLK_CLK0 (50 MHz)} Clk_xbar {/processing_system7_0/FCLK_CLK0 (50 MHz)} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_cfg_register/s_axi} ddr_seg {Auto} intc_ip {/ps7_0_axi_periph} master_apm {0}}  [get_bd_intf_pins axi_cfg_register/s_axi]
+Slave segment '/axi_cfg_register/s_axi/reg0' is being assigned into address space '/processing_system7_0/Data' at <0x43C0_0000 [ 64K ]>.
+# generate_target all [get_files  $bd_path/system.bd]
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP2_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_rd_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-176] The physical port 'S_AXI_GP3_wr_socket' specified in the portmap, is not found on the block! 
+WARNING: [BD 41-927] Following properties on pin /axi_cfg_register/aclk have been updated from connected ip, but BD cell '/axi_cfg_register' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 50000000 
+Please resolve any mismatches by directly setting properties on BD cell </axi_cfg_register> to completely resolve these warnings.
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_REG .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block LED_CONTROLLER .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_DAC_LOOP .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_cfg_register .
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/xbar .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps7_0_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+Exporting to file /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/synth/system.hwdef
+generate_target: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 7171.020 ; gain = 0.000 ; free physical = 143 ; free virtual = 18847
+# make_wrapper -files [get_files $bd_path/system.bd] -top
+# add_files -norecurse $bd_path/hdl/system_wrapper.v
+# set files [glob -nocomplain cfg/*.xdc]
+# if {[llength $files] > 0} {
+#   add_files -norecurse -fileset constrs_1 $files
+# }
+# set_property VERILOG_DEFINE {TOOL_VIVADO} [current_fileset]
+# set_property STRATEGY Flow_PerfOptimized_High [get_runs synth_1]
+# set_property STRATEGY Performance_NetDelay_high [get_runs impl_1]
+# group_bd_cells PS7 [get_bd_cells processing_system7_0] [get_bd_cells rst_ps7_0_50M] [get_bd_cells ps7_0_axi_periph] [get_bd_cells axi_gpio_0]
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /PS7/axi_gpio_0/gpio2_io_i is being overridden by the user. This pin will not be connected as a part of interface connection GPIO2
+# group_bd_cells ADC_BLOCK [get_bd_cells util_ds_buf_0] [get_bd_cells util_ds_buf_1] [get_bd_cells xlconcat_0] [get_bd_cells ADC_REG]
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_0/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_0/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_1/IBUF_DS_P is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+WARNING: [BD 41-1306] The connection to interface pin /ADC_BLOCK/util_ds_buf_1/IBUF_DS_N is being overridden by the user. This pin will not be connected as a part of interface connection CLK_IN_D
+# set_property top system_wrapper [current_fileset]
+# regenerate_bd_layout
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+save_bd_design
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+WARNING: [BD 41-927] Following properties on pin /axi_cfg_register/aclk have been updated from connected ip, but BD cell '/axi_cfg_register' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 50000000 
+Please resolve any mismatches by directly setting properties on BD cell </axi_cfg_register> to completely resolve these warnings.
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hdl/system_wrapper.v
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/synth/system.hwdef
+[Thu Jul 14 13:29:01 2022] Launched system_LED_CONTROLLER_0_synth_1, system_auto_pc_0_synth_1, system_processing_system7_0_0_synth_1, system_ADC_REG_0_synth_1, system_axi_gpio_0_0_synth_1, system_ADC_DAC_LOOP_0_synth_1, system_util_ds_buf_1_0_synth_1, system_util_ds_buf_0_0_synth_1, system_xbar_0_synth_1, system_rst_ps7_0_50M_0_synth_1, system_axi_cfg_register_0_synth_1, synth_1...
+Run output will be captured here:
+system_LED_CONTROLLER_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_LED_CONTROLLER_0_synth_1/runme.log
+system_auto_pc_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_auto_pc_0_synth_1/runme.log
+system_processing_system7_0_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_processing_system7_0_0_synth_1/runme.log
+system_ADC_REG_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_ADC_REG_0_synth_1/runme.log
+system_axi_gpio_0_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_axi_gpio_0_0_synth_1/runme.log
+system_ADC_DAC_LOOP_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_ADC_DAC_LOOP_0_synth_1/runme.log
+system_util_ds_buf_1_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_util_ds_buf_1_0_synth_1/runme.log
+system_util_ds_buf_0_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_util_ds_buf_0_0_synth_1/runme.log
+system_xbar_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_xbar_0_synth_1/runme.log
+system_rst_ps7_0_50M_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_rst_ps7_0_50M_0_synth_1/runme.log
+system_axi_cfg_register_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_axi_cfg_register_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/synth_1/runme.log
+[Thu Jul 14 13:29:01 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:36 ; elapsed = 00:00:16 . Memory (MB): peak = 7423.137 ; gain = 114.055 ; free physical = 273 ; free virtual = 18793
+update_compile_order -fileset sources_1
+CRITICAL WARNING: [HDL 9-849] Syntax error : file ended before end of clause. [/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ip/system_axi_cfg_register_0/system_axi_cfg_register_0_sim_netlist.v:1934]
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z020clg400-3
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 7582.031 ; gain = 0.000 ; free physical = 7783 ; free virtual = 18313
+INFO: [Netlist 29-17] Analyzing 284 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[0]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[1]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[2]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[3]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[4]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'DIFF_TERM' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for DIFF_TERM but preserved for implementation.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'system_i/ADC_BLOCK/util_ds_buf_0/IBUF_OUT[5]' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.28 ; elapsed = 00:00:00.28 . Memory (MB): peak = 7816.887 ; gain = 0.000 ; free physical = 7214 ; free virtual = 17758
+Restored from archive | CPU: 0.280000 secs | Memory: 6.364891 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.28 ; elapsed = 00:00:00.28 . Memory (MB): peak = 7816.887 ; gain = 0.000 ; free physical = 7214 ; free virtual = 17758
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 7816.887 ; gain = 0.000 ; free physical = 7214 ; free virtual = 17758
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 6 instances were transformed.
+  (Flop,Flop) => IDDR: 6 instances
+
+open_run: Time (s): cpu = 00:00:19 ; elapsed = 00:00:14 . Memory (MB): peak = 8043.809 ; gain = 461.777 ; free physical = 6984 ; free virtual = 17617
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+open_bd_design {/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_ADC_DAC_LOOP_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ADC_CLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'ADC_CLK' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/cores'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+Upgrading '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-1972] Upgraded system_ADC_DAC_LOOP_0 from ADC_DAC_LOOP_v1_0 1.0 to ADC_DAC_LOOP_v1_0 1.0
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd> 
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+WARNING: [BD 41-927] Following properties on pin /axi_cfg_register/aclk have been updated from connected ip, but BD cell '/axi_cfg_register' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 50000000 
+Please resolve any mismatches by directly setting properties on BD cell </axi_cfg_register> to completely resolve these warnings.
+Wrote  : </home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/system.bd> 
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/synth/system.v
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/sim/system.v
+VHDL Output written to : /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC_DAC_LOOP .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS7/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hw_handoff/system.hwh
+Generated Block Design Tcl file /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/hw_handoff/system_bd.tcl
+Generated Hardware Definition File /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.srcs/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP system_auto_pc_0, cache-ID = a458f946524ddaca; cache size = 3.389 MB.
+[Thu Jul 14 13:50:32 2022] Launched system_ADC_DAC_LOOP_0_synth_1, synth_1...
+Run output will be captured here:
+system_ADC_DAC_LOOP_0_synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/system_ADC_DAC_LOOP_0_synth_1/runme.log
+synth_1: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/synth_1/runme.log
+[Thu Jul 14 13:50:32 2022] Launched impl_1...
+Run output will be captured here: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:22 ; elapsed = 00:00:13 . Memory (MB): peak = 8227.660 ; gain = 27.004 ; free physical = 6387 ; free virtual = 17335
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 14 14:16:32 2022...

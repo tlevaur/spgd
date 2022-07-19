@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Mon Jul 18 15:00:51 2022
+# Process ID: 23296
+# Current directory: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.sim/sim_1/behav/xsim
+# Command line: wbtcv -mode batch -source /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.sim/sim_1/behav/xsim/xsim.dir/ADC_AVERAGE_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.sim/sim_1/behav/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.sim/sim_1/behav/xsim/xsim.dir/ADC_AVERAGE_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] '/home/taylor/Documents/GH/SPGD/fpga_projects/SPGD/tmp/SPGD/SPGD.sim/sim_1/behav/xsim/xsim.dir/ADC_AVERAGE_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Mon Jul 18 15:00:53 2022. For additional details about this file, please refer to the WebTalk help file at /tools/Xilinx/Vivado/2020.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Mon Jul 18 15:00:53 2022...
