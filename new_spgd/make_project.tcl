@@ -9,7 +9,8 @@
 # Tested with Vivado 2016.3
 # ==================================================================================================
 
-
+set script_path [ file dirname [ file normalize [ info script ] ] ]
+puts $script_path
 set project_name new_spgd
 set part_name xc7z020clg400-3
 set bd_path tmp/$project_name/$project_name.srcs/sources_1/bd/system
@@ -30,9 +31,20 @@ update_ip_catalog
 
 
 # Load any additional Verilog files in the project folder
-set files [glob -nocomplain  /home/taylor/Code/spgd/$project_name/src/*.v]
+set files [glob -nocomplain  /$script_path/src/*.v]
 if {[llength $files] > 0} {
   add_files -norecurse $files
+}
+
+# Load any additional Verilog files in the project folder
+set folder_files [glob -nocomplain  /$script_path/src/*/*.v]
+if {[llength $folder_files] > 0} {
+  add_files -norecurse $folder_files
+}
+
+set subfolder_files [glob -nocomplain  /$script_path/src/*/*/*.v]
+if {[llength $subfolder_files] > 0} {
+  add_files -norecurse $subfolder_files
 }
 
 create_bd_cell -type module -reference ADC_REG ADC_REG

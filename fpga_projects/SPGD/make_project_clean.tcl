@@ -9,7 +9,8 @@
 # Tested with Vivado 2020.1
 # ==================================================================================================
 
-
+set script_path [ file dirname [ file normalize [ info script ] ] ]
+puts $script_path
 set project_name SPGD
 #set project_path home/taylor/Code/spgd/fpga_projects
 set project_path home/taylor/Documents/GH/SPGD/fpga_projects
@@ -32,18 +33,18 @@ update_ip_catalog
 
 
 # Load any additional Verilog files in the project folder
-set files [glob -nocomplain  /$project_path/$project_name/src/*.v]
+set files [glob -nocomplain  /$script_path/src/*.v]
 if {[llength $files] > 0} {
   add_files -norecurse $files
 }
 
 # Load any additional Verilog files in the project folder
-set folder_files [glob -nocomplain  /$project_path/$project_name/src/*/*.v]
+set folder_files [glob -nocomplain  /$script_path/src/*/*.v]
 if {[llength $folder_files] > 0} {
   add_files -norecurse $folder_files
 }
 
-set subfolder_files [glob -nocomplain  /$project_path/$project_name/src/*/*/*.v]
+set subfolder_files [glob -nocomplain  /$script_path/src/*/*/*.v]
 if {[llength $subfolder_files] > 0} {
   add_files -norecurse $subfolder_files
 }
