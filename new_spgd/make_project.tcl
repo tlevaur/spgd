@@ -142,3 +142,4 @@ group_bd_cells ADC_BLOCK [get_bd_cells util_ds_buf_0] [get_bd_cells util_ds_buf_
 
 set_property top system_wrapper [current_fileset]
 
+regenerate_bd_layout
