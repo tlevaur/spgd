@@ -85,12 +85,10 @@
 !*.bmm
 !*.xmp
 
-fpga_projects/SPGD/tmp/*
-fpga_projects/SPGD/tmp
-fpga_projects/SPGD/.Xil
-new_spgd/tmp/*
-new_spgd/tmp
-new_spgd/.Xil
+fpga_projects/*/tmp/*
+fpga_projects/*/tmp
+fpga_projects/*/.Xil
+fpga_projects/*/*/.Xil
 
 !LICENSE
 !*.py

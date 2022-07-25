@@ -8,13 +8,13 @@
 # by Anton Potocnik, 20.11.2016
 # Tested with Vivado 2016.3
 # ==================================================================================================
+set project_name new_spgd
 set script_path [ file dirname [ file normalize [ info script ] ] ]
 puts $script_path
 set deletefiles [glob -nocomplain  /$script_path/*.backup.*]
 foreach file $deletefiles {
     file delete -force $file
 }
-set project_name new_spgd
 set part_name xc7z020clg400-3
 set bd_path tmp/$project_name/$project_name.srcs/sources_1/bd/system
 
