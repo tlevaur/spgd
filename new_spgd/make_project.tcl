@@ -30,22 +30,14 @@ update_ip_catalog
 
 
 # Load any additional Verilog files in the project folder
-set files [glob -nocomplain  /home/taylor/Documents/$project_name/src/*.v]
+set files [glob -nocomplain  /home/taylor/Code/spgd/$project_name/src/*.v]
 if {[llength $files] > 0} {
   add_files -norecurse $files
 }
 
 create_bd_cell -type module -reference ADC_REG ADC_REG
-create_bd_cell -type module -reference SPGD_SYS SPGD_SYS
-create_bd_cell -type module -reference ADC_fp ADC_fp
-create_bd_cell -type module -reference fp_DAC fp_DAC_0
-create_bd_cell -type module -reference fp_DAC fp_DAC_1
-
-#create_bd_cell -type module -reference GPIO_BOX GPIO_BOX
-#create_bd_cell -type module -reference configer configer
-#create_bd_cell -type module -reference offset_ADC_to_AXIS offset_ADC_to_AXIS
-#create_bd_cell -type module -reference ADC_cal_fp_constants ADC_cal_fp_constants
-#create_bd_cell -type module -reference AXIS_to_GPIO AXIS_to_GPIO
+create_bd_cell -type module -reference TOP_SYS TOP_SYS
+create_bd_cell -type module -reference axi_cfg_register axi_cfg_register
 
 # Zynq processing system with RedPitaya specific preset
 startgroup
@@ -62,8 +54,6 @@ endgroup
 startgroup
 create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio axi_gpio_0
 set_property -dict [list CONFIG.C_IS_DUAL {1} CONFIG.C_ALL_INPUTS_2 {1} CONFIG.C_ALL_OUTPUTS_2 {0}] [get_bd_cells axi_gpio_0]
-#set_property -dict [list CONFIG.C_ALL_INPUTS_2 {0} CONFIG.C_ALL_OUTPUTS_2 {1}] [get_bd_cells axi_gpio_0]
-#set_property -dict [list ] [get_bd_cells axi_gpio_0]
 connect_bd_net [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins axi_gpio_0/gpio_io_o]
 endgroup
 
@@ -99,34 +89,20 @@ connect_bd_net [get_bd_pins ADC_REG/data_in] [get_bd_pins xlconcat_0/dout]
 connect_bd_net [get_bd_pins ADC_REG/adc_clk_p] [get_bd_ports adc_clk_p]
 connect_bd_net [get_bd_pins ADC_REG/adc_clk_n] [get_bd_ports adc_clk_n]
 
+connect_bd_net [get_bd_pins TOP_SYS/ADC_CLK] [get_bd_pins ADC_REG/adc_clk]
+connect_bd_net [get_bd_pins TOP_SYS/ADC_A_IN] [get_bd_pins ADC_REG/a_data_out]
+connect_bd_net [get_bd_pins TOP_SYS/ADC_B_IN] [get_bd_pins ADC_REG/b_data_out]
+connect_bd_net [get_bd_pins TOP_SYS/DAC_A_OUT] [get_bd_ports dac_dat_a_o]
+connect_bd_net [get_bd_pins TOP_SYS/DAC_B_OUT] [get_bd_ports dac_dat_b_o]
+connect_bd_net [get_bd_pins TOP_SYS/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
+connect_bd_net [get_bd_pins TOP_SYS/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
+connect_bd_net [get_bd_pins TOP_SYS/CFG_IN] [get_bd_pins axi_cfg_register/cfg_data]
 
-connect_bd_net [get_bd_pins ADC_fp/ADC_CLK] [get_bd_pins ADC_REG/adc_clk]
-connect_bd_net [get_bd_pins ADC_fp/ADC_SEL] [get_bd_pins SPGD_SYS/ADC_SEL]
-connect_bd_net [get_bd_pins ADC_fp/ADC_EN] [get_bd_pins SPGD_SYS/ADC_EN]
-connect_bd_net [get_bd_pins ADC_fp/ADC_A] [get_bd_pins ADC_REG/a_data_out]
-connect_bd_net [get_bd_pins ADC_fp/ADC_B] [get_bd_pins ADC_REG/b_data_out]
-connect_bd_net [get_bd_pins ADC_fp/ADC_DONE] [get_bd_pins SPGD_SYS/ADC_DONE]
-connect_bd_net [get_bd_pins ADC_fp/ADC_16Q48_OUT] [get_bd_pins SPGD_SYS/ADC_IN]
-
-
-
-
-connect_bd_net [get_bd_pins SPGD_SYS/ADC_CLK] [get_bd_pins ADC_REG/adc_clk]
-connect_bd_net [get_bd_pins SPGD_SYS/DAC_A_OUT] [get_bd_pins fp_DAC_0/fp_in]
-connect_bd_net [get_bd_pins SPGD_SYS/DAC_B_OUT] [get_bd_pins fp_DAC_1/fp_in]
-connect_bd_net [get_bd_pins SPGD_SYS/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
-connect_bd_net [get_bd_pins SPGD_SYS/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
-connect_bd_net [get_bd_pins SPGD_SYS/REG_RESET] [get_bd_pins ADC_fp/REG_RST]
-
-connect_bd_net [get_bd_pins SPGD_SYS/LED_O] [get_bd_ports led_o]
-
-connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins SPGD_SYS/val_0]
-connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins SPGD_SYS/val_0]
-connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins SPGD_SYS/val_0]
-connect_bd_net [get_bd_pins SPGD_SYS/val_1] [get_bd_ports dac_spi_sdio_o] 
-
-connect_bd_net [get_bd_pins fp_DAC_0/DAC_out] [get_bd_ports dac_dat_a_o]
-connect_bd_net [get_bd_pins fp_DAC_1/DAC_out] [get_bd_ports dac_dat_b_o]
+connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins TOP_SYS/val_0]
+connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins TOP_SYS/val_0]
+connect_bd_net [get_bd_ports dac_spi_reset_o] [get_bd_pins TOP_SYS/val_0]
+connect_bd_net [get_bd_pins TOP_SYS/val_1] [get_bd_ports dac_spi_sdio_o]
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/processing_system7_0/FCLK_CLK0 (50 MHz)} Clk_slave {/processing_system7_0/FCLK_CLK0 (50 MHz)} Clk_xbar {/processing_system7_0/FCLK_CLK0 (50 MHz)} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_cfg_register/s_axi} ddr_seg {Auto} intc_ip {/ps7_0_axi_periph} master_apm {0}}  [get_bd_intf_pins axi_cfg_register/s_axi]
 
 # ====================================================================================
 # Generate output products and wrapper, add constraint 

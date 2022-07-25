@@ -1,4 +1,4 @@
-module ADC_IN
+module ADC_to_fp
 #(
     parameter FLOAT_WIDTH = 64,
     parameter ADC_WIDTH = 12

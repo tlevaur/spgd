@@ -13,8 +13,7 @@ module ADC_IN
     input   enable,
     output  DONE,
     output  [FP_WIDTH    - 1 : 0] ADC_16QM_OUT,
-    output REG_WRITE,
-    output REG_RST
+    output REG_WRITE
 );
     reg [FP_WIDTH    - 1 : 0] GAIN_MUL_IN = {{16'h0014}, {FP_WIDTH-INT_WIDTH{1'b0}}};
 
@@ -36,8 +35,6 @@ module ADC_IN
         .CLK(ADC_CLK),
         .DONE(DONE),
         .EN(!RST)
-        // .TIME_VALUE(TIME_VALUE),
-        // .TIMER_OFFSET(TIMER_OFFSET)
     );
 
     FSM FSM0 (

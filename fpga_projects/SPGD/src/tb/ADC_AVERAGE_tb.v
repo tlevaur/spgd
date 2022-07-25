@@ -3,7 +3,7 @@ localparam NUM_SAMPS = 4096;
 localparam H_period=2;
 localparam F_period=4;
 localparam AVE_period = F_period*1024;
-localparam FLOAT_WIDTH = 32;
+localparam FP_WIDTH = 32;
 localparam GPIO_WIDTH = 32;
 localparam ADC_WIDTH = 12;
 localparam DAC_WIDTH = 14;
@@ -15,7 +15,7 @@ wire DONE;
 reg [32-1 :0] TIMER_OFFSET = 16'h0000_0002;
 reg [32-1 :0] TIME_VALUE =  16'h0000_0080;
 reg [32-1 :0] ADC_CAL_GAIN =  32'h0001_0000;
-reg [1023:0] CFG_IN= {{896{1'b0}}, 32'h0000_0000, 32'h0001_0000, 32'hFFFF_FBD1, 32'h0001_1D8F};
+reg [1023:0] CFG_IN = {{896{1'b0}}, 32'h0000_0000, 32'h0001_0000, 32'hFFFF_FBD1, 32'h0001_1D8F};
 wire [14-1:0] DACA_CODE_WIRE_OUT;
 wire [14-1:0] DACB_CODE_WIRE_OUT;
 wire [12-1:0] ADC_CODE_WIRE_OUT;
@@ -25,7 +25,7 @@ wire [32-1:0] GPIO_WIRE;
 // integer write_data;
 
 ADC_DAC_LOOP #(
-    .FLOAT_WIDTH(FLOAT_WIDTH), 
+    .FP_WIDTH(FP_WIDTH), 
     .ADC_WIDTH(ADC_WIDTH), 
     .DAC_WIDTH(DAC_WIDTH), 
     .GPIO_WIDTH(GPIO_WIDTH)

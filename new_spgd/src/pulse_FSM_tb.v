@@ -6,9 +6,10 @@ module pulse_FSM_tb;
 	reg ADC_CLK = 1'b0;
 	reg TRIG_CLK = 1'b0;
 	reg PULSE_RST = 1'b0;
-	reg PULSE_COUNT = 32'h0000_0000;
-	reg PULSE_COUNT_NEXT = 32'h0000_0000;
-	wire DONE
+	wire [32-1:0] PULSE_COUNT;
+	reg [32-1:0] REG_OUT = 32'h0000_0000;
+	// reg PULSE_COUNT_NEXT = 32'h0000_0000;
+	wire DONE;
 
 	pulse_FSM FSM0 (
 		.s(TRIG_CLK),
@@ -25,9 +26,18 @@ module pulse_FSM_tb;
 	) PULSE_COUNT0 (
 		.clk(ADC_CLK),
 		.en(!P),
-		wait_val(PULSE_COUNTER),
-		.f(DONE)
+		.count_val(PULSE_COUNT)
 	);
+
+	gen_reg #(
+		.DATA_WIDTH(32)
+	) REG0 (
+		.data_in(PULSE_COUNT),
+		.clk(ADC_CLK),
+		.wrt(P),
+		.rst(REG_RST),
+		.data_out(REG_OUT)
+);
 
 	always
 	begin

@@ -10,6 +10,7 @@ module SPGD_FSM
 	input ADC_CLK,
 	input FSM_EN,
 	input ADC_DONE,
+	input GP_IN,
 	output ADC_EN,
 	output REG_RST,
 	output RNG_CLK,
@@ -18,7 +19,8 @@ module SPGD_FSM
 	output U_WRT,
 	output DELTA_U_WRT,
 	output [1:0] DAC_SEL,
-	output [3:0] FSM_STATE
+	output [3:0] FSM_STATE,
+	output [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM
 );
 
 	localparam [3:0]
@@ -96,6 +98,34 @@ module SPGD_FSM
 
 	assign FSM_STATE = current_state;
 
+	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
+	GPIO_PARAMS #(
+		.GPIO_WIDTH(GPIO_WIDTH),
+		.PARAM_COUNT(16)
+	) PARAMS1 (
+		.GP_IN(GP_IN),
+		.SET(2),
+		.GP_OUT(GP_OUT_SPGD_FSM),
+		.PARAMS_DATA({
+			{GPIO_WIDTH{1'b0}}, 		//15
+			{GPIO_WIDTH{1'b0}},		//14
+			{GPIO_WIDTH{1'b0}},		//13
+			{GPIO_WIDTH{1'b0}},		//12
+			{GPIO_WIDTH{1'b0}},		//11
+			{GPIO_WIDTH{1'b0}},		//10
+			{GPIO_WIDTH{1'b0}},		//9
+			{{GPIO_WIDTH-1{1'b0}}, DELTA_U_WRT},	//8
+			{{GPIO_WIDTH-1{1'b0}}, U_WRT},	//7
+			{{GPIO_WIDTH-1{1'b0}}, J_M_WRT},	//6
+			{{GPIO_WIDTH-1{1'b0}}, J_P_WRT},	//5
+			{{GPIO_WIDTH-1{1'b0}}, REG_RST},	//4
+			{{GPIO_WIDTH-1{1'b0}}, ADC_EN},	//3
+			{{GPIO_WIDTH-1{1'b0}}, FSM_EN},	//2
+			{{GPIO_WIDTH-2{1'b0}}, DAC_SEL},	//1
+			{{GPIO_WIDTH-4{1'b0}}, FSM_STATE}	//0
+		})
+	);
+
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) timer_a(.clk(ADC_CLK), .en(timer_a_en), .wait_val(timer_A_wait), .f(timer_A_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) ADC_a(.clk(ADC_CLK), .en(ADC_a_en), .wait_val(ADC_A_wait), .f(ADC_a_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) MATH_a(.clk(ADC_CLK), .en(MATH_a_en), .wait_val(MATH_A_wait), .f(MATH_a_out));
@@ -103,7 +133,7 @@ module SPGD_FSM
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) timer_b(.clk(ADC_CLK), .en(timer_b_en), .wait_val(timer_B_wait), .f(timer_B_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) ADC_b(.clk(ADC_CLK), .en(ADC_b_en), .wait_val(ADC_B_wait), .f(ADC_b_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) MATH_b(.clk(ADC_CLK), .en(MATH_b_en), .wait_val(MATH_B_wait), .f(MATH_b_out));
-	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) MATH_c(.clk(ADC_CLK), .en(MATH_c_en), .wait_val(MATH_c_wait), .f(MATH_c_out));
+	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) MATH_c(.clk(ADC_CLK), .en(MATH_c_en), .wait_val(MATH_C_wait), .f(MATH_c_out));
 	
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) RNG_a(.clk(ADC_CLK), .en(RNG_a_en), .wait_val(rng_wait), .f(RNG_a_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) timer_c(.clk(ADC_CLK), .en(timer_c_en), .wait_val(timer_C_wait), .f(timer_C_out));

@@ -88,6 +88,7 @@
 fpga_projects/SPGD/tmp/*
 fpga_projects/SPGD/.Xil/*
 new_spgd/tmp/*
+new_spgd/tmp
 new_spgd/.Xil/*
 
 !LICENSE
