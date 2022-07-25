@@ -79,11 +79,11 @@ module SPGD_SYS
 		.PARAMS_DATA({
 			{GPIO_WIDTH{1'b0}},		//13
 			U_0_PLUS[FP_WIDTH - 1 :0],	//12
-			{GPIO_WIDTH{1'b0}},		//14
-			U_0_MINUS,			//11
 			{GPIO_WIDTH{1'b0}}, 		//15
-			U_1_PLUS,			//10
-			U_1_MINUS,			//9
+			U_0_MINUS[FP_WIDTH - 1 :0],			//11
+			{GPIO_WIDTH{1'b0}},		//14
+			U_1_PLUS[FP_WIDTH - 1 :0],			//10
+			U_1_MINUS[FP_WIDTH - 1 :0],			//9
 			J_P,				//8
 			J_M,				//7
 			U_0,				//6
