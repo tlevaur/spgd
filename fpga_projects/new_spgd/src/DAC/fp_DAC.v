@@ -32,7 +32,7 @@ module fp_DAC
 		.b(DAC_CAL_OFFSET),
 		.s(DAC_CAL_SUB_OUT)
 	);
-    my_mult #(
+    custom_gen_mult #(
         .DATA_WIDTH(FP_WIDTH),
         .OUT_WIDTH(DAC_WIDTH),
         .INT_FORMAT(INT_WIDTH-DAC_WIDTH),

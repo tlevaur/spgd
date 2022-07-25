@@ -1,4 +1,4 @@
-module new_counter
+module custom_gen_counter
 #(
 	parameter DATA_WIDTH = 5
 )

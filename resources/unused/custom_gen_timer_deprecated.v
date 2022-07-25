@@ -1,6 +1,6 @@
 // 2 timing modes, GPIO driven and external trig driven
 
-module my_timer
+module custom_gen_timer_deprecated
 #(
 	parameter GPIO_WIDTH = 32,
 	parameter DAC_WIDTH = 14

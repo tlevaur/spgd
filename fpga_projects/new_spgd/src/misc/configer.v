@@ -82,7 +82,7 @@ module configer
 
 	wire [4:0] count;
 
-	new_counter #(.DATA_WIDTH(5)) GP_TICK_COUNTER(.clk(GPIO_0[GPIO_WIDTH - 2]), .en(GPIO_0[GPIO_WIDTH-1]), .count(count));
+	custom_gen_counter #(.DATA_WIDTH(5)) GP_TICK_COUNTER(.clk(GPIO_0[GPIO_WIDTH - 2]), .en(GPIO_0[GPIO_WIDTH-1]), .count(count));
 
 	always @(posedge ADC_CLK)
 	begin

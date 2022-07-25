@@ -1,4 +1,4 @@
-module my_timer_tb;
+module custom_gen_timer_deprecated_tb;
 
 	reg [31:0] GP_I = 32'h00000000;
 	reg ADC_CLK = 1'b0;
@@ -8,7 +8,7 @@ module my_timer_tb;
 
 	localparam ADC_h_period = 2;
 
-	my_timer #(.GPIO_WIDTH(32), .DAC_WIDTH(14)) my_time(.GP_IN(GP_I), .ADC_CLK(ADC_CLK), .DAC_A_OUT(A_out), .DAC_B_OUT(B_out), .val_0(), .val_1());
+	custom_gen_timer_deprecated #(.GPIO_WIDTH(32), .DAC_WIDTH(14)) my_time(.GP_IN(GP_I), .ADC_CLK(ADC_CLK), .DAC_A_OUT(A_out), .DAC_B_OUT(B_out), .val_0(), .val_1());
 
 always
 begin

@@ -37,7 +37,7 @@ module ADC_fp
         .REG_WRITE(REG_WRITE)
     );
 
-	my_mult #(
+	custom_gen_mult #(
         .DATA_WIDTH(FP_WIDTH)
     ) MULT1 (
         .a(ADC_16QM_OUT),

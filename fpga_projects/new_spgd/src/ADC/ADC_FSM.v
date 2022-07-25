@@ -1,4 +1,4 @@
-module FSM
+module ADC_FSM
 (
     input adc_clk, 
     output REG_RST, 

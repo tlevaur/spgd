@@ -37,10 +37,10 @@ module ADC_IN
         .EN(!RST)
     );
 
-    FSM FSM0 (
+    ADC_FSM ADC_FSM0 (
         .done(DONE),
         .enable(enable),
-		.adc_clk(ADC_CLK),
+	.adc_clk(ADC_CLK),
         .REG_RST(in_REG_RST),
         .REG_WRITE(VALID),
         .ADC_RST(RST)
@@ -56,7 +56,7 @@ module ADC_IN
         .out(ADC_MUL_INPUT)
     );
 
-    my_mult #(
+    custom_gen_mult #(
         .DATA_WIDTH(FP_WIDTH),
         .BIT_SHIFT(11)
     ) MULT1 (

@@ -1,5 +1,5 @@
 /*
-    my_mult must take a DATA_WIDTH >= INT_WIDTH >= BIT_SHIFT
+    custom_gen_mult must take a DATA_WIDTH >= INT_WIDTH >= BIT_SHIFT
     DATA_WIDTH - Indicates the size of the DATA
         For INT_WIDTH = 16: 
         * DATA_WIDTH = 64 -> 16Q48
@@ -10,7 +10,7 @@
     DEC_FORMAT - REDUCE LEAST SIGNIFICANT BITS
     INT_FORMAT - REDUCE MOST SIGNIFICANT BITS
 */
-module my_mult
+module custom_gen_mult
 #(
 	parameter DATA_WIDTH = 64,
 	parameter OUT_WIDTH = DATA_WIDTH,
