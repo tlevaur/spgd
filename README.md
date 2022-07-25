@@ -1,5 +1,5 @@
 # SPGD-Coherent-Beam-Combination
-Research Project on Coherent Beam Combination of Fiber Amplifiers using the Stochastic Parallel Gradient Descent Algorithm
+Research Project on Coherent Beam Combination of Fiber Amplifiers using the Stochastic Parallel Gradient Descent Algorithm on a Red Pitaya.
 
 ## Usage
 ### Install Vivado
@@ -27,4 +27,7 @@ $ vivado -source make_project_clean.tcl
 can be run to remove any Vivado backup files.
 
 ### Generate Bitstream in Vivado
-After Vivado is launched with the proper make project file, any changes or alterations can be made. Once finished, a Bitstream can be generated to use on the fpga.
+After Vivado is launched with the proper make project file, any changes or alterations can be made. Once finished, a Bitstream can be generated to use on the Red Pitaya.
+
+# License
+Please read our license file [LICENSE](https://github.com/tlevaur/spgd/blob/main/LICENSE) for more information.
