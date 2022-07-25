@@ -1,4 +1,4 @@
-# SPGD-Coherent-Beam-Combination
+# SPGD Coherent Beam Combination
 Research Project on Coherent Beam Combination of Fiber Amplifiers using the Stochastic Parallel Gradient Descent Algorithm on a Red Pitaya.
 
 ## Usage
