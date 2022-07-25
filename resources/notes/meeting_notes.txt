@@ -1,0 +1,209 @@
+Optical Input / Output:
+Edge Coupling Limitations
+	- I know the locations of the optical IO are fixed, but are the waveguide widths also fixed?
+	- Is there any specific PDK BB for edge-coupling to a SMF?
+		- I know there is a PDK BB for laterally tapering waveguides, but is there any more specific information? 
+
+SOA Metallization Options:
+	sp_basic_soa = 30 micron wide P-side pad
+	sp_soa = 100 micron wide P-side pad? Or is it a 30 micron wide P-side pad and an additional 100 micron pad placed to the side of the SOA waveguide?
+	sp_soa_ncontact = 30 micron wide P-side pad, and a Ncontact placed to the side of the SOA waveguide?
+
+250 micron actives DRC? ACT.0.2
+	- Would Gen 1 N+ platform be better for the FIRE device?
+	
+
+
+	laser_gnd_x = 25
+	laser_gnd_y = 10
+	laser_pd_x = 75
+	laser_pd_y = 25
+	laser_rear_x = 75
+	laser_rear_y = 205
+	laser_soa_x = 75
+	laser_soa_y = 545
+	laser_front_x = 75
+	laser_front_y = 785
+
+	laser_optical_x = 0
+	laser_optical_y = 75
+
+	dc0_gnd_pad_x = 200
+	dc0_gnd_pad_y = 110
+	dc0_gnd_pad_y_max = 170
+
+	laser_dc_gnd_delta = 100
+
+	laser_null_y_offset = 840
+	laser_null_x_offset = 75
+
+	# Laser 0
+	laser0_abs_x_offset = dc0_gnd_pad_x - laser_gnd_x
+	laser0_abs_y_offset = dc0_gnd_pad_y_max + laser_dc_gnd_delta
+	laser0 = tue.basic_dbr_laser_sh().put(laser_null_x_offset+laser0_abs_x_offset,laser_null_y_offset+laser0_abs_y_offset,-90)
+	sp.metaldc.strt(width=30,length=laser0_abs_y_offset-dc0_gnd_pad_y+laser_gnd_y).put(dc0_gnd_pad_x,dc0_gnd_pad_y,90)
+
+	pd0_pad_x = 380
+	pd0_pad_y = 110
+	pd0_pad_y_max = 170
+
+	sp.metaldc.strt(width=20,length=laser0_abs_y_offset+laser_pd_y-dc0_gnd_pad_y-100).put(pd0_pad_x,pd0_pad_y,90)
+	sp.metaldc.bend(width=20,radius=100).put()
+	sp.metaldc.strt(width=20,length=pd0_pad_x-(laser0_abs_x_offset+laser_pd_x)-100).put()
+
+	rear0_pad_x = 560
+	rear0_pad_y = 110
+	rear0_pad_y_max = 170
+
+	sp.metaldc.strt(width=20,length=laser0_abs_y_offset+laser_rear_y-dc0_gnd_pad_y-100).put(rear0_pad_x,rear0_pad_y,90)
+	sp.metaldc.bend(width=20,radius=100).put()
+	sp.metaldc.strt(width=20,length=rear0_pad_x-(laser0_abs_x_offset+laser_pd_x)-100).put()
+
+	soa0_pad_x = 740
+	soa0_pad_y = 110
+	soa0_pad_y_max = 170
+
+	sp.metaldc.strt(width=50,length=laser0_abs_y_offset+laser_soa_y-dc0_gnd_pad_y-100).put(soa0_pad_x,soa0_pad_y,90)
+	sp.metaldc.bend(width=50,radius=100).put()
+	sp.metaldc.strt(width=50,length=soa0_pad_x-(laser0_abs_x_offset+laser_pd_x)-100).put()
+
+	front0_pad_x = 920
+	front0_pad_y = 110
+	front0_pad_y_max = 170
+
+	sp.metaldc.strt(width=20,length=laser0_abs_y_offset+laser_front_y-dc0_gnd_pad_y-100).put(front0_pad_x,front0_pad_y,90)
+	sp.metaldc.bend(width=20,radius=100).put()
+	sp.metaldc.strt(width=20,length=front0_pad_x-(laser0_abs_x_offset+laser_pd_x)-100).put()
+
+	# Laser 1
+
+	dc1_gnd_pad_x = 1100
+	dc1_gnd_pad_y = 110
+	dc1_gnd_pad_y_max = 170
+
+	laser1_abs_x_offset = dc1_gnd_pad_x - laser_gnd_x
+	laser1_abs_y_offset = dc1_gnd_pad_y_max + laser_dc_gnd_delta
+	laser1 = tue.basic_dbr_laser_sh().put(laser_null_x_offset+laser1_abs_x_offset,laser_null_y_offset+laser1_abs_y_offset,-90)
+	sp.metaldc.strt(width=30,length=laser1_abs_y_offset-dc1_gnd_pad_y+laser_gnd_y).put(dc1_gnd_pad_x,dc1_gnd_pad_y,90)
+
+	pd1_pad_x = 1280
+	pd1_pad_y = 110
+	pd1_pad_y_max = 170
+
+	sp.metaldc.strt(width=20,length=laser1_abs_y_offset+laser_pd_y-dc1_gnd_pad_y-100).put(pd1_pad_x,pd1_pad_y,90)
+	sp.metaldc.bend(width=20,radius=100).put()
+	sp.metaldc.strt(width=20,length=pd1_pad_x-(laser1_abs_x_offset+laser_pd_x)-100).put()
+
+	rear1_pad_x = 1460
+	rear1_pad_y = 110
+	rear1_pad_y_max = 170
+
+	sp.metaldc.strt(width=20,length=laser1_abs_y_offset+laser_rear_y-dc1_gnd_pad_y-100).put(rear1_pad_x,rear1_pad_y,90)
+	sp.metaldc.bend(width=20,radius=100).put()
+	sp.metaldc.strt(width=20,length=rear1_pad_x-(laser1_abs_x_offset+laser_pd_x)-100).put()
+
+	soa1_pad_x = 1640
+	soa1_pad_y = 110
+	soa1_pad_y_max = 170
+
+	sp.metaldc.strt(width=50,length=laser1_abs_y_offset+laser_soa_y-dc1_gnd_pad_y-100).put(soa1_pad_x,soa1_pad_y,90)
+	sp.metaldc.bend(width=50,radius=100).put()
+	sp.metaldc.strt(width=50,length=soa1_pad_x-(laser1_abs_x_offset+laser_pd_x)-100).put()
+
+	front1_pad_x = 1820
+	front1_pad_y = 110
+	front1_pad_y_max = 170
+
+	sp.metaldc.strt(width=20,length=laser1_abs_y_offset+laser_front_y-dc1_gnd_pad_y-100).put(front1_pad_x,front1_pad_y,90)
+	sp.metaldc.bend(width=20,radius=100).put()
+	sp.metaldc.strt(width=20,length=front1_pad_x-(laser1_abs_x_offset+laser_pd_x)-100).put()
+
+
+
+	mmi_a0_x = 0
+	mmi_a0_y = 17.48
+	mmi_a1_y = mmi_a0_y - 2.96
+	mmi_a_offset = 1.48
+	mmi_null_x_offset = 32 - mmi_a0_y
+	mmi_null_y_offset = 0
+	
+	lasers01_midpoint_x = ((laser1_abs_x_offset - laser0_abs_x_offset) / 2) + laser_optical_y + laser0_abs_x_offset - mmi_a1_y - mmi_a_offset
+	lasers01_optical_y = laser_null_y_offset + laser0_abs_y_offset
+	mmi0 = tue.mmi8515_sh().put(mmi_null_x_offset+lasers01_midpoint_x, mmi_null_y_offset+lasers01_optical_y, 90)
+
+
+		sp.shallow.strt(length=200,width=2).put()
+		if (x % 2) == 0:
+			sp.shallow.bend(radius=400,angle=eopm_bend_angle).put()
+			sp.shallow.bend(radius=400,angle=-eopm_bend_angle).put()
+		else:
+			sp.shallow.bend(radius=400,angle=-eopm_bend_angle).put()
+			sp.shallow.bend(radius=400,angle=eopm_bend_angle).put()
+
+with nd.Cell('Two2OneCoupler') as coup1:
+	cmmi = sp.sp_mmi1x2_sh().put()
+	out0 = sp.shallow.strt(length=200).put(cmmi.pin['a0'])
+	in0 = sp.shallow.bend(radius=400,angle=45).put(cmmi.pin['b0'])
+	in1 = sp.shallow.bend(radius=400,angle=-45).put(cmmi.pin['b1'])
+	nd.Pin('a0', pin=in0.pin['a0']).put()
+	nd.Pin('a1', pin=in1.pin['a0']).put()
+	nd.Pin('b0', pin=out0.pin['b0']).put()
+	
+
+sp.shallow.strt(length=200).put()
+		mmi = tue.mmi8515_sh().put()
+		if (20*x + 22) < 100:
+			IOWname = "ioW0{label:.0f}"
+			IOEname = "ioE0{label:.0f}"
+			sp.shallow.sbend_p2p(IO[IOWname.format(label=20*x+22)], eopm.pin["a0"]).put()
+			sp.shallow.sbend_p2p(mmi.pin["b0"], IO[IOEname.format(label=20*x+22)]).put()
+		else:
+			IOWname = "ioW{label:.0f}"
+			IOEname = "ioE{label:.0f}"
+			sp.shallow.sbend_p2p(IO[IOWname.format(label=20*x+22)], eopm.pin["a0"]).put()
+			sp.shallow.sbend_p2p(mmi.pin["b0"], IO[IOEname.format(label=20*x+22)]).put()
+
+
+	eopm_null_y_shift = 125
+	eopm_abs_y_shift = 250
+	eopm_y_pitch = 250
+	eopm_x_shift = 400
+	eopm_length = 1500
+	eopm_bend_angle = 32.3
+	init_strt_length = 50
+	final_strt_length = 1500
+	stage_1_x_lead = 650 + eopm_x_shift+eopm_length
+	stage_2_x_lead = 710 + stage_1_x_lead
+	stage_3_x_lead = 910 + stage_2_x_lead
+
+	for x in range(0,8):
+		y_2 = (eopm_null_y_shift+eopm_abs_y_shift+eopm_y_pitch*(x+1))
+		y_1 = (eopm_null_y_shift+eopm_abs_y_shift+eopm_y_pitch*x)
+		y_diff = (y_2 - y_1) / 2
+		y_shift = y_diff + y_1
+		eopm = sp.sp_eopm_dc_sh_ncontact(length=eopm_length).put(eopm_x_shift,eopm_null_y_shift+eopm_abs_y_shift+x*eopm_y_pitch,0)
+		sp.shallow.strt(length=init_strt_length).put()
+		mmi_0 = tue.mmi8515_sh().put()
+		if (x % 2) == 0:
+			sp.shallow.strt(length=final_strt_length).put(mmi_0.pin['b1'])
+			mmi_1 = sp.sp_mmi1x2_sh().put(stage_1_x_lead,y_shift,180)
+			sp.shallow.sbend_p2p(mmi_1.pin['b0'], mmi_0.pin['b0']).put()
+			if (x % 4) == 0:
+				new_y_shift = y_shift + eopm_y_pitch
+				mmi_2 = sp.sp_mmi1x2_sh().put(stage_2_x_lead,new_y_shift,180)
+				sp.shallow.sbend_p2p(mmi_2.pin['b0'], mmi_1.pin['a0']).put()
+				if x == 0:
+					final_y_shift = new_y_shift + 2 * eopm_y_pitch
+					mmi_3 = sp.sp_mmi1x2_sh().put(stage_3_x_lead,final_y_shift,180)
+					sp.shallow.sbend_p2p(mmi_3.pin['b0'], mmi_2.pin['a0']).put()
+		else:
+			sp.shallow.strt(length=final_strt_length).put(mmi_0.pin['b0'])
+			sp.shallow.sbend_p2p(mmi_1.pin['b1'], mmi_0.pin['b1']).put()
+			if (x % 4) == 3:
+				sp.shallow.sbend_p2p(mmi_2.pin['b1'], mmi_1.pin['a0']).put()
+				if x == 7:
+					sp.shallow.sbend_p2p(mmi_3.pin['b1'], mmi_2.pin['a0']).put()
+
+
+	pin_0 = sp.sp_pin_sh().put(stage_3_x_lead+100,final_y_shift,0)
+	sp.shallow.strt_p2p(pin_0.pin['a0'], mmi_3.pin['a0']).put()

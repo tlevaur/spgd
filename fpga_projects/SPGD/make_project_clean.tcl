@@ -1,4 +1,3 @@
-
 # ==================================================================================================
 # block_design.tcl - Create Vivado Project - 3_stopwatch
 #
@@ -12,8 +11,10 @@
 set project_name SPGD
 set script_path [ file dirname [ file normalize [ info script ] ] ]
 puts $script_path
-#set project_path home/taylor/Code/spgd/fpga_projects
-set project_path home/taylor/Documents/GH/SPGD/fpga_projects
+set deletefiles [glob -nocomplain  /$script_path/*.backup.*]
+foreach file $deletefiles {
+    file delete -force $file
+}
 set part_name xc7z020clg400-3
 set bd_path tmp/$project_name/$project_name.srcs/sources_1/bd/system
 
