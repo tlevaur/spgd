@@ -94,3 +94,4 @@ fpga_projects/*/*/.Xil
 !*.py
 !*.md
 !*.m
+!red_pitiya/bitstream/*.bit
