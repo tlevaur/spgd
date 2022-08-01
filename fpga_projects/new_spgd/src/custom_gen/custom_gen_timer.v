@@ -12,7 +12,7 @@ module custom_gen_timer #(
 	assign J_time = {2'b00, final_count[31:2]};
 
 	wire [31:0] count_out;
-	
+
 	custom_gen_counter #(
 		.DATA_WIDTH(32)
 	) COUNT0 (

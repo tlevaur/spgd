@@ -45,7 +45,7 @@ module ADC_fp
 		.p(ADC_CAL_MUL_DATA_OUT)
     );
 
-    gen_subber #(
+    custom_gen_subber #(
 	    .IN_WIDTH(FP_WIDTH)
     ) ADD0 (
 	    .a(ADC_CAL_MUL_DATA_OUT),

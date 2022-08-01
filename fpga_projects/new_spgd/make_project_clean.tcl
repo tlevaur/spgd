@@ -51,6 +51,7 @@ if {[llength $subfolder_files] > 0} {
 
 create_bd_cell -type module -reference ADC_REG ADC_REG
 create_bd_cell -type module -reference TOP_SYS TOP_SYS
+create_bd_cell -type module -reference LED_CONTROLLER LED_CONTROLLER
 create_bd_cell -type module -reference axi_cfg_register axi_cfg_register
 
 # Zynq processing system with RedPitaya specific preset
@@ -112,6 +113,8 @@ connect_bd_net [get_bd_pins TOP_SYS/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
 connect_bd_net [get_bd_pins TOP_SYS/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
 connect_bd_net [get_bd_pins TOP_SYS/CFG_IN] [get_bd_pins axi_cfg_register/cfg_data]
 connect_bd_net [get_bd_pins TOP_SYS/TRIG_IN] [get_bd_ports TRIG_IN]
+connect_bd_net [get_bd_pins TOP_SYS/LED_O] [get_bd_pins LED_CONTROLLER/val]
+connect_bd_net [get_bd_pins LED_CONTROLLER/led_o] [get_bd_ports led_o]
 
 connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins TOP_SYS/val_0]
 connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins TOP_SYS/val_0]
@@ -133,8 +136,6 @@ set files [glob -nocomplain cfg/*.xdc]
 if {[llength $files] > 0} {
   add_files -norecurse -fileset constrs_1 $files
 }
-
-#set_property top system_wrapper [current_fileset]
 
 set_property VERILOG_DEFINE {TOOL_VIVADO} [current_fileset]
 set_property STRATEGY Flow_PerfOptimized_High [get_runs synth_1]

@@ -16,7 +16,7 @@ module GPIO_PARAMS #(
 	assign GP_OUT = GP_OUT_PARAM;
 	integer i = 0;
 
-	always @(GP_IN or PARAMS_DATA)
+	always @(GP_IN or PARAMS_DATA or en or parameter_set or SET)
 	begin
 		if(en) begin
 			for(i=0; i<= PARAM_COUNT; i=i+1) begin

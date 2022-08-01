@@ -2,7 +2,7 @@ module PRNG_tb;
 
 	localparam rng_samps = 1000000;
 	localparam seed_width = 32;
-	localparam out_width = 64;
+	localparam out_width = 32;
 	localparam rng_width = 14;
 
 	localparam rng_clk_h_period = 5;
@@ -13,7 +13,7 @@ module PRNG_tb;
 	reg rng_clk = 1'b0;
 	reg rng_rst = 1'b0;
 	//reg [out_width - 1:0] SIGMA = 64'h0000_170A_3D70_A3D7;
-	reg [out_width - 1:0] SIGMA = 64'h0000_0000_B851_EB85;
+	reg [out_width - 1:0] SIGMA = 32'h0001_0000;
 	wire [out_width - 1:0] rng_out_0;
 	wire [out_width - 1:0] rng_out_1;
 

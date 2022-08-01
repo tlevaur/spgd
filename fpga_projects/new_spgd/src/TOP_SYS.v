@@ -4,7 +4,8 @@ module TOP_SYS
 	parameter GPIO_WIDTH = 32,
 	parameter CFG_WIDTH = 1024,
 	parameter ADC_WIDTH = 12,
-	parameter DAC_WIDTH = 14
+	parameter DAC_WIDTH = 14,
+	parameter LED_WIDTH = 8
 )
 (
 	input ADC_CLK,
@@ -16,6 +17,7 @@ module TOP_SYS
 	output [DAC_WIDTH  - 1 : 0] DAC_A_OUT,
 	output [DAC_WIDTH  - 1 : 0] DAC_B_OUT,
 	input  [CFG_WIDTH  - 1 : 0] CFG_IN,
+	output [LED_WIDTH  - 1 : 0] LED_O,
 	output val_0,
 	output val_1
 );
@@ -32,18 +34,20 @@ module TOP_SYS
 	wire [FP_WIDTH 	- 1 : 0] OUT2_DAC_CAL_OFFSET;
 	wire [FP_WIDTH 	- 1 : 0] SIGMA;
 	wire [FP_WIDTH 	- 1 : 0] GAMMA;
+	wire [FP_WIDTH  - 1 : 0] J_TIME;
 
 
-	assign IN1_ADC_CAL_GAIN		= CFG_IN[   FP_WIDTH -1 :	   0];
-	assign IN1_ADC_CAL_OFFSET	= CFG_IN[ 2*FP_WIDTH -1 :   FP_WIDTH];
-	assign IN2_ADC_CAL_GAIN		= CFG_IN[ 3*FP_WIDTH -1 : 2*FP_WIDTH];
-	assign IN2_ADC_CAL_OFFSET	= CFG_IN[ 4*FP_WIDTH -1 : 3*FP_WIDTH];
-	assign OUT1_DAC_CAL_GAIN	= CFG_IN[ 5*FP_WIDTH -1 : 4*FP_WIDTH];
-	assign OUT1_DAC_CAL_OFFSET	= CFG_IN[ 6*FP_WIDTH -1 : 5*FP_WIDTH];
-	assign OUT2_DAC_CAL_GAIN	= CFG_IN[ 7*FP_WIDTH -1 : 6*FP_WIDTH];
-	assign OUT2_DAC_CAL_OFFSET	= CFG_IN[ 8*FP_WIDTH -1 : 7*FP_WIDTH];
-	assign SIGMA			= CFG_IN[ 9*FP_WIDTH -1 : 8*FP_WIDTH];
-	assign GAMMA			= CFG_IN[10*FP_WIDTH -1 : 9*FP_WIDTH];
+	assign IN1_ADC_CAL_GAIN		= CFG_IN[   FP_WIDTH -1 :		    0];
+	assign IN1_ADC_CAL_OFFSET	= CFG_IN[ 2*FP_WIDTH -1 :    FP_WIDTH];
+	assign IN2_ADC_CAL_GAIN		= CFG_IN[ 3*FP_WIDTH -1 :  2*FP_WIDTH];
+	assign IN2_ADC_CAL_OFFSET	= CFG_IN[ 4*FP_WIDTH -1 :  3*FP_WIDTH];
+	assign OUT1_DAC_CAL_GAIN	= CFG_IN[ 5*FP_WIDTH -1 :  4*FP_WIDTH];
+	assign OUT1_DAC_CAL_OFFSET	= CFG_IN[ 6*FP_WIDTH -1 :  5*FP_WIDTH];
+	assign OUT2_DAC_CAL_GAIN	= CFG_IN[ 7*FP_WIDTH -1 :  6*FP_WIDTH];
+	assign OUT2_DAC_CAL_OFFSET	= CFG_IN[ 8*FP_WIDTH -1 :  7*FP_WIDTH];
+	assign SIGMA				= CFG_IN[ 9*FP_WIDTH -1 :  8*FP_WIDTH];
+	assign GAMMA				= CFG_IN[10*FP_WIDTH -1 :  9*FP_WIDTH];
+	assign J_TIME				= CFG_IN[11*FP_WIDTH -1 : 10*FP_WIDTH];
 
 	wire [ADC_WIDTH - 1:0] selected_ADC;
 	wire ADC_EN;
@@ -63,25 +67,6 @@ module TOP_SYS
 	assign selected_ADC_CAL_GAIN	= ADC_SELECT ? IN1_ADC_CAL_GAIN : IN2_ADC_CAL_GAIN;
 	assign selected_ADC_CAL_OFFSET	= ADC_SELECT ? IN1_ADC_CAL_OFFSET : IN2_ADC_CAL_OFFSET;
 
-	wire P_out;
-	wire [31:0] J_time;
-
-	pulser pulser0 (
-		.s(TRIG_IN),
-		.clk(ADC_CLK),
-		.rst(!REG_RST),
-		.P(P_out),
-		.L(),
-		.A(),
-		.B()
-	);
-	
-	custom_gen_timer timer0 (
-		.clk(ADC_CLK),
-		.en(!P_out),
-		// .rst(P_out),
-		.J_time(J_time)
-	);
 
 	ADC_MUX #(
 		.ADC_WIDTH(ADC_WIDTH)
@@ -115,7 +100,7 @@ module TOP_SYS
 		.ADC_CLK(ADC_CLK),
 		.ADC_DONE(ADC_DONE),
 		.ADC_EN(ADC_EN),
-		.J_time(J_time),
+		.J_time(J_TIME),
 		.REG_RESET(REG_RST),
 		.DAC_A_OUT(SPGD_DAC_A),
 		.DAC_B_OUT(SPGD_DAC_B),
@@ -123,7 +108,8 @@ module TOP_SYS
 		.GAMMA(GAMMA),
 		.GP_IN(GP_IN),
 		.GP_OUT_SPGD_SYS(GP_OUT_SPGD_SYS),
-		.GP_OUT_SPGD_FSM(GP_OUT_SPGD_FSM)
+		.GP_OUT_SPGD_FSM(GP_OUT_SPGD_FSM),
+		.LED_O(LED_O)
 	);
 
 	fp_DAC #(
@@ -176,7 +162,7 @@ module TOP_SYS
 	wire [3:0] parameter_set = GP_IN[GPIO_WIDTH - 5: GPIO_WIDTH - 8];
 	// assign parameter_set = GP_IN[GPIO_WIDTH - 5: GPIO_WIDTH - 8];
 	reg [GPIO_WIDTH - 1 : 0] GP_OUT_SET = {GPIO_WIDTH{1'b0}};
-	assign GP_OUT = GP_OUT_SET; 
+	assign GP_OUT = GP_OUT_SET;
 	wire [GPIO_WIDTH - 1 : 0] GP_OUT_TOP_SYS;
 	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_SYS;
 	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
@@ -199,7 +185,7 @@ module TOP_SYS
 		GP_OUT_PARAM_SET15 = 4'hE,
 		GP_OUT_PARAM_SET16 = 4'hF;
 
-	always @(GP_OUT_TOP_SYS or GP_OUT_SPGD_SYS or parameter_set)
+	always @(GP_OUT_TOP_SYS or GP_OUT_SPGD_SYS or GP_OUT_SPGD_FSM or parameter_set)
 		begin
 			case(parameter_set)
 				GP_OUT_TOP_SYS_CASE: GP_OUT_SET = GP_OUT_TOP_SYS;

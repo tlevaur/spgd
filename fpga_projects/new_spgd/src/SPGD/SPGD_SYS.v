@@ -21,16 +21,12 @@ module SPGD_SYS
 	output [FP_WIDTH - 1:0] DAC_B_OUT,
 	output [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_SYS,
 	output [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM,
-	output [7:0] LED_O,
-	output val_0,
-	output val_1
+	output [7:0] LED_O
 );
 	// Constants
 	// reg [FP_WIDTH - 1:0] SIGMA = 64'h0000_170A_3D70_A3D7; // 0.09
 	// reg [FP_WIDTH - 1:0] SIGMA = 64'h0000_0000_B851_EB85; // 0.09 / 8192
 	// reg [FP_WIDTH - 1:0] GAIN  = 64'h0004_0000_0000_0000;
-	assign val_0 = 1'b0;
-	assign val_1 = 1'b1;
 
 	// Register Outputs
 	wire [FP_WIDTH - 1:0] J_P;
