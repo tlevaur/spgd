@@ -8,6 +8,7 @@ module TOP_SYS
 )
 (
 	input ADC_CLK,
+	input TRIG_IN,
 	input  [GPIO_WIDTH - 1 : 0] GP_IN,
 	output [GPIO_WIDTH - 1 : 0] GP_OUT,
 	input  [ADC_WIDTH  - 1 : 0] ADC_A_IN,
@@ -61,7 +62,27 @@ module TOP_SYS
 	assign SYS_EN = GP_IN[GPIO_WIDTH - 1];
 	assign selected_ADC_CAL_GAIN	= ADC_SELECT ? IN1_ADC_CAL_GAIN : IN2_ADC_CAL_GAIN;
 	assign selected_ADC_CAL_OFFSET	= ADC_SELECT ? IN1_ADC_CAL_OFFSET : IN2_ADC_CAL_OFFSET;
+
+	wire P_out;
+	wire [31:0] J_time;
+
+	pulser pulser0 (
+		.s(TRIG_IN),
+		.clk(ADC_CLK),
+		.rst(!REG_RST),
+		.P(P_out),
+		.L(),
+		.A(),
+		.B()
+	);
 	
+	custom_gen_timer timer0 (
+		.clk(ADC_CLK),
+		.en(!P_out),
+		// .rst(P_out),
+		.J_time(J_time)
+	);
+
 	ADC_MUX #(
 		.ADC_WIDTH(ADC_WIDTH)
 	) mux0 (
@@ -94,6 +115,7 @@ module TOP_SYS
 		.ADC_CLK(ADC_CLK),
 		.ADC_DONE(ADC_DONE),
 		.ADC_EN(ADC_EN),
+		.J_time(J_time),
 		.REG_RESET(REG_RST),
 		.DAC_A_OUT(SPGD_DAC_A),
 		.DAC_B_OUT(SPGD_DAC_B),

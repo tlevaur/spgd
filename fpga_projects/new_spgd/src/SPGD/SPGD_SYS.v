@@ -16,6 +16,7 @@ module SPGD_SYS
 	input ADC_DONE,
 	output ADC_EN,
 	output REG_RESET,
+	input [32 - 1:0] J_time,
 	output [FP_WIDTH - 1:0] DAC_A_OUT,
 	output [FP_WIDTH - 1:0] DAC_B_OUT,
 	output [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_SYS,
@@ -25,9 +26,9 @@ module SPGD_SYS
 	output val_1
 );
 	// Constants
-	//reg [FP_WIDTH - 1:0] SIGMA = 64'h0000_170A_3D70_A3D7; // 0.09
+	// reg [FP_WIDTH - 1:0] SIGMA = 64'h0000_170A_3D70_A3D7; // 0.09
 	// reg [FP_WIDTH - 1:0] SIGMA = 64'h0000_0000_B851_EB85; // 0.09 / 8192
-	// reg [FP_WIDTH - 1:0] GAIN = 64'h0004_0000_0000_0000;
+	// reg [FP_WIDTH - 1:0] GAIN  = 64'h0004_0000_0000_0000;
 	assign val_0 = 1'b0;
 	assign val_1 = 1'b1;
 
@@ -49,9 +50,9 @@ module SPGD_SYS
 	wire [FP_WIDTH :0] new_U_1;
 
 	// Multiplier Outputs
-	wire [2*FP_WIDTH - 1:0] J_GAIN;
-	wire [2*FP_WIDTH - 1:0] U_0_TERM;
-	wire [2*FP_WIDTH - 1:0] U_1_TERM;
+	wire [FP_WIDTH - 1:0] J_GAIN;
+	wire [FP_WIDTH - 1:0] U_0_TERM;
+	wire [FP_WIDTH - 1:0] U_1_TERM;
 
 	// RNG Outputs
 	wire [FP_WIDTH - 1:0] new_DELTA_U_0;
@@ -66,7 +67,7 @@ module SPGD_SYS
 	wire [1:0] DAC_SEL;
 	wire [3:0] FSM_STATE;
 	wire RNG_CLK;
-	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_SS;
+	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_SYS;
 	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
 
 	GPIO_PARAMS #(
@@ -77,22 +78,22 @@ module SPGD_SYS
 		.SET(1),
 		.GP_OUT(GP_OUT_SPGD_SYS),
 		.PARAMS_DATA({
-			{GPIO_WIDTH{1'b0}},		//13
-			U_0_PLUS[FP_WIDTH - 1 :0],	//12
-			{GPIO_WIDTH{1'b0}}, 		//15
-			U_0_MINUS[FP_WIDTH - 1 :0],			//11
-			{GPIO_WIDTH{1'b0}},		//14
-			U_1_PLUS[FP_WIDTH - 1 :0],			//10
-			U_1_MINUS[FP_WIDTH - 1 :0],			//9
-			J_P,				//8
-			J_M,				//7
-			U_0,				//6
-			U_1,				//5
-			DELTA_U_0,			//4
-			DELTA_U_1,			//3
-			DELTA_J[FP_WIDTH - 1 :0],	//2
-			new_U_0,			//1
-			new_U_1				//0
+			{GPIO_WIDTH{1'b0}},		//* PARAM 15
+			{GPIO_WIDTH{1'b0}}, 		//* PARAM 14
+			{GPIO_WIDTH{1'b0}}, 		//* PARAM 13
+			U_0_PLUS[FP_WIDTH - 1 :0],	//* PARAM 12
+			U_0_MINUS[FP_WIDTH - 1 :0],	//* PARAM 11
+			U_1_PLUS[FP_WIDTH - 1 :0],	//* PARAM 10
+			U_1_MINUS[FP_WIDTH - 1 :0],	//* PARAM 9
+			J_P,				//* PARAM 8
+			J_M,				//* PARAM 7
+			U_0,				//* PARAM 6
+			U_1,				//* PARAM 5
+			DELTA_U_0,			//* PARAM 4
+			DELTA_U_1,			//* PARAM 3
+			DELTA_J[FP_WIDTH - 1 :0],	//* PARAM 2
+			new_U_0[FP_WIDTH - 1 :0],	//* PARAM 1
+			new_U_1[FP_WIDTH - 1 :0]	//* PARAM 0
 		})
 	);
 	// assign SPGD_EN = GP_IN[GPIO_WIDTH - 1];
@@ -106,34 +107,74 @@ module SPGD_SYS
 	assign LED_O = {ADC_DONE, 3'b000, FSM_STATE};
 	
 	// Control Modules
-	SPGD_FSM FSM_0(.ADC_CLK(ADC_CLK), .FSM_EN(SYS_EN), .ADC_DONE(ADC_DONE), .ADC_EN(ADC_EN), .REG_RST(REG_RST), .RNG_CLK(RNG_CLK),
-		.J_P_WRT(J_P_WRT), .J_M_WRT(J_M_WRT), .U_WRT(U_WRT), .DELTA_U_WRT(DELTA_U_WRT), .DAC_SEL(DAC_SEL), .FSM_STATE(FSM_STATE),
-		.GP_IN(GP_IN), .GP_OUT_SPGD_FSM(GP_OUT_SPGD_FSM));
+	SPGD_FSM #(
+		.GPIO_WIDTH(GPIO_WIDTH)
+		) FSM_0 (
+			.ADC_CLK(ADC_CLK),
+			.FSM_EN(SYS_EN),
+			.ADC_DONE(ADC_DONE),
+			.ADC_EN(ADC_EN),
+			.REG_RST(REG_RST),
+			.RNG_CLK(RNG_CLK),
+			.J_P_WRT(J_P_WRT),
+			.J_M_WRT(J_M_WRT),
+			.J_time(J_time),
+			.U_WRT(U_WRT),
+			.DELTA_U_WRT(DELTA_U_WRT),
+			.DAC_SEL(DAC_SEL),
+			.FSM_STATE(FSM_STATE),
+			.GP_IN(GP_IN),
+			.GP_OUT_SPGD_FSM(GP_OUT_SPGD_FSM)
+	);
 
-	DAC_MUX DAC_MUX0(.DAC_SEL(DAC_SEL), .U_0(U_0), .U_1(U_1), .U_0_P(U_0_PLUS[FP_WIDTH-1:0]), .U_0_M(U_0_MINUS[FP_WIDTH-1:0]), 
+	DAC_MUX DAC_MUX0 (.DAC_SEL(DAC_SEL), .U_0(U_0), .U_1(U_1), .U_0_P(U_0_PLUS[FP_WIDTH-1:0]), .U_0_M(U_0_MINUS[FP_WIDTH-1:0]), 
 			.U_1_P(U_1_PLUS[FP_WIDTH-1:0]), .U_1_M(U_1_MINUS[FP_WIDTH-1:0]), .DAC_A_OUT(DAC_A_OUT), .DAC_B_OUT(DAC_B_OUT));
 
-	PRNG #(.FP_WIDTH(FP_WIDTH)) PRNG_0(.SIGMA(SIGMA), .clk(RNG_CLK), .rst(REG_RST), .PERT_A(new_DELTA_U_0), .PERT_B(new_DELTA_U_1));
+	PRNG #(.FP_WIDTH(FP_WIDTH)) PRNG_0 (.SIGMA(SIGMA), .clk(RNG_CLK), .rst(REG_RST), .PERT_A(new_DELTA_U_0), .PERT_B(new_DELTA_U_1));
 
 	// Registers
-	gen_reg #(.DATA_WIDTH(FP_WIDTH)) J_P_REG(.data_in(ADC_IN), .clk(ADC_CLK), .wrt(J_P_WRT), .rst(REG_RST), .data_out(J_P));
-	gen_reg #(.DATA_WIDTH(FP_WIDTH)) J_M_REG(.data_in(ADC_IN), .clk(ADC_CLK), .wrt(J_M_WRT), .rst(REG_RST), .data_out(J_M));
-	gen_reg #(.DATA_WIDTH(FP_WIDTH)) U_0_REG(.data_in(new_U_0[FP_WIDTH-1:0]), .clk(ADC_CLK), .wrt(U_WRT), .rst(REG_RST), .data_out(U_0));
-	gen_reg #(.DATA_WIDTH(FP_WIDTH)) U_1_REG(.data_in(new_U_1[FP_WIDTH-1:0]), .clk(ADC_CLK), .wrt(U_WRT), .rst(REG_RST), .data_out(U_1));
-	gen_reg #(.DATA_WIDTH(FP_WIDTH)) DELTA_U_0_REG(.data_in(new_DELTA_U_0), .clk(ADC_CLK), .wrt(DELTA_U_WRT), .rst(REG_RST), .data_out(DELTA_U_0));
-	gen_reg #(.DATA_WIDTH(FP_WIDTH)) DELTA_U_1_REG(.data_in(new_DELTA_U_1), .clk(ADC_CLK), .wrt(DELTA_U_WRT), .rst(REG_RST), .data_out(DELTA_U_1));
+	gen_reg #(.DATA_WIDTH(FP_WIDTH)) J_P_REG (.data_in(ADC_IN), .clk(ADC_CLK), .wrt(J_P_WRT), .rst(REG_RST), .data_out(J_P));
+	gen_reg #(.DATA_WIDTH(FP_WIDTH)) J_M_REG (.data_in(ADC_IN), .clk(ADC_CLK), .wrt(J_M_WRT), .rst(REG_RST), .data_out(J_M));
+	gen_reg #(.DATA_WIDTH(FP_WIDTH)) U_0_REG (.data_in(new_U_0[FP_WIDTH-1:0]), .clk(ADC_CLK), .wrt(U_WRT), .rst(REG_RST), .data_out(U_0));
+	gen_reg #(.DATA_WIDTH(FP_WIDTH)) U_1_REG (.data_in(new_U_1[FP_WIDTH-1:0]), .clk(ADC_CLK), .wrt(U_WRT), .rst(REG_RST), .data_out(U_1));
+	gen_reg #(.DATA_WIDTH(FP_WIDTH)) DELTA_U_0_REG (.data_in(new_DELTA_U_0), .clk(ADC_CLK), .wrt(DELTA_U_WRT), .rst(REG_RST), .data_out(DELTA_U_0));
+	gen_reg #(.DATA_WIDTH(FP_WIDTH)) DELTA_U_1_REG (.data_in(new_DELTA_U_1), .clk(ADC_CLK), .wrt(DELTA_U_WRT), .rst(REG_RST), .data_out(DELTA_U_1));
 
 	// Adders and Subbers
-	gen_subber #(.IN_WIDTH(FP_WIDTH)) J_SUB(.a(J_P), .b(J_M), .s(DELTA_J)); // DELTA_J = J_P - J_M
-	gen_adder #(.IN_WIDTH(FP_WIDTH)) U_0_ADD(.a(U_0), .b(DELTA_U_0), .s(U_0_PLUS)); // U_0 + DELTA_U_0
-	gen_subber #(.IN_WIDTH(FP_WIDTH)) U_0_SUB(.a(U_0), .b(DELTA_U_0), .s(U_0_MINUS)); // U_0 - DELTA_U_0
-	gen_adder #(.IN_WIDTH(FP_WIDTH)) U_1_ADD(.a(U_1), .b(DELTA_U_1), .s(U_1_PLUS)); // U_1 + DELTA_U_1
-	gen_subber #(.IN_WIDTH(FP_WIDTH)) U_1_SUB(.a(U_1), .b(DELTA_U_1), .s(U_1_MINUS)); // U_1 - DELTA_U_1
-	gen_adder #(.IN_WIDTH(FP_WIDTH)) update_0(.a(U_0), .b(U_0_TERM[FP_WIDTH*2-1-INT_WIDTH:FP_WIDTH-INT_WIDTH]), .s(new_U_0)); //U_0 + GAIN * DELTA_J * DELTA_U_0
-	gen_adder #(.IN_WIDTH(FP_WIDTH)) update_1(.a(U_1), .b(U_1_TERM[FP_WIDTH*2-1-INT_WIDTH:FP_WIDTH-INT_WIDTH]), .s(new_U_1)); //U_1 + GAIN * DELTA_J * DELTA_U_1
-
+	gen_subber #(.IN_WIDTH(FP_WIDTH)) J_SUB   (.a(J_P), .b(J_M),       .s(DELTA_J));	// DELTA_J = J_P - J_M
+	gen_adder  #(.IN_WIDTH(FP_WIDTH)) U_0_ADD (.a(U_0), .b(DELTA_U_0), .s(U_0_PLUS));	// U_0 + DELTA_U_0
+	gen_subber #(.IN_WIDTH(FP_WIDTH)) U_0_SUB (.a(U_0), .b(DELTA_U_0), .s(U_0_MINUS));	// U_0 - DELTA_U_0
+	gen_adder  #(.IN_WIDTH(FP_WIDTH)) U_1_ADD (.a(U_1), .b(DELTA_U_1), .s(U_1_PLUS));	// U_1 + DELTA_U_1
+	gen_subber #(.IN_WIDTH(FP_WIDTH)) U_1_SUB (.a(U_1), .b(DELTA_U_1), .s(U_1_MINUS));	// U_1 - DELTA_U_1
+	
+	// Update Rule
+	gen_adder #( //U_0 + GAIN * DELTA_J * DELTA_U_0
+		.IN_WIDTH(FP_WIDTH)
+		) update_0 (
+			.a(U_0), .b(U_0_TERM), .s(new_U_0)
+	);
+	
+	gen_adder #( //U_1 + GAIN * DELTA_J * DELTA_U_1
+		.IN_WIDTH(FP_WIDTH)
+		) update_1 (
+			.a(U_1), .b(U_1_TERM), .s(new_U_1)
+	);
+	
 	// Multipliers
-	gen_mult #(.DATA_WIDTH(FP_WIDTH)) J_MULT(.a(DELTA_J[FP_WIDTH-1:0]), .b(GAMMA), .p(J_GAIN)); // GAIN * DELTA_J
-	gen_mult #(.DATA_WIDTH(FP_WIDTH)) U_0_MULT(.a(J_GAIN[FP_WIDTH*2-1-INT_WIDTH:FP_WIDTH-INT_WIDTH]), .b(DELTA_U_0), .p(U_0_TERM)); // GAIN * DELTA_J * DELTA_U_0
-	gen_mult #(.DATA_WIDTH(FP_WIDTH)) U_1_MULT(.a(J_GAIN[FP_WIDTH*2-1-INT_WIDTH:FP_WIDTH-INT_WIDTH]), .b(DELTA_U_1), .p(U_1_TERM)); // GAIN * DELTA_J * DELTA_U_1
+	custom_gen_mult #( // GAIN * DELTA_J
+		.DATA_WIDTH(FP_WIDTH)
+		) J_MULT (
+			.a(DELTA_J[FP_WIDTH-1:0]), .b(GAMMA), .p(J_GAIN)
+	);
+	custom_gen_mult #( // GAIN * DELTA_J * DELTA_U_0
+		.DATA_WIDTH(FP_WIDTH),
+		.INT_WIDTH(INT_WIDTH)
+		) U_0_MULT (
+			.a(J_GAIN), .b(DELTA_U_0), .p(U_0_TERM)
+	);
+	custom_gen_mult #( // GAIN * DELTA_J * DELTA_U_1
+		.DATA_WIDTH(FP_WIDTH)
+		) U_1_MULT (
+			.a(J_GAIN), .b(DELTA_U_1), .p(U_1_TERM)
+	);
 endmodule

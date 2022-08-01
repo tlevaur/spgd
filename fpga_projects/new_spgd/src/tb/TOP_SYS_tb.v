@@ -1,6 +1,7 @@
 module TOP_SYS_tb;
 	localparam NUM_SAMPS = 4096;
 	localparam H_period=2;
+	localparam TRIG_IN_H_period=25000;
 	localparam F_period=4;
 	localparam AVE_period = F_period*1024;
 	localparam FP_WIDTH = 32;
@@ -10,6 +11,7 @@ module TOP_SYS_tb;
 	localparam CFG_WIDTH = 1024;
 
 	reg ADC_CLK = 1'b0;
+	reg TRIG_IN = 1'b0;
 	reg  [ADC_WIDTH  - 1 : 0] ADC_A_IN = {ADC_WIDTH{1'b0}};
 	reg  [ADC_WIDTH  - 1 : 0] ADC_B_IN = {ADC_WIDTH{1'b0}};
 	reg  [GPIO_WIDTH - 1 : 0] GP_IN = {GPIO_WIDTH{1'b0}};
@@ -46,6 +48,7 @@ module TOP_SYS_tb;
 		.DAC_WIDTH(DAC_WIDTH)
 	) TOP_SYS0 (
 		.ADC_CLK(ADC_CLK),
+		.TRIG_IN(TRIG_IN),
 		.GP_IN(GP_IN),
 		.GP_OUT(GP_OUT),
 		.ADC_A_IN(ADC_A_IN),
@@ -62,19 +65,31 @@ module TOP_SYS_tb;
 		#H_period;
 	end
 
+	always
+	begin
+		TRIG_IN = 1'b0;
+		#TRIG_IN_H_period;
+		TRIG_IN = 1'b1;
+		#TRIG_IN_H_period;
+	end
 	initial
 	begin
 		GP_IN = 32'hE0000000;
-		repeat(16) begin
-			#F_period;
-			GP_IN = GP_IN+1;
-		end
-		GP_IN = 32'hE1000000;
-		repeat(12) begin
-			#F_period;
-			GP_IN = GP_IN+1;
-		end
+		// repeat(16) begin
+		// 	#F_period;
+		// 	GP_IN = GP_IN+1;
+		// end
+		// GP_IN = 32'hE1000000;
+		// repeat(16) begin
+		// 	#F_period;
+		// 	GP_IN = GP_IN+1;
+		// end
 		// GP_IN = 32'hE2000000;
+		// repeat(16) begin
+		// 	#F_period;
+		// 	GP_IN = GP_IN+1;
+		// end
+		// // GP_IN = 32'hE2000000;
 		// repeat(12) begin
 		// 	#F_period;
 		// 	GP_IN = GP_IN+1;
@@ -82,15 +97,13 @@ module TOP_SYS_tb;
 		// DATA_IN = DATA_IN + 1;
 		// #F_period;
 		// write_data = $fopen("filter_output_a.txt","w");
-		// repeat(NUM_SAMPS) begin
-		// 	#AVE_period;
-		// 	// $fdisplay(write_data, "%x", DACA_CODE_WIRE_OUT);
-		// 	#F_period;
-		// 	#F_period;
-		// 	ADC_A_IN = ADC_A_IN + 16;
-		// 	ADC_B_IN = ADC_B_IN - 16;
-		// end
-		//$fclose(write_data);
-		// $finish;
+		repeat(NUM_SAMPS) begin
+			#AVE_period;
+			//$fdisplay(write_data, "%x", DACA_CODE_WIRE_OUT);
+			#F_period;
+			#F_period;
+			ADC_A_IN = ADC_A_IN + 16;
+			ADC_B_IN = ADC_B_IN - 16;
+		end
 	end
 endmodule

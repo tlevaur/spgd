@@ -3,14 +3,17 @@
 module SPGD_FSM
 #(
 	parameter GPIO_WIDTH = 32,
-	parameter COUNT_WIDTH = 15,
-	parameter DAC_WIDTH = 14
+	parameter COUNT_WIDTH = 32,
+	parameter DAC_WIDTH = 14,
+	parameter ADC_time = 1026 + 10,
+	parameter RNG_time = 100
 )
 (
 	input ADC_CLK,
 	input FSM_EN,
 	input ADC_DONE,
-	input GP_IN,
+	input [GPIO_WIDTH - 1 : 0] GP_IN,
+	input [31 : 0] J_time,
 	output ADC_EN,
 	output REG_RST,
 	output RNG_CLK,
@@ -47,6 +50,8 @@ module SPGD_FSM
 	reg int_DELTA_U_WRT = 1'b0;
 	reg [1:0] int_DAC_SEL = 2'b00;
 
+	assign GP_OUT_SPGD_FSM = {GPIO_WIDTH{1'b0}};
+
 	assign REG_RST = int_REG_RST;
 	assign RNG_CLK = int_RNG_CLK;
 	assign J_P_WRT = int_J_P_WRT;
@@ -55,15 +60,23 @@ module SPGD_FSM
 	assign DELTA_U_WRT = int_DELTA_U_WRT;
 	assign DAC_SEL = int_DAC_SEL;
 
-	reg [COUNT_WIDTH - 1:0] timer_A_wait = 13'h0828;
-	reg [COUNT_WIDTH - 1:0] ADC_A_wait = 13'h0402;
-	reg [COUNT_WIDTH - 1:0] MATH_A_wait = 13'h000A;
-	reg [COUNT_WIDTH - 1:0] timer_B_wait = 13'h0801;
-	reg [COUNT_WIDTH - 1:0] ADC_B_wait = 13'h0402;
-	reg [COUNT_WIDTH - 1:0] MATH_B_wait = 13'h000A;
-	reg [COUNT_WIDTH - 1:0] MATH_C_wait = 13'h0028;
-	reg [COUNT_WIDTH - 1:0] rng_wait = 13'h0064;
-	reg [COUNT_WIDTH - 1:0] timer_C_wait = 13'h1806;
+	wire [COUNT_WIDTH - 1:0] shifted_J_time;
+	assign shifted_J_time = {J_time[COUNT_WIDTH - 2 : 0], 1'b0};
+
+	wire [COUNT_WIDTH - 1:0] timer_A_wait;
+	assign timer_A_wait = J_time - ADC_time;
+	wire [COUNT_WIDTH - 1:0] ADC_A_wait;
+	assign ADC_A_wait = ADC_time - 10;
+	reg [COUNT_WIDTH - 1:0] MATH_A_wait = 32'h0000_000A;
+	wire [COUNT_WIDTH - 1:0] timer_B_wait;
+	assign timer_B_wait = J_time - ADC_time - 32'h0000_0028;
+	wire [COUNT_WIDTH - 1:0] ADC_B_wait;
+	assign ADC_B_wait = ADC_time - 10;
+	reg [COUNT_WIDTH - 1:0] MATH_B_wait = 32'h0000_000A;
+	reg [COUNT_WIDTH - 1:0] MATH_C_wait = 32'h0000_0028;
+	reg [COUNT_WIDTH - 1:0] rng_wait = RNG_time;
+	wire [COUNT_WIDTH - 1:0] timer_C_wait;
+	assign timer_C_wait = shifted_J_time - RNG_time;
 
 	reg timer_rst = 1'b0;
 
@@ -98,33 +111,7 @@ module SPGD_FSM
 
 	assign FSM_STATE = current_state;
 
-	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
-	GPIO_PARAMS #(
-		.GPIO_WIDTH(GPIO_WIDTH),
-		.PARAM_COUNT(16)
-	) PARAMS1 (
-		.GP_IN(GP_IN),
-		.SET(2),
-		.GP_OUT(GP_OUT_SPGD_FSM),
-		.PARAMS_DATA({
-			{GPIO_WIDTH{1'b0}}, 		//15
-			{GPIO_WIDTH{1'b0}},		//14
-			{GPIO_WIDTH{1'b0}},		//13
-			{GPIO_WIDTH{1'b0}},		//12
-			{GPIO_WIDTH{1'b0}},		//11
-			{GPIO_WIDTH{1'b0}},		//10
-			{GPIO_WIDTH{1'b0}},		//9
-			{{GPIO_WIDTH-1{1'b0}}, DELTA_U_WRT},	//8
-			{{GPIO_WIDTH-1{1'b0}}, U_WRT},	//7
-			{{GPIO_WIDTH-1{1'b0}}, J_M_WRT},	//6
-			{{GPIO_WIDTH-1{1'b0}}, J_P_WRT},	//5
-			{{GPIO_WIDTH-1{1'b0}}, REG_RST},	//4
-			{{GPIO_WIDTH-1{1'b0}}, ADC_EN},	//3
-			{{GPIO_WIDTH-1{1'b0}}, FSM_EN},	//2
-			{{GPIO_WIDTH-2{1'b0}}, DAC_SEL},	//1
-			{{GPIO_WIDTH-4{1'b0}}, FSM_STATE}	//0
-		})
-	);
+	// wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
 
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) timer_a(.clk(ADC_CLK), .en(timer_a_en), .wait_val(timer_A_wait), .f(timer_A_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) ADC_a(.clk(ADC_CLK), .en(ADC_a_en), .wait_val(ADC_A_wait), .f(ADC_a_out));

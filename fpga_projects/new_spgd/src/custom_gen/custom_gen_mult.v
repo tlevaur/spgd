@@ -26,8 +26,6 @@ module custom_gen_mult
 );
 	wire [DATA_WIDTH + DATA_WIDTH - 1:0] int_p;
 
-	reg MSB = (DATA_WIDTH*2-1-INT_WIDTH)+BIT_SHIFT-INT_FORMAT;
-	reg LSB = (DATA_WIDTH-1-INT_WIDTH)+BIT_SHIFT+DEC_FORMAT;
 	assign p = int_p[((DATA_WIDTH*2-1-INT_WIDTH)+BIT_SHIFT)-INT_FORMAT : ((DATA_WIDTH-INT_WIDTH)+BIT_SHIFT)+DEC_FORMAT];
        
 	gen_mult #(.DATA_WIDTH(DATA_WIDTH)) MULT1 (.a(a), .b(b), .p(int_p));

@@ -1,4 +1,4 @@
-module pulse_FSM
+module pulser
 (
 	input s,
 	input clk,

@@ -107,6 +107,7 @@ connect_bd_net [get_bd_pins TOP_SYS/DAC_B_OUT] [get_bd_ports dac_dat_b_o]
 connect_bd_net [get_bd_pins TOP_SYS/GP_IN] [get_bd_pins axi_gpio_0/gpio_io_o]
 connect_bd_net [get_bd_pins TOP_SYS/GP_OUT] [get_bd_pins axi_gpio_0/gpio2_io_i]
 connect_bd_net [get_bd_pins TOP_SYS/CFG_IN] [get_bd_pins axi_cfg_register/cfg_data]
+connect_bd_net [get_bd_pins TOP_SYS/TRIG_IN] [get_bd_ports TRIG_IN]
 
 connect_bd_net [get_bd_ports dac_spi_clk_o] [get_bd_pins TOP_SYS/val_0]
 connect_bd_net [get_bd_ports dac_spi_csb_o] [get_bd_pins TOP_SYS/val_0]

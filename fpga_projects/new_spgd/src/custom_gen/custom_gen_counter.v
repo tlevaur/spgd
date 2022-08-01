@@ -8,7 +8,7 @@ module custom_gen_counter
 	output [DATA_WIDTH - 1:0] count
 );
 
-	reg [DATA_WIDTH - 1:0] int_count = 5'b00000;
+	reg [DATA_WIDTH - 1:0] int_count = {DATA_WIDTH{1'b0}};
 
 	always @(posedge clk)
 	begin
