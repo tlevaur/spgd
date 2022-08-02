@@ -74,19 +74,19 @@ module SPGD_SYS
 		.SET(1),
 		.GP_OUT(GP_OUT_SPGD_SYS),
 		.PARAMS_DATA({
-			{GPIO_WIDTH{1'b0}},		//* PARAM 15
+			{GPIO_WIDTH{1'b0}},			//* PARAM 15
 			{GPIO_WIDTH{1'b0}}, 		//* PARAM 14
 			{GPIO_WIDTH{1'b0}}, 		//* PARAM 13
 			U_0_PLUS[FP_WIDTH - 1 :0],	//* PARAM 12
 			U_0_MINUS[FP_WIDTH - 1 :0],	//* PARAM 11
 			U_1_PLUS[FP_WIDTH - 1 :0],	//* PARAM 10
 			U_1_MINUS[FP_WIDTH - 1 :0],	//* PARAM 9
-			J_P,				//* PARAM 8
-			J_M,				//* PARAM 7
-			U_0,				//* PARAM 6
-			U_1,				//* PARAM 5
-			DELTA_U_0,			//* PARAM 4
-			DELTA_U_1,			//* PARAM 3
+			J_P,						//* PARAM 8
+			J_M,						//* PARAM 7
+			U_0,						//* PARAM 6
+			U_1,						//* PARAM 5
+			DELTA_U_0,					//* PARAM 4
+			DELTA_U_1,					//* PARAM 3
 			DELTA_J[FP_WIDTH - 1 :0],	//* PARAM 2
 			new_U_0[FP_WIDTH - 1 :0],	//* PARAM 1
 			new_U_1[FP_WIDTH - 1 :0]	//* PARAM 0

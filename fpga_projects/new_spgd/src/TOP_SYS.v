@@ -160,7 +160,6 @@ module TOP_SYS
 	);
 
 	wire [3:0] parameter_set = GP_IN[GPIO_WIDTH - 5: GPIO_WIDTH - 8];
-	// assign parameter_set = GP_IN[GPIO_WIDTH - 5: GPIO_WIDTH - 8];
 	reg [GPIO_WIDTH - 1 : 0] GP_OUT_SET = {GPIO_WIDTH{1'b0}};
 	assign GP_OUT = GP_OUT_SET;
 	wire [GPIO_WIDTH - 1 : 0] GP_OUT_TOP_SYS;

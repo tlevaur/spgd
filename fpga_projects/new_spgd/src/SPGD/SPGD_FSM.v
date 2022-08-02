@@ -50,7 +50,7 @@ module SPGD_FSM
 	reg int_DELTA_U_WRT = 1'b0;
 	reg [1:0] int_DAC_SEL = 2'b00;
 
-	assign GP_OUT_SPGD_FSM = {GPIO_WIDTH{1'b0}};
+	// assign GP_OUT_SPGD_FSM = {GPIO_WIDTH{1'b0}};
 
 	assign REG_RST = int_REG_RST;
 	assign RNG_CLK = int_RNG_CLK;
@@ -111,7 +111,33 @@ module SPGD_FSM
 
 	assign FSM_STATE = current_state;
 
-	// wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
+	wire [GPIO_WIDTH - 1 : 0] GP_OUT_SPGD_FSM;
+	GPIO_PARAMS #(
+		.GPIO_WIDTH(GPIO_WIDTH),
+		.PARAM_COUNT(16)
+	) PARAMS1 (
+		.GP_IN(GP_IN),
+		.SET(2),
+		.GP_OUT(GP_OUT_SPGD_FSM),
+		.PARAMS_DATA({
+			{GPIO_WIDTH{1'b0}}, 					//15
+			{GPIO_WIDTH{1'b0}},						//14
+			{GPIO_WIDTH{1'b0}},						//13
+			{GPIO_WIDTH{1'b0}},						//12
+			{GPIO_WIDTH{1'b0}},						//11
+			{GPIO_WIDTH{1'b0}},						//10
+			{GPIO_WIDTH{1'b0}},						//9
+			{{GPIO_WIDTH-1{1'b0}}, DELTA_U_WRT},	//8
+			{{GPIO_WIDTH-1{1'b0}}, U_WRT},			//7
+			{{GPIO_WIDTH-1{1'b0}}, J_M_WRT},		//6
+			{{GPIO_WIDTH-1{1'b0}}, J_P_WRT},		//5
+			{{GPIO_WIDTH-1{1'b0}}, REG_RST},		//4
+			{{GPIO_WIDTH-1{1'b0}}, ADC_EN},			//3
+			{{GPIO_WIDTH-1{1'b0}}, FSM_EN},			//2
+			{{GPIO_WIDTH-2{1'b0}}, DAC_SEL},		//1
+			{{GPIO_WIDTH-4{1'b0}}, FSM_STATE}		//0
+		})
+	);
 
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) timer_a(.clk(ADC_CLK), .en(timer_a_en), .wait_val(timer_A_wait), .f(timer_A_out));
 	gen_counter #(.DATA_WIDTH(COUNT_WIDTH)) ADC_a(.clk(ADC_CLK), .en(ADC_a_en), .wait_val(ADC_A_wait), .f(ADC_a_out));
