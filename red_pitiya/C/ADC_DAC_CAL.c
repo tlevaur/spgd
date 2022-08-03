@@ -33,10 +33,12 @@ int fd;
 
     gp = mmap(NULL, sysconf(_SC_PAGESIZE), /* map the memory */
                 PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0x42000000);
-    *((uint32_t *)(gp + 0)) = 0x00000000;
+
+	*((uint32_t *)(gp + 0)) = 0x00000000;
 
     cfg = mmap(NULL, sysconf(_SC_PAGESIZE), /* map the memory */
                 PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0x43C00000);
+
     *((uint32_t *)(cfg + 0)) = IN_1_CalGain;
     *((uint32_t *)(cfg + 4)) = IN_1_CalOffset;
     *((uint32_t *)(cfg + 8)) = IN_2_CalGain;
@@ -53,6 +55,6 @@ int fd;
     munmap(gp, sysconf(_SC_PAGESIZE));
     munmap(cfg, sysconf(_SC_PAGESIZE));
 
-return 0;
+    return 0;
 }
 
