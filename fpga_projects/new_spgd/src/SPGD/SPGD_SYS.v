@@ -92,14 +92,9 @@ module SPGD_SYS
 			new_U_1[FP_WIDTH - 1 :0]	//* PARAM 0
 		})
 	);
-	// assign SPGD_EN = GP_IN[GPIO_WIDTH - 1];
-	// assign ADC_SEL = GP_IN[GPIO_WIDTH - 2];
+
 	assign REG_RESET = REG_RST;
-	//assign GP_OUT = {ADC_IN[63:38], 2'b00, FSM_STATE};
-	//assign GP_OUT = {J_P[55:40], J_M[55:40]};
-	//assign GP_OUT = {new_U_1[55:40], new_U_0[55:40]};
-	// assign GP_OUT = {U_0_TERM[FP_WIDTH*2-3-INT_WIDTH:FP_WIDTH-INT_WIDTH], DELTA_J[55:40]};
-	// assign GP_OUT = U_0;
+
 	assign LED_O = {ADC_DONE, 3'b000, FSM_STATE};
 	
 	// Control Modules

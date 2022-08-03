@@ -13,7 +13,7 @@ module PRNG_tb;
 	reg rng_clk = 1'b0;
 	reg rng_rst = 1'b0;
 	//reg [out_width - 1:0] SIGMA = 64'h0000_170A_3D70_A3D7;
-	reg [out_width - 1:0] SIGMA = 32'h0001_0000;
+	reg [out_width - 1:0] SIGMA = 32'h0000_3A2E;
 	wire [out_width - 1:0] rng_out_0;
 	wire [out_width - 1:0] rng_out_1;
 

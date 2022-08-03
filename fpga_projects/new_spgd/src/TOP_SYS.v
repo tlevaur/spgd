@@ -140,9 +140,9 @@ module TOP_SYS
 		.GP_OUT(GP_OUT_TOP_SYS),
 		.SET(0),
 		.PARAMS_DATA({
-			{32'h0000_000F}, //* PARAM 16
-			{32'h0000_000E}, //* PARAM 15
-			{32'h0000_000D}, //* PARAM 14
+			selected_ADC,	 //* PARAM 16
+			DAC_A_OUT,		 //* PARAM 15
+			DAC_B_OUT,		 //* PARAM 14
 			{32'h0000_000C}, //* PARAM 13
 			{32'h0000_000B}, //* PARAM 12
 			{32'h0000_000A}, //* PARAM 11
