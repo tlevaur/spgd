@@ -35,7 +35,8 @@ module TOP_SYS
 	wire [FP_WIDTH 	- 1 : 0] SIGMA;
 	wire [FP_WIDTH 	- 1 : 0] GAMMA;
 	wire [FP_WIDTH  - 1 : 0] J_TIME;
-
+	wire [FP_WIDTH  - 1 : 0] ADC_NORMAL;
+	wire [FP_WIDTH  - 1 : 0] SPGD_IN;
 
 	assign IN1_ADC_CAL_GAIN		= CFG_IN[   FP_WIDTH -1 :		    0];
 	assign IN1_ADC_CAL_OFFSET	= CFG_IN[ 2*FP_WIDTH -1 :    FP_WIDTH];
@@ -48,6 +49,7 @@ module TOP_SYS
 	assign SIGMA				= CFG_IN[ 9*FP_WIDTH -1 :  8*FP_WIDTH];
 	assign GAMMA				= CFG_IN[10*FP_WIDTH -1 :  9*FP_WIDTH];
 	assign J_TIME				= CFG_IN[11*FP_WIDTH -1 : 10*FP_WIDTH];
+	assign ADC_NORMAL			= CFG_IN[12*FP_WIDTH -1 : 11*FP_WIDTH];
 
 	wire [ADC_WIDTH - 1:0] selected_ADC;
 	wire ADC_EN;
@@ -91,11 +93,13 @@ module TOP_SYS
 		.ADC_CAL_OFFSET(selected_ADC_CAL_OFFSET)
 	);
 
+	custom_gen_mult #(.DATA_WIDTH(FP_WIDTH)) NORMALIZER (.a(ADC_CAL_OUT), .b(ADC_NORMAL), .p(SPGD_IN));
+
 	SPGD_SYS #(
 		.FP_WIDTH(FP_WIDTH),
 		.GPIO_WIDTH(GPIO_WIDTH)
 	) SYS0 (
-		.ADC_IN(ADC_CAL_OUT),
+		.ADC_IN(SPGD_IN),
 		.SYS_EN(SYS_EN),
 		.ADC_CLK(ADC_CLK),
 		.ADC_DONE(ADC_DONE),
@@ -156,6 +160,24 @@ module TOP_SYS
 			{32'h0000_0002}, //* PARAM 2
 			{32'h0000_0001}, //* PARAM 1
 			{32'h0000_0000}  //* PARAM 0
+		}),
+		.PARAMS_NAME({
+			"ADC ", //* PARAM 15
+			"DACA", //* PARAM 14
+			"DACB", //* PARAM 13
+			"BPRM",	//* PARAM 12
+			"BPRM",	//* PARAM 11
+			"BPRM",	//* PARAM 10
+			"BPRM",	//* PARAM 9
+			"BPRM", //* PARAM 8
+			"BPRM", //* PARAM 7
+			"BPRM", //* PARAM 6
+			"BPRM", //* PARAM 5
+			"BPRM", //* PARAM 4
+			"BPRM", //* PARAM 3
+			"BPRM",	//* PARAM 2
+			"BPRM",	//* PARAM 1
+			"BPRM"	//* PARAM 0
 		})
 	);
 

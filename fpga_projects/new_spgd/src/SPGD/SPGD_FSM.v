@@ -136,6 +136,24 @@ module SPGD_FSM
 			{{GPIO_WIDTH-1{1'b0}}, FSM_EN},			//2
 			{{GPIO_WIDTH-2{1'b0}}, DAC_SEL},		//1
 			{{GPIO_WIDTH-4{1'b0}}, FSM_STATE}		//0
+		}),
+		.PARAMS_NAME({
+			"BPRM", //* PARAM 15
+			"BPRM", //* PARAM 14
+			"BPRM", //* PARAM 13
+			"BPRM",	//* PARAM 12
+			"BPRM",	//* PARAM 11
+			"BPRM",	//* PARAM 10
+			"BPRM",	//* PARAM 9
+			"DU_W", //* PARAM 8
+			"U_W ", //* PARAM 7
+			"JM_W", //* PARAM 6
+			"JP_W", //* PARAM 5
+			"REGR", //* PARAM 4
+			"ADCE", //* PARAM 3
+			"FSME",	//* PARAM 2
+			"DACS",	//* PARAM 1
+			"FSMS"	//* PARAM 0
 		})
 	);
 

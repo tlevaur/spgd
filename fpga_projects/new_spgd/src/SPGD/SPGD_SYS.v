@@ -90,6 +90,24 @@ module SPGD_SYS
 			DELTA_J[FP_WIDTH - 1 :0],	//* PARAM 2
 			new_U_0[FP_WIDTH - 1 :0],	//* PARAM 1
 			new_U_1[FP_WIDTH - 1 :0]	//* PARAM 0
+		}),
+		.PARAMS_NAME({
+			"BPRM", //* PARAM 15
+			"BPRM", //* PARAM 14
+			"BPRM", //* PARAM 13
+			"U0_P",	//* PARAM 12
+			"U0_M",	//* PARAM 11
+			"U1_P",	//* PARAM 10
+			"U1_M",	//* PARAM 9
+			"J_P ", //* PARAM 8
+			"J_M ", //* PARAM 7
+			"U_0 ", //* PARAM 6
+			"U_1 ", //* PARAM 5
+			"D_U0", //* PARAM 4
+			"D_U1", //* PARAM 3
+			"D_J ",	//* PARAM 2
+			"nU_0",	//* PARAM 1
+			"nU_1"	//* PARAM 0
 		})
 	);
 
