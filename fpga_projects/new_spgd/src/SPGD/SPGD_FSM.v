@@ -120,22 +120,22 @@ module SPGD_FSM
 		.SET(2),
 		.GP_OUT(GP_OUT_SPGD_FSM),
 		.PARAMS_DATA({
-			{GPIO_WIDTH{1'b0}}, 					//15
-			{GPIO_WIDTH{1'b0}},						//14
-			{GPIO_WIDTH{1'b0}},						//13
-			{GPIO_WIDTH{1'b0}},						//12
-			{GPIO_WIDTH{1'b0}},						//11
-			{GPIO_WIDTH{1'b0}},						//10
-			{GPIO_WIDTH{1'b0}},						//9
-			{{GPIO_WIDTH-1{1'b0}}, DELTA_U_WRT},	//8
-			{{GPIO_WIDTH-1{1'b0}}, U_WRT},			//7
-			{{GPIO_WIDTH-1{1'b0}}, J_M_WRT},		//6
-			{{GPIO_WIDTH-1{1'b0}}, J_P_WRT},		//5
-			{{GPIO_WIDTH-1{1'b0}}, REG_RST},		//4
-			{{GPIO_WIDTH-1{1'b0}}, ADC_EN},			//3
-			{{GPIO_WIDTH-1{1'b0}}, FSM_EN},			//2
-			{{GPIO_WIDTH-2{1'b0}}, DAC_SEL},		//1
-			{{GPIO_WIDTH-4{1'b0}}, FSM_STATE}		//0
+			{GPIO_WIDTH{1'b0}}, 					//* PARAM 15
+			{GPIO_WIDTH{1'b0}},						//* PARAM 14
+			{GPIO_WIDTH{1'b0}},						//* PARAM 13
+			{GPIO_WIDTH{1'b0}},						//* PARAM 12
+			{GPIO_WIDTH{1'b0}},						//* PARAM 11
+			{GPIO_WIDTH{1'b0}},						//* PARAM 10
+			{GPIO_WIDTH{1'b0}},						//* PARAM 9
+			{{GPIO_WIDTH-1{1'b0}}, DELTA_U_WRT},	//* PARAM 8
+			{{GPIO_WIDTH-1{1'b0}}, U_WRT},			//* PARAM 7
+			{{GPIO_WIDTH-1{1'b0}}, J_M_WRT},		//* PARAM 6
+			{{GPIO_WIDTH-1{1'b0}}, J_P_WRT},		//* PARAM 5
+			{{GPIO_WIDTH-1{1'b0}}, REG_RST},		//* PARAM 4
+			{{GPIO_WIDTH-1{1'b0}}, ADC_EN},			//* PARAM 3
+			{{GPIO_WIDTH-1{1'b0}}, FSM_EN},			//* PARAM 2
+			{{GPIO_WIDTH-2{1'b0}}, DAC_SEL},		//* PARAM 1
+			{{GPIO_WIDTH-4{1'b0}}, FSM_STATE}		//* PARAM 0
 		}),
 		.PARAMS_NAME({
 			"BPRM", //* PARAM 15
